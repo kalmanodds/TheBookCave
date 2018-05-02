@@ -1,6 +1,6 @@
 namespace TheBookCave.Models.InputModels
 {
-    public class UserInputModels
+    public class UserInputModel
     {
         
     }

@@ -1,6 +1,6 @@
 namespace TheBookCave.Models.ViewModels
 {
-    public class RatingViewModel
+    public class OrderViewModel
     {
         
     }
