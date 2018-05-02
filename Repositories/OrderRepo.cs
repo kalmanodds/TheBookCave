@@ -1,6 +1,6 @@
 namespace TheBookCave.Repositories
 {
-    public class RatingRepository
+    public class OrderRepo
     {
         
     }
