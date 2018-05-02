@@ -15,17 +15,22 @@ namespace TheBookCave.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Catalogue()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "The Catalogue";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult TopTen()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "The Top Ten";
 
+            return View();
+        }
+
+        public IActionResult TermsOfService()
+        {
             return View();
         }
 
