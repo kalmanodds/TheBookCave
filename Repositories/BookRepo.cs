@@ -1,4 +1,6 @@
+using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories
 {

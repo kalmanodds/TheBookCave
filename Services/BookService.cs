@@ -1,3 +1,4 @@
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services
@@ -10,7 +11,7 @@ namespace TheBookCave.Services
         {
             _bookRepo = new BookRepo();
         }
-
+        
     //Möguleg föll sem við munum útfæra:
         //getBooks()
         //getBook()
