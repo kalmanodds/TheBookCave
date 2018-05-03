@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Data.EntityModels.BookEntityModel;
 using TheBookCave.Data.EntityModels.OrderEntityModel;
 using TheBookCave.Data.EntityModels.RatingEntityModel;
@@ -12,6 +13,10 @@ namespace TheBookCave.Data
         public DbSet<OrderEntityModel> Orders { get; set; }
         public DbSet<RatingEntityModel> Ratings { get; set; }
         public DbSet<UserEntityModel> Users { get; set; }
+
+        public DbSet<OrderBookConnectionEntityModel> OrderBookConnections { get; set; }
+        public DbSet<UserBookCartConnectionEntityModel> UserBookCartConnections { get; set; }
+        public DbSet<UserBookWishlistConnectionEntityModel> UserBookWishlistConnections { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
     public class BookController : Controller
     {
+        private BookService _bookService;
+        private RatingService _ratingService;
+
         public IActionResult Details(int bookID)
         {
             //This function takes in a bookID parameter which is the ID of the book that should have details.

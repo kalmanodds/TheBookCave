@@ -10,6 +10,8 @@ namespace TheBookCave.Data.EntityModels.BookEntityModel
         public string ISBN10 { get; set; }
         public string ISBN13 { get; set; }
         public string Description { get; set; }
+        public double Price { get; set; }
+        public string Genre { get; set; }
         public int NumberOfPages { get; set; }
         public DateModel DatePublished { get; set; }
         public string Publisher { get; set; }
