@@ -58,7 +58,7 @@ namespace TheBookCave.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginInputModel model)
         {
-            if(ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return View();
             }
