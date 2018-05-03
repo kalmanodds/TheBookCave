@@ -52,6 +52,12 @@ namespace TheBookCave.Repositories
                             Publisher = b.Publisher,
                             Rating = b.Rating
                          });
+
+            if(filter.Genre != null)
+            {
+                books.Where(book => book.Genre.Equals(filter.Genre));
+            }
+
             switch(filter.OrderBy) {
                 case "AlphaUp":
                     books.OrderBy(book => book.Title);
@@ -75,8 +81,6 @@ namespace TheBookCave.Repositories
                     books.OrderBy(book => book.Title);
                     break;
             }
-
-            
 
             var result = books.ToList();
             return result;
