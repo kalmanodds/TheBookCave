@@ -58,6 +58,11 @@ namespace TheBookCave.Repositories
                 books.Where(book => book.Genre.Equals(filter.Genre));
             }
 
+            if(filter.SearchWord != null)
+            {
+                books.Where( (book => book.Title.ToLower().Contains(filter.SearchWord.ToLower())));
+            }
+
             switch(filter.OrderBy) {
                 case "AlphaUp":
                     books.OrderBy(book => book.Title);
