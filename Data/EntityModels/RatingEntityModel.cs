@@ -6,5 +6,6 @@ namespace TheBookCave.Data.EntityModels.RatingEntityModel
         public int Score { get; set; }
         public string Comment { get; set; }
         public int UserID { get; set; }
+        public int BookID { get; set; }
     }
 }
