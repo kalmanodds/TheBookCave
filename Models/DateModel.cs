@@ -6,6 +6,14 @@ namespace TheBookCave.Models
         public int Year { get; set; }
         public int Month { get; set; }
         public int Day { get; set; }
+
+        public DateModel()
+        {
+            Year = 1;
+            Month = 1;
+            Day = 1;
+        }
+
         public DateModel(int y, int m, int d)
         {
             Year = y;

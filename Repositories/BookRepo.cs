@@ -36,6 +36,7 @@ namespace TheBookCave.Repositories
 
             return book;
         }
+
         public List<BookViewModel> GetBooks(FilterModel filter)
         {
             var books = (from b in _db.Books
@@ -85,6 +86,11 @@ namespace TheBookCave.Repositories
                 default:
                     books.OrderBy(book => book.Title);
                     break;
+            }
+
+            if(filter.Amount != 0)
+            {
+                books.Take(filter.Amount);
             }
 
             var result = books.ToList();

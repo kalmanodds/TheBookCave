@@ -27,14 +27,20 @@ namespace TheBookCave.Controllers
         {
             ViewData["Message"] = "The Catalogue";
 
-            return View();
+            var filter = new FilterModel();
+            var books = _bookService.GetBooks(filter);
+
+            return View(books);
         }
 
         public IActionResult TopTen()
         {
             ViewData["Message"] = "The Top Ten";
 
-            return View();
+            var filter = new FilterModel(0, System.Double.MaxValue, null, "RatingDown", null, 10);
+            var books = _bookService.GetBooks(filter);
+
+            return View(books);
         }
 
         public IActionResult TermsOfService()

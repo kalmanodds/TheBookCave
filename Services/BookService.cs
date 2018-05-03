@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TheBookCave.Models;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
@@ -12,9 +14,17 @@ namespace TheBookCave.Services
             _bookRepo = new BookRepo();
         }
         
+        public BookViewModel GetBook(int id)
+        {
+            return _bookRepo.GetBook(id);
+        }
+
+        public List<BookViewModel> GetBooks(FilterModel filter)
+        {
+            return _bookRepo.GetBooks(filter);
+        }
+
     //Möguleg föll sem við munum útfæra:
-        //getBooks()
-        //getBook()
         //AddBook()
         //UpdateBook()
         //RemoveBook()
