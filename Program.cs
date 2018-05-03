@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TheBookCave.Data;
+using TheBookCave.Data.EntityModels.BookEntityModel;
 
 namespace TheBookCave
 {
@@ -14,12 +16,31 @@ namespace TheBookCave
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+
+/*
+        public static void SeedData()
+        {
+            var db = new DataContext();
+
+            if(!db.Books.Any())
+            {
+                var initialBooks = new List<BookEntityModel>()
+                {
+                    new BookEntityModel { parameters }
+                }
+
+                db.AddRange(initialBooks);
+                db.SaveChanges();
+            }
+        }
+*/
     }
 }
