@@ -12,23 +12,19 @@
 {
     <form asp-action="LogOut" asp-controller="Account" method="POST">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <button class="btn btn-link navbar-btn navbar-link">@claim</button>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log Out</button>
-            </li>
+            <li><button class="btn btn-link navbar-btn navbar-link">@claim</button></li>
+            <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Log Out</button></li>
+            <li><a asp-area="" asp-controller="" asp-action="">Wishlist</a></li>
+            <li><a asp-area="" asp-controller="" asp-action="">Cart</a></li>
         </ul>
     </form>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-        </li>
-        <li>
-            <a asp-area="" asp-controller="Account" asp-action="Login">Log In</a>
-        </li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Login">Sign In</a></li>
+        <li><a asp-area="" asp-controller="" asp-action="">Wishlist</a></li>
+        <li><a asp-area="" asp-controller="" asp-action="">Cart</a></li>
     </ul>
 }
