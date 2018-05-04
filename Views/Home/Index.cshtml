@@ -7,21 +7,21 @@
 <div>
     <h1>Hello World</h1>
 </div>
-<h2>Best Sellers</h2>
+<h2><a asp-action="Index" asp-controller="Home">Best Sellers</a></h2>
 <ul>
     @foreach (var Book in Model[0])
     {
         <h3>@Book.Title</h3>
     }
 </ul>
-<h2>Top Ten</h2>
+<h2><a asp-action="TopTen" asp-controller="Home">Top Ten</a></h2>
 <ul>
     @foreach (var Book in Model[1])
     {
         <h3>@Book.Title</h3>
     }
 </ul>
-<h2>Newest</h2>
+<h2><a asp-action="Index" asp-controller="Home">Newest</a></h2>
 <ul>
 @foreach (var Book in Model[2])
     {

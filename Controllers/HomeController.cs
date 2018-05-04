@@ -22,6 +22,7 @@ namespace TheBookCave.Controllers
         public IActionResult Index()
         {
             //This is Kalman's idea. Let's see how it plays out.
+            //Status Update: Kalman's idea played out better than expected.
             var filter1 = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 10);
             var bestsellers = _bookService.GetBooks(filter1);
 
@@ -46,6 +47,12 @@ namespace TheBookCave.Controllers
             return View(books);
         }
 
+        public IActionResult Catalogue(FilterModel filter)
+        {
+            var books = _bookService.GetBooks(filter);
+            return View(books);
+        }
+
         public IActionResult TopTen()
         {
             ViewData["Message"] = "The Top Ten";
@@ -65,5 +72,18 @@ namespace TheBookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+/*
+        private IActionResult BestSellers()
+        {
+            var filter = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 0);
+            return RedirectToAction("Catalogue" ,"Home");
+        }
+
+        private IActionResult Newest()
+        {
+            var filter = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 0);
+            return RedirectToAction("Catalogue", "Home");
+        }
+*/
     }
 }
