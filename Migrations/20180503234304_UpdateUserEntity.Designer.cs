@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180503234304_UpdateUserEntity")]
+    partial class UpdateUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +128,7 @@ namespace TheBookCave.Migrations
 
                     b.Property<int>("BookID");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.HasKey("ID");
 
@@ -141,11 +142,41 @@ namespace TheBookCave.Migrations
 
                     b.Property<int>("BookID");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.HasKey("ID");
 
                     b.ToTable("UserBookWishlistConnections");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.UserEntityModel.UserEntityModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("AddressID");
+
+                    b.Property<int?>("DateJoinedID");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("FavoriteBookID");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("Image");
+
+                    b.Property<bool>("IsPremium");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AddressID");
+
+                    b.HasIndex("DateJoinedID");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("TheBookCave.Models.AdressModel", b =>
@@ -200,6 +231,17 @@ namespace TheBookCave.Migrations
                     b.HasOne("TheBookCave.Models.AdressModel", "ShippingAddress")
                         .WithMany()
                         .HasForeignKey("ShippingAddressID");
+                });
+
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.UserEntityModel.UserEntityModel", b =>
+                {
+                    b.HasOne("TheBookCave.Models.AdressModel", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressID");
+
+                    b.HasOne("TheBookCave.Models.DateModel", "DateJoined")
+                        .WithMany()
+                        .HasForeignKey("DateJoinedID");
                 });
 #pragma warning restore 612, 618
         }

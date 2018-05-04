@@ -3,7 +3,6 @@ using TheBookCave.Data.EntityModels;
 using TheBookCave.Data.EntityModels.BookEntityModel;
 using TheBookCave.Data.EntityModels.OrderEntityModel;
 using TheBookCave.Data.EntityModels.RatingEntityModel;
-using TheBookCave.Data.EntityModels.UserEntityModel;
 
 namespace TheBookCave.Data
 {
@@ -12,7 +11,6 @@ namespace TheBookCave.Data
         public DbSet<BookEntityModel> Books { get; set; }
         public DbSet<OrderEntityModel> Orders { get; set; }
         public DbSet<RatingEntityModel> Ratings { get; set; }
-        public DbSet<UserEntityModel> Users { get; set; }
 
         public DbSet<OrderBookConnectionEntityModel> OrderBookConnections { get; set; }
         public DbSet<UserBookCartConnectionEntityModel> UserBookCartConnections { get; set; }

@@ -96,5 +96,26 @@ namespace TheBookCave.Repositories
             var result = books.ToList();
             return result;
         }
+
+        public List<BookViewModel> GetCartBooks(string userID)
+        {
+            var books = (from b in _db.Books
+                         join c in _db.UserBookCartConnections on userID equals c.UserID
+                         select new BookViewModel()
+                         {
+                            ID = b.ID,
+                            Title = b.Title,
+                            Author = b.Author,
+                            ISBN10 = b.ISBN10,
+                            ISBN13 = b.ISBN13,
+                            Description = b.Description,
+                            NumberOfPages = b.NumberOfPages,
+                            DatePublished = b.DatePublished,
+                            Publisher = b.Publisher,
+                            Rating = b.Rating
+                         }
+                        ).ToList();
+            return books;
+        }
     }
 }

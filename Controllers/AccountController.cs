@@ -1,9 +1,12 @@
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
+using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
 {
@@ -12,10 +15,13 @@ namespace TheBookCave.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        private BookService _bookService;
+
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _bookService = new BookService();
         }
 
         public IActionResult Register()
@@ -83,5 +89,21 @@ namespace TheBookCave.Controllers
         {
             return View();
         }
+
+        //Everything above this line is from the Authorization lectures.
+        //Everything below this line will be the other methods
+
+        [Authorize]
+        public async Task<IActionResult> CartAsync()
+        {
+            var user = await GetCurrentUserAsync();
+            var id = user?.Id;
+
+            var books = _bookService.GetCartBooks(id);
+
+            return View(books);
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }
