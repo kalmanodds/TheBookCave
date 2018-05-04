@@ -127,11 +127,9 @@ namespace TheBookCave.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [Authorize]
-        public async Task<IActionResult> EditProfile()
+        public IActionResult EditProfile()
         {
             //Get User View Model
-            var user = await GetCurrentUserAsync();
-            await _userManager.DeleteAsync(user);
             return View();
         }
     }
