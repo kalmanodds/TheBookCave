@@ -7,6 +7,11 @@ namespace TheBookCave.Controllers
     {
         private OrderService _orderService;
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("Catalogue", "Home");
+        }
+
         public IActionResult Cart()
         {
             return View();

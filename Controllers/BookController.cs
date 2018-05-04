@@ -8,6 +8,11 @@ namespace TheBookCave.Controllers
         private BookService _bookService;
         private RatingService _ratingService;
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("Catalogue", "Home");
+        }
+
         public IActionResult Details(int bookID)
         {
             //This function takes in a bookID parameter which is the ID of the book that should have details.

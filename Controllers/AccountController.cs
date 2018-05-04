@@ -93,6 +93,11 @@ namespace TheBookCave.Controllers
         //Everything above this line is from the Authorization lectures.
         //Everything below this line will be the other methods
 
+        public IActionResult Index()
+        {   
+            return View();
+        }
+
         [Authorize]
         public async Task<IActionResult> Cart()
         {
