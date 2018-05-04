@@ -1,6 +1,6 @@
 namespace TheBookCave.Models
 {
-    public class AdressModel
+    public class AddressModel
     {
         public int ID { get; set; }
         public string StreetName { get; set; }

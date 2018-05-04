@@ -11,6 +11,7 @@ namespace TheBookCave.Data
         public DbSet<BookEntityModel> Books { get; set; }
         public DbSet<OrderEntityModel> Orders { get; set; }
         public DbSet<RatingEntityModel> Ratings { get; set; }
+        public DbSet<UserEntityModel> Users { get; set; }
 
         public DbSet<OrderBookConnectionEntityModel> OrderBookConnections { get; set; }
         public DbSet<UserBookCartConnectionEntityModel> UserBookCartConnections { get; set; }

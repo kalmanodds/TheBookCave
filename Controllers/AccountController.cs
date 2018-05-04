@@ -16,12 +16,14 @@ namespace TheBookCave.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
         private BookService _bookService;
+        private UserService _userService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _bookService = new BookService();
+            _userService = new UserService();
         }
 
         public IActionResult Register()
@@ -48,6 +50,8 @@ namespace TheBookCave.Controllers
                 //Add the concatenated first and last name as fullName in claims
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
+
+                _userService.AddUser(model);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -121,5 +125,14 @@ namespace TheBookCave.Controllers
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+        [Authorize]
+        public async Task<IActionResult> EditProfile()
+        {
+            //Get User View Model
+            var user = await GetCurrentUserAsync();
+            await _userManager.DeleteAsync(user);
+            return View();
+        }
     }
 }
