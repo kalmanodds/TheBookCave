@@ -94,12 +94,23 @@ namespace TheBookCave.Controllers
         //Everything below this line will be the other methods
 
         [Authorize]
-        public async Task<IActionResult> CartAsync()
+        public async Task<IActionResult> Cart()
         {
             var user = await GetCurrentUserAsync();
             var id = user?.Id;
 
             var books = _bookService.GetCartBooks(id);
+
+            return View(books);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Wishlist()
+        {
+            var user = await GetCurrentUserAsync();
+            var id = user?.Id;
+
+            var books = _bookService.GetWishlistBooks(id);
 
             return View(books);
         }

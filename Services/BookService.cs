@@ -29,6 +29,11 @@ namespace TheBookCave.Services
             return _bookRepo.GetCartBooks(userID);
         }
 
+        public List<BookViewModel> GetWishlistBooks(string userID)
+        {
+            return _bookRepo.GetWishlistBooks(userID);
+        }
+
     //Möguleg föll sem við munum útfæra:
         //AddBook()
         //UpdateBook()
