@@ -20,6 +20,18 @@ namespace TheBookCave.Controllers
 
         public IActionResult Index()
         {
+            //This is Kalman's idea. Let's see how it plays out.
+            var filter1 = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 10);
+            var bestsellers = _bookService.GetBooks(filter1);
+
+            var filter2 = new FilterModel();
+            var topten = _bookService.GetBooks(filter2);
+
+            var filter3 = new FilterModel();
+            var newest = _bookService.GetBooks(filter3);
+
+
+
             return View();
         }
 

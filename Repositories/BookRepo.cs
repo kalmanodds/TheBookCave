@@ -29,6 +29,7 @@ namespace TheBookCave.Repositories
                             ISBN13 = b.ISBN13,
                             Description = b.Description,
                             NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating
@@ -49,6 +50,7 @@ namespace TheBookCave.Repositories
                             ISBN13 = b.ISBN13,
                             Description = b.Description,
                             NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating
@@ -83,6 +85,12 @@ namespace TheBookCave.Repositories
                 case "RatingDown":
                     books.OrderByDescending(book => book.Rating);
                     break;
+                case "SellerUp":
+                    books.OrderBy(book => book.NumberOfCopiesSold);
+                    break;
+                case "SellerDown":
+                    books.OrderByDescending(book => book.NumberOfCopiesSold);
+                    break;
                 default:
                     books.OrderBy(book => book.Title);
                     break;
@@ -110,6 +118,7 @@ namespace TheBookCave.Repositories
                             ISBN13 = b.ISBN13,
                             Description = b.Description,
                             NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating
@@ -131,6 +140,7 @@ namespace TheBookCave.Repositories
                             ISBN13 = b.ISBN13,
                             Description = b.Description,
                             NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating

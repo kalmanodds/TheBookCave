@@ -13,6 +13,7 @@ namespace TheBookCave.Models.ViewModels
         public double Price { get; set; }
         public string Genre { get; set; }
         public int NumberOfPages { get; set; }
+        public int NumberOfCopiesSold { get; set; } 
         public DateModel DatePublished { get; set; }
         public string Publisher { get; set; }
         public double Rating { get; set; }
