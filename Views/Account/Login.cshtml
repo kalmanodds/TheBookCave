@@ -1,9 +1,9 @@
 @model TheBookCave.Models.InputModels.LoginInputModel
 
 <h1>Login</h1>
-<form asp-action="Login" asp-controller="Account">
-    <input type="email" asp-for="Email" />
-    <input type="password" asp-for="Password" />
+<form asp-action="Login"  class="form-horizontal" asp-controller="Account">
+    <input type="email"  class="form-control" asp-for="Email" placeholder="Enter your email..."/> <br/>
+    <input type="password"  class="form-control" asp-for="Password" placeholder="Enter your password..."/> <br/>
     <label>
         <input type="checkbox" asp-for="RememberMe" /> Remember me 
     </label>
