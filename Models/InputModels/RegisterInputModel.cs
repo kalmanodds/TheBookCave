@@ -5,16 +5,16 @@ namespace TheBookCave.Models.InputModels
     public class RegisterInputModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage="Email is required")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="First name is required")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Last name is required")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Password is required")]
         public string Password { get; set; }
     }
 }
