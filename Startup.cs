@@ -42,7 +42,7 @@ namespace TheBookCave
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(3);
 
-                options.LoginPath = "/Account/SignIn";
+                options.LoginPath = "/Account/LogIn";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
