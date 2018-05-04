@@ -15,6 +15,8 @@ namespace TheBookCave.Models
         //RatingDown
         //SellerUp
         //SellerDown
+        //DatePublishedUp
+        //DatePublishedDown
         public string Genre { get; set; }
         //Romance
         // TODO add more plz

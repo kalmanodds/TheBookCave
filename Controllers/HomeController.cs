@@ -24,10 +24,10 @@ namespace TheBookCave.Controllers
             var filter1 = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 10);
             var bestsellers = _bookService.GetBooks(filter1);
 
-            var filter2 = new FilterModel();
+            var filter2 = new FilterModel(0, System.Double.MaxValue, null, "RatingDown", null, 10);
             var topten = _bookService.GetBooks(filter2);
 
-            var filter3 = new FilterModel();
+            var filter3 = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 10);
             var newest = _bookService.GetBooks(filter3);
 
 

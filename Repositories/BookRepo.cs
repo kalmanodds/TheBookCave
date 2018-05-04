@@ -91,6 +91,12 @@ namespace TheBookCave.Repositories
                 case "SellerDown":
                     books.OrderByDescending(book => book.NumberOfCopiesSold);
                     break;
+                case "DatePublishedUp":
+                    books.OrderBy(book => book.DatePublished);
+                    break;
+                case "DatePublishedDown":
+                    books.OrderByDescending(book => book.DatePublished);
+                    break;
                 default:
                     books.OrderBy(book => book.Title);
                     break;
