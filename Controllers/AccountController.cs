@@ -98,7 +98,7 @@ namespace TheBookCave.Controllers
         //Everything below this line will be the other methods
 
         public IActionResult Index()
-        {   
+        {
             return View();
         }
 
@@ -127,8 +127,11 @@ namespace TheBookCave.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [Authorize]
-        public IActionResult EditProfile()
+        public async Task<IActionResult> EditProfile()
         {
+            var user = await GetCurrentUserAsync();
+            await _userManager.DeleteAsync(user);
+
             //Get User View Model
             return View();
         }
