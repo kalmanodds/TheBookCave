@@ -13,6 +13,8 @@ namespace TheBookCave.Models
         //PriceDown
         //RatingUp
         //RatingDown
+        //SellerUp
+        //SellerDown
         public string Genre { get; set; }
         //Romance
         // TODO add more plz
