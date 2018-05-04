@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -30,9 +31,9 @@ namespace TheBookCave.Controllers
             var filter3 = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 10);
             var newest = _bookService.GetBooks(filter3);
 
+            var listArray = new List<BookViewModel>[] {bestsellers, topten, newest};
 
-
-            return View();
+            return View(listArray);
         }
 
         public IActionResult Catalogue()
