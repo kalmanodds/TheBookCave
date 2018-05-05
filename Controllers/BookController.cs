@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -15,19 +16,18 @@ namespace TheBookCave.Controllers
         }
 
         //NokkviKilla made this so this does not work
-        public IActionResult Details(int? bookID)
+        public IActionResult Details(int? id)
         {
             //This function takes in a bookID parameter which is the ID of the book that should have details.
-            if(bookID == null)
+            if(id == null)
             {
                 //If a book is not specified, redirect to the not found page
-                Console.WriteLine("HALLO HERNA ER EG******************************");
                 return View("NotFound");
             }
-            var book = _bookService.GetBook(bookID);
+            
+            BookViewModel book = _bookService.GetBook(id);
 
             if(book == null){
-                Console.WriteLine("*********************HELLO HERE I AM");
                 return View("NotFound");
             }
 

@@ -16,7 +16,6 @@ namespace TheBookCave.Repositories
         }
 
         //getters and setters and yeeters
-
         public BookViewModel GetBook(int? id)
         {
             var book = (from b in _db.Books
@@ -33,7 +32,7 @@ namespace TheBookCave.Repositories
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating
-                        }).SingleOrDefault();
+                        }).FirstOrDefault();
 
             return book;
         }
