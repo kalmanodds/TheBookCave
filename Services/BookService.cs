@@ -14,8 +14,12 @@ namespace TheBookCave.Services
             _bookRepo = new BookRepo();
         }
         
-        public BookViewModel GetBook(int id)
+        public BookViewModel GetBook(int? id)
         {
+            if(id == null){
+                return null;
+            }
+
             return _bookRepo.GetBook(id);
         }
 
