@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
@@ -19,7 +20,7 @@ namespace TheBookCave.Repositories
         public BookViewModel GetBook(int? id)
         {
             var book = (from b in _db.Books
-                        where b.ID == id
+                        where id == b.ID
                         select new BookViewModel{
                             ID = b.ID,
                             Title = b.Title,
@@ -39,6 +40,9 @@ namespace TheBookCave.Repositories
 
         public List<BookViewModel> GetBooks(FilterModel filter)
         {
+
+            Console.WriteLine("THIS MANY BOOKS IN THE DATABASE: " + _db.Books.Count());
+
             var books = (from b in _db.Books
                          where b.Price >= filter.MinPrice && b.Price <= filter.MaxPrice
                          select new BookViewModel{
