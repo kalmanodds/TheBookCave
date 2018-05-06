@@ -11,8 +11,8 @@ namespace TheBookCave.Controllers
         private RatingService _ratingService;
 
         public BookController(){
-            BookService _bookService = new BookService();
-            RatingService _ratingService = new RatingService();
+            _bookService = new BookService();
+            _ratingService = new RatingService();
         }
 
         public IActionResult Index()
