@@ -31,7 +31,7 @@ namespace TheBookCave
         {
             var db = new DataContext();
 
-            if(db.Books.Any())
+            if(!db.Books.Any())
             {
                 var initialBooks = new List<BookEntityModel>()
                 {
