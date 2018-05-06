@@ -108,7 +108,8 @@ namespace TheBookCave.Repositories
                 books.Take(filter.Amount);
             }
 
-            var result = books.ToList();
+            var result = new List<BookViewModel>();
+            result =  books.ToList();
             return result;
         }
 
