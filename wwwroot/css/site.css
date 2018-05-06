@@ -38,12 +38,14 @@
     padding-top: 18px;
 }
 
-.caption
+/* Used to fix the overflow of book titles/authors. */
+.overflow-caption
 {
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
+
 }
-
-
 
 /* Custom scroll bar */
 .custom-scroll-bar::-webkit-scrollbar-track
