@@ -41,8 +41,6 @@ namespace TheBookCave.Repositories
         public List<BookViewModel> GetBooks(FilterModel filter)
         {
 
-            Console.WriteLine("THIS MANY BOOKS IN THE DATABASE: " + _db.Books.Count());
-
             var books = (from b in _db.Books
                          where b.Price >= filter.MinPrice && b.Price <= filter.MaxPrice
                          select new BookViewModel{
