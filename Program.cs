@@ -31,7 +31,7 @@ namespace TheBookCave
         {
             var db = new DataContext();
 
-            if(!db.Books.Any())
+            if(db.Books.Any())
             {
                 var initialBooks = new List<BookEntityModel>()
                 {
@@ -44,7 +44,6 @@ namespace TheBookCave
                     new BookEntityModel { Title = "The Wonderful Story of Henry Sugar and Six More", Author = "Rolald Dahl", ISBN10 = "0241955785", ISBN13 = "9780241955789", Description = "Enter a brilliant, sinister and wholly unpredictable world. Here you will find the suggestion of other-worldly goings on in a dark story about a swan and a boy; the surprising tale of a wealthy young wastrel who suddenly develops a remarkable new ability; and meet the hitchhiker whose light-fingers save the day.", NumberOfPages = 256, DatePublished = new DateModel(2011, 10, 27), Publisher = "Penguin Books Ltd", Rating = 4.5, NumberOfRatings = 22, NumberOfCopiesSold = 133, InStock = 16, Genre="children", Price = 9.99},
                     new BookEntityModel { Title = "Madame Bovary : Provincial Manners", Author = "Gustave Flaubert", ISBN10 = "0199535655", ISBN13 = "9780199535651", Description = "'Would this misery go on forever? Was there no escape? And yet she was every bit as good as all those other women who led happy lives!' When Emma Rouault marries Charles Bovary she imagines she will pass into the life of luxury and passion that she reads about in sentimental novels and women's magazines. But Charles is a dull country doctor, and provincial life is very different from the romantic excitement for which she yearns. In her quest to realize her dreams she takes a lover, and begins a devastating spiral into deceit and despair.", NumberOfPages = 386, DatePublished = new DateModel(2008, 08, 29), Publisher = "Oxford University Press", Rating = 3, NumberOfRatings = 25, NumberOfCopiesSold = 93, InStock = 8, Genre="Adventure", Price = 8.99},
                     new BookEntityModel { Title = "The Picture of Dorian Gray", Author = "Oscar Wilde", ISBN10 = "0141442468", ISBN13 = "9780141442464", Description = "Enthralled by his own exquisite portrait, Dorian Gray exchanges his soul for eternal youth and beauty. Influenced by his friend Lord Henry Wotton, he is drawn into a corrupt double life; indulging his desires in secret while remaining a gentleman in the eyes of polite society. Only his portrait bears the traces of his decadence. The novel was a succes de scandale and the book was later used as evidence against Wilde at the Old Bailey in 1895. It has lost none of its power to fascinate and disturb.", NumberOfPages = 304, DatePublished = new DateModel(2011, 06, 21), Publisher = "Penguin Books Ltd", Rating = 4, NumberOfRatings = 19, NumberOfCopiesSold = 240, InStock = 56, Genre="Horror", Price = 14.99},
-
                 };
 
                 db.AddRange(initialBooks);
