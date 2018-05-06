@@ -35,7 +35,7 @@ namespace TheBookCave
             {
                 var initialBooks = new List<BookEntityModel>()
                 {
-                    new BookEntityModel { Title = "", Author = "", ISBN10 = "", ISBN13 = "", Description = "", NumberOfPages = , DatePublished = new DateModel(2000, 31, 08), Publisher = "", Rating = 4.5, NumberOfRatings = 13, NumberOfCopiesSold = 120, InStock = 8, Genre="", Price = 9.99},
+                    new BookEntityModel { Title = "", Author = "", ISBN10 = "", ISBN13 = "", Description = "", NumberOfPages = 0, DatePublished = new DateModel(2000, 31, 08), Publisher = "", Rating = 4.5, NumberOfRatings = 13, NumberOfCopiesSold = 120, InStock = 8, Genre="", Price = 9.99},
                 };
 
                 db.AddRange(initialBooks);
