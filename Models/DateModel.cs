@@ -1,3 +1,5 @@
+using System;
+
 namespace TheBookCave.Models
 {
     public class DateModel
@@ -19,6 +21,11 @@ namespace TheBookCave.Models
             Year = y;
             Month = m;
             Day = d;
+        }
+
+        public override string ToString()
+        {
+            return Day + "/" + Month + "/" + Year;
         }
     }
 }
