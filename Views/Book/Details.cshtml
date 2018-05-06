@@ -9,46 +9,11 @@
         <br>
         <!-- Consider Removing properties from the view model that are unused e.g. copies sold. -->
         <!-- Remember to Scale all rating to number dividable by 0.5. -->
+        
         @{int intRating  = ((int)(((Model.Rating * 4) + 1) / 2)) * 5;}
-        <h2>@intRating</h2>
-        <!--
-        @switch(Model.Rating)
-        {
-            case 0:
-                <img src="~/images/stars/00StarSmall.png" alt="0 stars" class="img-responsive center-block">
-                break;
-            case 0.5:
-                <img src="~/images/stars/05StarSmall.png" alt="0.5 stars" class="img-responsive center-block">
-                break;
-            case 1:
-                <img src="~/images/stars/10StarSmall.png" alt="1 stars" class="img-responsive center-block">
-                break;
-            case 1.5:
-                <img src="~/images/stars/15StarSmall.png" alt="1.5 stars" class="img-responsive center-block">
-                break;
-            case 2:
-                <img src="~/images/stars/20StarSmall.png" alt="2 stars" class="img-responsive center-block">
-                break;
-            case 2.5:
-                <img src="~/images/stars/25StarSmall.png" alt="2.5 stars" class="img-responsive center-block">
-                break;
-            case 3:
-                <img src="~/images/stars/30StarSmall.png" alt="3 stars" class="img-responsive center-block">
-                break;
-            case 3.5:
-                <img src="~/images/stars/35StarSmall.png" alt="3.5 stars" class="img-responsive center-block">
-                break;
-            case 4:
-                <img src="~/images/stars/40StarSmall.png" alt="4 stars" class="img-responsive center-block">
-                break;
-            case 4.5:
-                <img src="~/images/stars/45StarSmall.png" alt="4.5 stars" class="img-responsive center-block">
-                break;
-            case 5:
-                <img src="~/images/stars/50StarSmall.png" alt="5 stars" class="img-responsive center-block">
-                break;
-        }
-        -->
+        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+        <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
+        
         <h4 class="text-center">@Model.Publisher</h4>
         <h4 class="text-center">@Model.DatePublished</h4>
         <h4 class="text-center">@Model.NumberOfPages pages</h4>
