@@ -10,6 +10,11 @@ namespace TheBookCave.Controllers
         private BookService _bookService;
         private RatingService _ratingService;
 
+        public BookController(){
+            BookService _bookService = new BookService();
+            RatingService _ratingService = new RatingService();
+        }
+
         public IActionResult Index()
         {
             return RedirectToAction("Catalogue", "Home");
@@ -25,7 +30,7 @@ namespace TheBookCave.Controllers
                 return View("NotFound");
             }
             
-            BookViewModel book = _bookService.GetBook(id);
+            var book = _bookService.GetBook(id);
 
             if(book == null){
                 return View("NotFound");
