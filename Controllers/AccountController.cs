@@ -17,6 +17,7 @@ namespace TheBookCave.Controllers
 
         private BookService _bookService;
         private UserService _userService;
+        private CartService _cartService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
@@ -24,6 +25,7 @@ namespace TheBookCave.Controllers
             _userManager = userManager;
             _bookService = new BookService();
             _userService = new UserService();
+            _cartService = new CartService();
         }
 
         public IActionResult Register()
@@ -131,6 +133,20 @@ namespace TheBookCave.Controllers
         {
             //Get User View Model
             return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> AddToCart(int? id)
+        {
+            if(id == null)
+            {
+                return View("NotFound");
+            }
+            var user = await GetCurrentUserAsync();
+            var userID = user?.Id;
+            var newCartItem = new CartInputModel((int)id, userID);
+            _cartService.AddCartItem(newCartItem);
+            return RedirectToAction("Details", "Book", (int)id);
         }
     }
 }
