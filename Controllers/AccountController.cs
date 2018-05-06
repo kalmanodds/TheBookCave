@@ -146,7 +146,7 @@ namespace TheBookCave.Controllers
             var userID = user?.Id;
             var newCartItem = new CartInputModel((int)id, userID);
             _cartService.AddCartItem(newCartItem);
-            return RedirectToAction("Details", "Book", (int)id);
+            return RedirectToAction("Catalogue", "Home");
         }
     }
 }

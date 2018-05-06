@@ -24,7 +24,9 @@
                         <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
                         <h5 class="text-center">Price: @Book.Price$</h5>
                         <p>
-                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                            <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+                                <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Cart</button>
+                            </form>
                         </p>
                     </div>
                 </div>
@@ -50,7 +52,9 @@
                         
                         <h5 class="text-center">Price: @Book.Price$</h5>
                         <p>
-                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                            <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+                                <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Cart</button>
+                            </form>
                         </p>
                     </div>
                 </div>
@@ -76,7 +80,9 @@
                         
                         <h5 class="text-center">Price: @Book.Price$</h5>
                         <p>
-                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                            <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+                                <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Cart</button>
+                            </form>
                         </p>
                     </div>
                 </div>
