@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectUniqueName": "c:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "projectName": "TheBookCave",
-      "projectPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectPath": "c:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "packagesPath": "C:\\Users\\AtliGisla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
+      "outputPath": "c:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
