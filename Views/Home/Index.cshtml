@@ -8,23 +8,77 @@
     <h1>Hello World</h1>
 </div>
 <h2><a asp-action="Index" asp-controller="Home">Best Sellers</a></h2>
-<ul>
-    @foreach (var Book in Model[0])
-    {
-        <h3><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h3>
-    }
-</ul>
+<div class="container testimonial-group">
+    <div class="row text-center custom-scroll-bar">
+        @foreach (var Book in Model[0])
+        {
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/images/BookSmall.png" alt="...">
+                    <div class="caption">
+                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h4 class="text-center">@Book.Author</h4>
+
+                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
+                        <h5 class="text-center">Price: @Book.Price$</h5>
+                        <p>
+                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 <h2><a asp-action="TopTen" asp-controller="Home">Top Ten</a></h2>
-<ul>
-    @foreach (var Book in Model[1])
-    {
-        <h3>@Book.Title</h3>
-    }
-</ul>
+<div class="container testimonial-group">
+    <div class="row text-center custom-scroll-bar">
+        @foreach (var Book in Model[1])
+        {
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/images/BookSmall.png" alt="...">
+                    <div class="caption">
+                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h4 class="text-center">@Book.Author</h4>
+                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
+                        
+                        <h5 class="text-center">Price: @Book.Price$</h5>
+                        <p>
+                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 <h2><a asp-action="Index" asp-controller="Home">Newest</a></h2>
-<ul>
-    @foreach (var Book in Model[2])
-    {
-        <h3>@Book.Title</h3>
-    }
-</ul>
+<div class="container testimonial-group">
+    <div class="row text-center custom-scroll-bar">
+        @foreach (var Book in Model[2])
+        {
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img src="~/images/BookSmall.png" alt="...">
+                    <div class="caption">
+                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h4 class="text-center">@Book.Author</h4>
+                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
+                        
+                        <h5 class="text-center">Price: @Book.Price$</h5>
+                        <p>
+                            <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

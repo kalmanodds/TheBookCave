@@ -12542,11 +12542,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "projectName": "TheBookCave",
       "projectPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "packagesPath": "/Users/nokkvikarlsson/.nuget/packages/",
       "outputPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/obj/",
+=======
+      "projectUniqueName": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectName": "TheBookCave",
+      "projectPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "packagesPath": "C:\\Users\\AtliGisla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
+>>>>>>> 0480003165509eb32de6c5a8efc4dbd90c5fbc2a
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

@@ -46,13 +46,13 @@ namespace TheBookCave.Controllers
 
             return View(books);
         }
-
+/* Does not work now. No way of passing a filter.
         public IActionResult Catalogue(FilterModel filter)
         {
             var books = _bookService.GetBooks(filter);
             return View(books);
         }
-
+*/
         public IActionResult TopTen()
         {
             ViewData["Message"] = "The Top Ten";
