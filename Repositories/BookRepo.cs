@@ -32,7 +32,8 @@ namespace TheBookCave.Repositories
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
-                            Rating = b.Rating
+                            Rating = b.Rating,
+                            Image = b.Image
                         }).FirstOrDefault();
 
             return book;
