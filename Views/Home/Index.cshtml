@@ -20,7 +20,7 @@
                         <h4 class="text-center">@Book.Author</h4>
 
                         @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
                         <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
                         <h5 class="text-center">Price: @Book.Price$</h5>
                         <p>
