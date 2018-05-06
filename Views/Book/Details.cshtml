@@ -9,9 +9,12 @@
         <br>
         <!-- Consider Removing properties from the view model that are unused e.g. copies sold. -->
         <!-- Remember to Scale all rating to number dividable by 0.5. -->
-        
+
+        <!--Makes an integer which is the rounded version of the rating (to 0.5).-->
         @{int intRating  = ((int)(((Model.Rating * 4) + 1) / 2)) * 5;}
+        <!--Puzzles together the Path String to the image with that amount of stars.-->
         @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+        <!--Displays the image of the stars. -->
         <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
         
         <h4 class="text-center">@Model.Publisher</h4>
