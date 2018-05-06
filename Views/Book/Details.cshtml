@@ -1,12 +1,10 @@
 @model TheBookCave.Models.ViewModels.BookViewModel
 
-<div>
+<div class="jumbotron book-details-container">
 
+    <img src="~/images/BookSmall.png" alt="Book">
     <h2>@Model.Title</h2>
-
     <h3>Author: @Model.Author</h3>
-    <h3>ISBN10: @Model.ISBN10</h3>
-    <h3>ISBN13: @Model.ISBN13</h3>
     <h3>Description: @Model.Description</h3>
     <h3>Price: @Model.Price</h3>
     <h3>Genre: @Model.Genre</h3>
