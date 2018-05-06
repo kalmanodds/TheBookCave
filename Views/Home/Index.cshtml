@@ -16,12 +16,12 @@
                 <div class="thumbnail">
                     <img src="~/images/BookSmall.png" alt="...">
                     <div class="caption">
-                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
-                        <h4 class="text-center">@Book.Author</h4>
+                        <h5 class="overflow-caption text-center"><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h5 class="overflow-caption text-center">@Book.Author</h5>
 
-                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
-                        <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
+                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+                        <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
                         <h5 class="text-center">Price: @Book.Price$</h5>
                         <p>
                             <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
@@ -41,10 +41,11 @@
                 <div class="thumbnail">
                     <img src="~/images/BookSmall.png" alt="...">
                     <div class="caption">
-                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
-                        <h4 class="text-center">@Book.Author</h4>
+                        <h5 class="overflow-caption text-center"><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h5 class="overflow-caption text-center">@Book.Author</h5>
+
                         @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
                         <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
                         
                         <h5 class="text-center">Price: @Book.Price$</h5>
@@ -66,10 +67,11 @@
                 <div class="thumbnail">
                     <img src="~/images/BookSmall.png" alt="...">
                     <div class="caption">
-                        <h5><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
-                        <h4 class="text-center">@Book.Author</h4>
+                        <h5 class="overflow-caption text-center"><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h5>
+                        <h5 class="overflow-caption text-center">@Book.Author</h5>
+                        
                         @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                        @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
                         <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
                         
                         <h5 class="text-center">Price: @Book.Price$</h5>
