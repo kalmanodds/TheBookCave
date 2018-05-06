@@ -15,5 +15,6 @@ namespace TheBookCave.Models.ViewModels
         public DateModel DatePublished { get; set; }
         public string Publisher { get; set; }
         public double Rating { get; set; }
+        public string Image { get; set; }
     }
 }

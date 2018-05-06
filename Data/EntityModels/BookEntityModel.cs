@@ -19,5 +19,6 @@ namespace TheBookCave.Data.EntityModels.BookEntityModel
         public double Rating { get; set; }
         public int NumberOfRatings { get; set; }
         public int InStock { get; set; }
+        public string Image { get; set; }
     }
 }

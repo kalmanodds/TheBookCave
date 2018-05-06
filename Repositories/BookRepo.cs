@@ -42,7 +42,7 @@ namespace TheBookCave.Repositories
         {
 
             var books = (from b in _db.Books
-                         //where b.Price >= filter.MinPrice && b.Price <= filter.MaxPrice
+                         where b.Price >= filter.MinPrice && b.Price <= filter.MaxPrice
                          select new BookViewModel{
                             ID = b.ID,
                             Title = b.Title,
