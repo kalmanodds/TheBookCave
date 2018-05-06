@@ -1,17 +1,84 @@
 @model TheBookCave.Models.ViewModels.BookViewModel
 
-<div class="jumbotron book-details-container">
+<!-- Row containing the main body of Book/Details. -->
+<div class="book-details-container row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <br>
+        <img src="~/images/BookSmall.png" alt="Book" class="img-responsive center-block">
+        <br>
+        <!-- Consider Removing properties from the view model that are unused e.g. copies sold. -->
+        <!-- Remember to Scale all rating to number dividable by 0.5. -->
+        @switch(Model.Rating)
+        {
+            case 0:
+                <img src="~/images/stars/00StarSmall.png" alt="0 stars" class="img-responsive center-block">
+                break;
+            case 0.5:
+                <img src="~/images/stars/05StarSmall.png" alt="0.5 stars" class="img-responsive center-block">
+                break;
+            case 1:
+                <img src="~/images/stars/10StarSmall.png" alt="1 stars" class="img-responsive center-block">
+                break;
+            case 1.5:
+                <img src="~/images/stars/15StarSmall.png" alt="1.5 stars" class="img-responsive center-block">
+                break;
+            case 2:
+                <img src="~/images/stars/20StarSmall.png" alt="2 stars" class="img-responsive center-block">
+                break;
+            case 2.5:
+                <img src="~/images/stars/25StarSmall.png" alt="2.5 stars" class="img-responsive center-block">
+                break;
+            case 3:
+                <img src="~/images/stars/30StarSmall.png" alt="3 stars" class="img-responsive center-block">
+                break;
+            case 3.5:
+                <img src="~/images/stars/35StarSmall.png" alt="3.5 stars" class="img-responsive center-block">
+                break;
+            case 4:
+                <img src="~/images/stars/40StarSmall.png" alt="4 stars" class="img-responsive center-block">
+                break;
+            case 4.5:
+                <img src="~/images/stars/45StarSmall.png" alt="4.5 stars" class="img-responsive center-block">
+                break;
+            case 5:
+                <img src="~/images/stars/50StarSmall.png" alt="5 stars" class="img-responsive center-block">
+                break;
+        }
+        <h4 class="text-center">@Model.Publisher</h4>
+        <h4 class="text-center">@Model.DatePublished</h4>
+        <h4 class="text-center">@Model.NumberOfPages pages</h4>
+        <h4 class="text-center">Price: @Model.Price $</h4>
 
-    <img src="~/images/BookSmall.png" alt="Book">
-    <h2>@Model.Title</h2>
-    <h3>Author: @Model.Author</h3>
-    <h3>Description: @Model.Description</h3>
-    <h3>Price: @Model.Price</h3>
-    <h3>Genre: @Model.Genre</h3>
-    <h3>Number of Pages: @Model.NumberOfPages</h3>
-    <h3>Copies sold: @Model.NumberOfCopiesSold</h3>
-    <h3>Publisher: @Model.Publisher</h3>
-    <h3>Rating: @Model.Rating</h3>
-    <h3>Date Published: @Model.DatePublished</h3>
+    </div>
+    <div class="col-md-6">
+        <h2>@Model.Title <small>@Model.Genre</small></h2>
+        <h3>@Model.Author</h3>
+        <p>Description: @Model.Description</p>
+    </div>
+    <div class="col-md-2"></div>
+</div>
 
+<!-- Row containing a horizontal line between the main body and the buttons. -->
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <hr>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<!-- The bottom row containing button. -->
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-2">
+        <a href="#" class="btn btn-primary center-block btn-book-details">Add to Cart</a>
+    </div>
+    <div class="col-md-2">
+        <a href="#" class="btn btn-primary center-block btn-book-details">Add to Wishlist</a>
+    </div>
+    <div class="col-md-2">
+        <a href="#" class="btn btn-primary center-block btn-book-details">Rate Book</a>
+    </div>
+    <div class="col-md-3"></div>
 </div>
