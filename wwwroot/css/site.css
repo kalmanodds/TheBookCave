@@ -24,14 +24,16 @@
 }
 
 /* Horizontal scrollable catalogue */
+/* TODO: Round corners */
 .testimonial-group > .row {
+    background-color: #F5F5F5;
     overflow-x: auto;
     white-space: nowrap;
 }
 .testimonial-group > .row > .col-xs-4 {
     display: inline-block;
     float: none;
-    height: 380px;
+    height: 340px;
     width: 200px;
     font-size: 48px;
     padding-bottom: 20px; 
