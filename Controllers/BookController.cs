@@ -30,7 +30,7 @@ namespace TheBookCave.Controllers
                 return View("NotFound");
             }
             
-            var book = _bookService.GetBook(id);
+            var book = _bookService.GetBook((int)id);
 
             if(book == null){
                 return View("NotFound");
