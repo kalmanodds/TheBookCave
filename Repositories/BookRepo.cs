@@ -49,6 +49,7 @@ namespace TheBookCave.Repositories
                             Title = b.Title,
                             Author = b.Author,
                             Description = b.Description,
+                            Price = b.Price,
                             NumberOfPages = b.NumberOfPages,
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
@@ -116,13 +117,15 @@ namespace TheBookCave.Repositories
         public List<BookViewModel> GetCartBooks(string userID)
         {
             var books = (from b in _db.Books
-                         join c in _db.UserBookCartConnections on userID equals c.UserID
+                         join c in _db.UserBookCartConnections on b.ID equals c.BookID
+                         where c.UserID == userID
                          select new BookViewModel()
                          {
                             ID = b.ID,
                             Title = b.Title,
                             Author = b.Author,
                             Description = b.Description,
+                            Price = b.Price,
                             NumberOfPages = b.NumberOfPages,
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
@@ -136,13 +139,14 @@ namespace TheBookCave.Repositories
         public List<BookViewModel> GetWishlistBooks(string userID)
         {
             var books = (from b in _db.Books
-                         join c in _db.UserBookWishlistConnections on userID equals c.UserID
+                         join c in _db.UserBookWishlistConnections on b.ID equals c.BookID
                          select new BookViewModel()
                          {
                             ID = b.ID,
                             Title = b.Title,
                             Author = b.Author,
                             Description = b.Description,
+                            Price = b.Price,
                             NumberOfPages = b.NumberOfPages,
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,

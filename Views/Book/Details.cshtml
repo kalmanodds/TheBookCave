@@ -43,7 +43,10 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-2">
-        <a href="#" class="center-block btn btn-primary btn-book-details">Add to Cart</a>
+        <!--@Html.ActionLink("Add to Cart", "AddToCart", "Account", new {id = Model.ID} , null)-->
+        <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+            <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Cart</button>
+        </form>
     </div>
     <div class="col-md-2">
         <a href="#" class="center-block btn btn-primary btn-book-details">Add to Wishlist</a>
