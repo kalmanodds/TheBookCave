@@ -48,7 +48,9 @@
         </form>
     </div>
     <div class="col-md-2">
-        <a href="#" class="center-block btn btn-primary btn-book-details">Add to Wishlist</a>
+        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+            <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Wishlist</button>
+        </form>
     </div>
     <div class="col-md-2">
         <a href="#" class="center-block btn btn-primary btn-book-details">Rate Book</a>
