@@ -1,63 +1,67 @@
 @model List<TheBookCave.Models.ViewModels.BookViewModel>
 
-<h1>The Catalogue</h1>
-<div>
-    <form asp-action="FilteredCatalogue" asp-controller="Home" method="GET">
-        <label>Minimum Price
-        <input type="number" name="minPrice" />
-        </label> <br/>
-        <label>Maximum Price
-        <input type="number" name="maxPrice" />
-        </label> <br/>
-        <label>Search Word
-        <input type="text" name="searchWord" />
-        </label> <br/>
-        <select name="orderBy">
-            <option value="AlphaUp">Alphabet Up</option>
-            <option value="AlphaDown">Alphabet Down</option>
-            <option value="PriceUp">Price Up</option>
-            <option value="PriceDown">Price Down</option>
-            <option value="RatingUp">Rating Up</option>
-            <option value="RatingDown">Rating Down</option>
-            <option value="SellerUp">Seller Up</option>
-            <option value="SellerDown">Seller Down</option>
-            <option value="DatePublishedUp">Date Published Up</option>
-            <option value="DatePublishedDown">Date Pubilshed Down</option>
-        </select> <br />
-        <select name="genre">
-            <option value="">Nothing Specific</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Horror">Horror</option>
-            <option value="Biography">Biography</option>
-            <option value="War">War</option>
-            <option value="Children">Children</option>
-            <option value="Learning">Learning</option>
-            <option value="Romance">Romance</option>
-            <option value="Fantasy">Fantasy</option>
-        </select> <br />
-        <input type="submit" value="Filter!">
-    </form>
-</div>
-<div>
-    @foreach (var Book in Model)
-    {
-        <div class="col-xs-4">
-            <div class="thumbnail">
-                @{string path = Book.Image;}
-                <img src=@Url.Content(path) alt="...">
-                <div class="caption">
-                    <h3 class="text-center">@Book.Title</h3>
-                    <h4 class="text-center">@Book.Author</h4>
-                    @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                    @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
-                    <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
-                    <hr />
-                    <p class="text-center">Price: @Book.Price</p>
-                    <p>
-                        <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
-                    </p>
+<div class="row">
+    <div class="col-md-3 jumbotron">
+        <h2>The Catalogue</h2>
+        <br>
+        <form asp-action="FilteredCatalogue" asp-controller="Home" method="GET">
+            <label>Minimum Price
+                <input class="form-control" type="number" name="minPrice" />
+            </label> <br/>
+            <label>Maximum Price
+                <input class="form-control" type="number" name="maxPrice" />
+            </label> <br/>
+            <label>Search Word
+                <input class="form-control" type="text" name="searchWord" />
+            </label> <br/>
+            <label for="orderyby-dropdown">Ordery by</label>
+            <select class="form-control" name="orderBy" id="orderby-dropdown">
+                <option value="AlphaUp">Alphabet Up</option>
+                <option value="AlphaDown">Alphabet Down</option>
+                <option value="PriceUp">Price Up</option>
+                <option value="PriceDown">Price Down</option>
+                <option value="RatingUp">Rating Up</option>
+                <option value="RatingDown">Rating Down</option>
+                <option value="SellerUp">Seller Up</option>
+                <option value="SellerDown">Seller Down</option>
+                <option value="DatePublishedUp">Date Published Up</option>
+                <option value="DatePublishedDown">Date Pubilshed Down</option>
+            </select>
+            <label for="genre-dropdown">Genre</label>
+            <select class="form-control" name="genre" id="genre-dropdown">
+                <option value="">Nothing Specific</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Horror">Horror</option>
+                <option value="Biography">Biography</option>
+                <option value="War">War</option>
+                <option value="Children">Children</option>
+                <option value="Learning">Learning</option>
+                <option value="Romance">Romance</option>
+                <option value="Fantasy">Fantasy</option>
+            </select> <br />
+            <input class="btn btn-primary" type="submit" value="Filter!">
+        </form>
+    </div>
+
+    <div class="col-md-9">
+        @{int i = 0;}
+        @for(; i < Model.Count; i += 4)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <p>@Model[i].Title</p>
+                </div>
+                <div class="col-md-3">
+                    <p>@Model[i + 1].Title</p>
+                </div>
+                <div class="col-md-3">
+                    <p>@Model[i + 2].Title</p>
+                </div>
+                <div class="col-md-3">
+                    <p>@Model[i + 3].Title</p>
                 </div>
             </div>
-        </div> 
-    }
+            
+        }
+    </div>
 </div>
