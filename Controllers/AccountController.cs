@@ -55,7 +55,8 @@ namespace TheBookCave.Controllers
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
 
-                _userService.AddUser(model);
+                var id = user.Id;
+                _userService.AddUser(model, id);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -101,9 +102,20 @@ namespace TheBookCave.Controllers
         //Everything above this line is from the Authorization lectures.
         //Everything below this line will be the other methods
 
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var id = user?.Id;
+
+            if(id == null)
+            {
+                return View("NotFound");
+            }
+
+            var displayedUser = _userService.GetUser(id);
+
+            return View(displayedUser);
         }
 
         [Authorize]

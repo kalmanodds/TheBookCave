@@ -5,7 +5,7 @@ namespace TheBookCave.Data.EntityModels
     public class UserEntityModel
     {
         public int ID { get; set; }
-        public string userID { get; set; }
+        public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

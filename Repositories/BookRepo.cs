@@ -140,6 +140,7 @@ namespace TheBookCave.Repositories
         {
             var books = (from b in _db.Books
                          join c in _db.UserBookWishlistConnections on b.ID equals c.BookID
+                         where c.UserID == userID
                          select new BookViewModel()
                          {
                             ID = b.ID,
