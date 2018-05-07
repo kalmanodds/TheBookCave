@@ -2,20 +2,29 @@
 
 <h1>Edit Profile</h1>
 
-<form asp-action="EditProfile" asp-controller="Account">
-    <label>First Name: (Current Name: @Model.FirstName)
-        <input type="text" asp-for="FirstName"/>
+<form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
+    <label>First Name:
+        <input type="text" name="firstName"/>
     </label> <br/>
-    <label>
-        <input type="text" asp-for="LastName"/>
+    <label>Last Name:
+        <input type="text" name="lastName"/>
     </label> <br/>
     <fieldset>
         <legend>Address</legend>
         <label>Street Name:
             <input type="text" name="streetName"/>
-        </label>
+        </label> <br/>
         <label>House Number:
             <input type="number" name="houseNumber">
+        </label> <br/>
+        <label>City:
+            <input type="text" name="city">
+        </label> <br/>
+        <label>Zip:
+            <input type="number" name="zip">
+        </label> <br/>
+        <label>Country:
+            <input type="text" name="country">
         </label>
     </fieldset>
     <input type="submit" value="Submit!"/>

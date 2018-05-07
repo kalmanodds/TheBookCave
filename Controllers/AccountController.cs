@@ -156,7 +156,7 @@ namespace TheBookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult EditProfile(string firstName, string lastName, string streetName, int houseNumber, string city, int zip, string country)
+        public IActionResult EditProfile(string id, string firstName, string lastName, string streetName, int houseNumber, string city, int zip, string country)
         {
             var address = new AddressModel()
             {
@@ -168,11 +168,11 @@ namespace TheBookCave.Controllers
             };
             var user = new UserInputModel()
             {
+                UserID = id,
                 FirstName = firstName,
                 LastName = lastName,
                 Address = address,
                 Image = null,
-                IsPremium = false
             };
             _userService.EditUser(user);
             return RedirectToAction("Index", "Account");

@@ -7,6 +7,5 @@ namespace TheBookCave.Models.InputModels
         public string LastName { get; set; }
         public AddressModel Address { get; set; }
         public string Image { get; set; }
-        public bool IsPremium { get; set; }
     }
 }

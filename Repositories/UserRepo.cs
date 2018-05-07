@@ -1,6 +1,7 @@
 using System.Linq;
 using TheBookCave.Data;
 using TheBookCave.Data.EntityModels;
+using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
 
@@ -56,30 +57,49 @@ namespace TheBookCave.Repositories
                                where u.UserID.Equals(model.UserID)
                                select u).SingleOrDefault();
 
-            if(model.FirstName != entityModel.FirstName)
+            if(model.FirstName != null)
             {
                 entityModel.FirstName = model.FirstName;
             }
 
-            if(model.LastName != entityModel.LastName)
+            if(model.LastName != null)
             {
                 entityModel.LastName = model.LastName;
             }
 
-            if(model.Address != entityModel.Address)
+            var address = new AddressModel();
+
+            if(model.Address.StreetName != null)
             {
-                entityModel.Address = model.Address;
+                address.StreetName = model.Address.StreetName;
             }
 
-            if(model.Image != entityModel.Image)
+            if(model.Address.HouseNumber != 0)
+            {
+                address.HouseNumber = model.Address.HouseNumber;
+            }
+
+            if(model.Address.City != null)
+            {
+                address.City = model.Address.City;
+            }
+
+            if(model.Address.Zip != 0)
+            {
+                address.Zip = model.Address.Zip;
+            }
+
+            if(model.Address.Country != null)
+            {
+                address.Country = model.Address.Country;
+            }
+
+            if(model.Image != null)
             {
                 entityModel.Image = model.Image;
             }
 
-            if(model.IsPremium != entityModel.IsPremium)
-            {
-                entityModel.IsPremium = model.IsPremium;
-            }
+            entityModel.Address = address;
 
             _db.Users.Update(entityModel);
             _db.SaveChanges();
