@@ -49,6 +49,12 @@ namespace TheBookCave.Controllers
             return View(books);
         }
 
+        public IActionResult FilteredCatalogue(double minPrice = 0, double maxPrice = System.Double.MaxValue, string searchWord = null, string orderBy = null, string genre = null)
+        {
+            var filter = new FilterModel(minPrice, maxPrice, searchWord, orderBy, genre , 0);
+            return RedirectToAction("Catalogue", "Home", filter);
+        }
+
         public IActionResult TopTen()
         {
             ViewData["Message"] = "The Top Ten";

@@ -41,7 +41,6 @@ namespace TheBookCave.Repositories
 
         public List<BookViewModel> GetBooks(FilterModel filter)
         {
-
             var books = (from b in _db.Books
                          where b.Price >= filter.MinPrice && b.Price <= filter.MaxPrice
                          select new BookViewModel{
@@ -60,7 +59,7 @@ namespace TheBookCave.Repositories
 
             if(filter.Genre != null)
             {
-                books = books.Where(book => book.Genre.Equals(filter.Genre));
+                books = books.Where(book => (filter.Genre).ToLower() == book.Genre.ToLower());
             }
 
             if(filter.SearchWord != null)

@@ -2,6 +2,43 @@
 
 <h1>The Catalogue</h1>
 <div>
+    <form asp-action="FilteredCatalogue" asp-controller="Home" method="GET">
+        <label>Minimum Price
+        <input type="number" name="minPrice" />
+        </label> <br/>
+        <label>Maximum Price
+        <input type="number" name="maxPrice" />
+        </label> <br/>
+        <label>Search Word
+        <input type="text" name="searchWord" />
+        </label> <br/>
+        <select name="orderBy">
+            <option value="AlphaUp">Alphabet Up</option>
+            <option value="AlphaDown">Alphabet Down</option>
+            <option value="PriceUp">Price Up</option>
+            <option value="PriceDown">Price Down</option>
+            <option value="RatingUp">Rating Up</option>
+            <option value="RatingDown">Rating Down</option>
+            <option value="SellerUp">Seller Up</option>
+            <option value="SellerDown">Seller Down</option>
+            <option value="DatePublishedUp">Date Published Up</option>
+            <option value="DatePublishedDown">Date Pubilshed Down</option>
+        </select> <br />
+        <select name="genre">
+            <option value="">Nothing Specific</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Horror">Horror</option>
+            <option value="Biography">Biography</option>
+            <option value="War">War</option>
+            <option value="Children">Children</option>
+            <option value="Learning">Learning</option>
+            <option value="Romance">Romance</option>
+            <option value="Fantasy">Fantasy</option>
+        </select> <br />
+        <input type="submit" value="Filter!">
+    </form>
+</div>
+<div>
     @foreach (var Book in Model)
     {
         <div class="col-xs-4">

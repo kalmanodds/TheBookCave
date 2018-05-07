@@ -18,8 +18,15 @@ namespace TheBookCave.Models
         //DatePublishedUp
         //DatePublishedDown
         public string Genre { get; set; }
+        //Genres are:
+        //Adventure
+        //Horror
+        //Biography
+        //War
+        //Children
+        //Learning
         //Romance
-        // TODO add more plz
+        //Fantasy
         public int Amount { get; set; }
 
         public FilterModel()
