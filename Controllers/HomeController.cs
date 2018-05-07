@@ -37,9 +37,14 @@ namespace TheBookCave.Controllers
             return View(listArray);
         }
 
-        public IActionResult Catalogue()
+        public IActionResult Catalogue(FilterModel filter)
         {
-            var filter = new FilterModel();
+            if(filter == null)
+            {
+                var generalFilter = new FilterModel();
+                var allBooks = _bookService.GetBooks(generalFilter);
+                return View(allBooks);
+            }
             var books = _bookService.GetBooks(filter);
             return View(books);
         }
@@ -67,15 +72,13 @@ namespace TheBookCave.Controllers
         public IActionResult BestSellers()
         {
             var filter = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 0);
-            var books = _bookService.GetBooks(filter);
-            return View("Catalogue", books);
+            return RedirectToAction("Catalogue", "Home", filter);
         }
 
         public IActionResult Newest()
         {
             var filter = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 0);
-            var books = _bookService.GetBooks(filter);
-            return View("Catalogue", books);
+            return RedirectToAction("Catalogue", "Home", filter);
         }
 
     }

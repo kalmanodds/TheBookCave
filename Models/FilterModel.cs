@@ -22,6 +22,16 @@ namespace TheBookCave.Models
         // TODO add more plz
         public int Amount { get; set; }
 
+        public FilterModel()
+        {
+            MinPrice = 0;
+            MaxPrice = System.Double.MaxValue;
+            SearchWord = null;
+            OrderBy = null;
+            Genre = null;
+            Amount = 0;
+        }
+
         public FilterModel(double minPrice = 0, double maxPrice = System.Double.MaxValue, string searchWord = null, string orderBy = "AlphaUp", string genre = null, int amount = 0)
         {
             MinPrice = minPrice;
