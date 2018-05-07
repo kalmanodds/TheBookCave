@@ -106,7 +106,7 @@ namespace TheBookCave.Repositories
 
             if(filter.Amount != 0)
             {
-                books.Take(filter.Amount);
+                books = books.Take(filter.Amount);
             }
 
             var result = new List<BookViewModel>();

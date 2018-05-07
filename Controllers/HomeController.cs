@@ -37,22 +37,13 @@ namespace TheBookCave.Controllers
             return View(listArray);
         }
 
-        public IActionResult Catalogue()
-        {
-            ViewData["Message"] = "The Catalogue";
-
-            var filter = new FilterModel();
-            var books = _bookService.GetBooks(filter);
-
-            return View(books);
-        }
-/* Does not work now. No way of passing a filter.
         public IActionResult Catalogue(FilterModel filter)
         {
-            var books = _bookService.GetBooks(filter);
+            var filters = new FilterModel(filter.MinPrice, filter.MaxPrice, filter.SearchWord, filter.OrderBy, filter.Genre, filter.Amount);
+            var books = _bookService.GetBooks(filters);
             return View(books);
         }
-*/
+
         public IActionResult TopTen()
         {
             ViewData["Message"] = "The Top Ten";
@@ -72,18 +63,18 @@ namespace TheBookCave.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-/*
-        private IActionResult BestSellers()
+
+        public IActionResult BestSellers()
         {
             var filter = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 0);
-            return RedirectToAction("Catalogue" ,"Home");
+            return RedirectToAction("Catalogue" ,"Home", filter);
         }
 
-        private IActionResult Newest()
+        public IActionResult Newest()
         {
             var filter = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 0);
             return RedirectToAction("Catalogue", "Home");
         }
-*/
+
     }
 }

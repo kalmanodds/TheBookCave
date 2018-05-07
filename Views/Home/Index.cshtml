@@ -7,7 +7,11 @@
 <div>
     <h1>Tender Lovin</h1>
 </div>
-<h2><a asp-action="Index" asp-controller="Home">Best Sellers</a></h2>
+<h2>
+    <form asp-action="BestSellers" asp-controller="Home" method="POST">
+        <input type="submit" value="Best Sellers">
+    </form>
+</h2>
 <div class="container testimonial-group">
     <div class="row text-center custom-scroll-bar">
         @foreach (var Book in Model[0])
