@@ -38,6 +38,7 @@ namespace TheBookCave.Repositories
             var user = (from u in _db.Users
                         where u.UserID.Equals(id)
                         select new UserViewModel(){
+                            UserID = u.UserID,
                             FirstName = u.FirstName,
                             LastName = u.LastName,
                             Email = u.Email,
@@ -47,6 +48,41 @@ namespace TheBookCave.Repositories
                             IsPremium = u.IsPremium
                         }).FirstOrDefault();
             return user;
+        }
+
+        public void EditUser(UserInputModel model)
+        {
+            var entityModel = (from u in _db.Users
+                               where u.UserID.Equals(model.UserID)
+                               select u).SingleOrDefault();
+
+            if(model.FirstName != entityModel.FirstName)
+            {
+                entityModel.FirstName = model.FirstName;
+            }
+
+            if(model.LastName != entityModel.LastName)
+            {
+                entityModel.LastName = model.LastName;
+            }
+
+            if(model.Address != entityModel.Address)
+            {
+                entityModel.Address = model.Address;
+            }
+
+            if(model.Image != entityModel.Image)
+            {
+                entityModel.Image = model.Image;
+            }
+
+            if(model.IsPremium != entityModel.IsPremium)
+            {
+                entityModel.IsPremium = model.IsPremium;
+            }
+
+            _db.Users.Update(entityModel);
+            _db.SaveChanges();
         }
     }
 }

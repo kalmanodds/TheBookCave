@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
 
 namespace TheBookCave.Controllers
@@ -143,10 +144,38 @@ namespace TheBookCave.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [Authorize]
-        public IActionResult EditProfile()
+        public async Task<IActionResult> EditProfile()
         {
-            //Get User View Model
-            return View();
+            var user = await GetCurrentUserAsync();
+            var id = user?.Id;
+
+            var userViewModel = _userService.GetUser(id);
+
+            return View(userViewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult EditProfile(string firstName, string lastName, string streetName, int houseNumber, string city, int zip, string country)
+        {
+            var address = new AddressModel()
+            {
+                StreetName = streetName,
+                HouseNumber = houseNumber,
+                City = city,
+                Zip = zip,
+                Country = country
+            };
+            var user = new UserInputModel()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Image = null,
+                IsPremium = false
+            };
+            _userService.EditUser(user);
+            return RedirectToAction("Index", "Account");
         }
 
         [Authorize]

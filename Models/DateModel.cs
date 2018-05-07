@@ -27,5 +27,19 @@ namespace TheBookCave.Models
         {
             return Day + "/" + Month + "/" + Year;
         }
+
+        public static bool operator <(DateModel left, DateModel right)
+        {
+            int leftTotal = 10000 * left.Year + 100 * left.Month + left.Day;
+            int rightTotal = 10000 * right.Year + 100 * right.Month + right.Day;
+            return leftTotal < rightTotal;
+        }
+
+        public static bool operator >(DateModel left, DateModel right)
+        {
+            int leftTotal = 10000 * left.Year + 100 * left.Month + left.Day;
+            int rightTotal = 10000 * right.Year + 100 * right.Month + right.Day;
+            return leftTotal > rightTotal;
+        }
     }
 }

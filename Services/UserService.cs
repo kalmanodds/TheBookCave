@@ -23,5 +23,10 @@ namespace TheBookCave.Services
             var user = _userRepo.GetUser(id);
             return user;
         }
+
+        public void EditUser(UserInputModel model)
+        {
+            _userRepo.EditUser(model);
+        }
     }
 }
