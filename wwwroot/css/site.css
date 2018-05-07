@@ -39,12 +39,22 @@
     padding-top: 18px;
 }
 
+/* Resizing images in Home/Index. */
 .col-xs-4 > .thumbnail > img
 {
     height: auto; 
     width: auto; 
     max-width: 120px; 
     max-height: 120px;
+}
+
+/* Resizing images in Book/Details. */
+.book-details-container > .col-md-2 > img
+{
+    height: auto; 
+    width: auto; 
+    max-width: 250px; 
+    max-height: 250px;
 }
 
 /* Used to fix the overflow of book titles/authors. */
