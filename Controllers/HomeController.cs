@@ -80,6 +80,5 @@ namespace TheBookCave.Controllers
             var filter = new FilterModel(0, System.Double.MaxValue, null, "DatePublishedDown", null, 0);
             return RedirectToAction("Catalogue", "Home", filter);
         }
-
     }
 }
