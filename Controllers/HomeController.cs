@@ -39,12 +39,53 @@ namespace TheBookCave.Controllers
 
         public IActionResult Catalogue(FilterModel filter)
         {
-            if(filter == null)
+            ViewBag.Title = "All books";
+
+            //Give the ViewBag.Title the value of the genre.
+            if(filter.Genre != null)
             {
-                var generalFilter = new FilterModel();
-                var allBooks = _bookService.GetBooks(generalFilter);
-                return View(allBooks);
+                ViewBag.Title = filter.Genre + " books";
             }
+            //If the user has filtered the list in any way besides the genre he the viewbag get the value "Filtered book list"
+            else if(filter.MaxPrice != System.Double.MaxValue || filter.MinPrice != 0 || filter.SearchWord != null)
+            {
+                ViewBag.Title = "Filtered book list";
+            }
+            //The viewbag message will change depending on what orderBy value the user chose
+            switch(filter.OrderBy)
+            {
+                case null:
+                    ViewBag.Title += " ordered alphabetically";
+                    break;
+                case "AlphaDown":
+                    ViewBag.Title += " ordered reverse alphabetically";
+                    break;
+                case "PriceUp":
+                    ViewBag.Title += " ordered by lowest to highest price";
+                    break;
+                case "PriceDown":
+                    ViewBag.Title += " ordered by highest to lowest price";
+                    break;
+                case "RatingUp":
+                    ViewBag.Title += " ordered by lowest to highest rating";
+                    break;
+                case "RatingDown":
+                    ViewBag.Title += " ordered by highest to lowest rating";
+                    break;
+                case "SellerUp":
+                    ViewBag.Title += " ordered by most to least sold";
+                    break;
+                case "SellerDown":
+                    ViewBag.Title += " ordered by least to most sold";
+                    break;
+                case "DatePublishedUp":
+                    ViewBag.Title += " ordered by oldest to newest";
+                    break;
+                case "DatePublishedDown":
+                    ViewBag.Title += " ordered by newest to oldest";
+                    break;
+            }
+
             var books = _bookService.GetBooks(filter);
             return View(books);
         }
