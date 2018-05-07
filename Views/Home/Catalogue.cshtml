@@ -48,11 +48,28 @@
         @for(int i = 0; i < @Model.Count; i += 4)
         {
             <div class="row">
-                @for(int j = 0; ((j < 4) && (i+j < @Model.Count)); j++)
+                @for(int j = 0; j < 4 && i + j < @Model.Count; j++)
                 {
                 <div class="col-md-3">
                 @{int ind = i + j;}
-                    <p>@Model[ind].Title</p>
+                    <div class="thumbnail">
+                        @{string path = Model[ind].Image;}
+                        <img src=@Url.Content(path) alt="...">
+                        <div class="caption">
+                            <h5 class="overflow-caption text-center"><a asp-controller="Book" asp-action="Details" asp-route-id="@Model[ind].ID">@Model[ind].Title</a></h5>
+                            <h5 class="overflow-caption text-center">@Model[ind].Author</h5>
+
+                            @{int intRating  = ((int)(((Model[ind].Rating * 4) + 1) / 2)) * 5; }
+                            @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+                            <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+                            <h5 class="text-center">Price: @Model[ind].Price$</h5>
+                            <p>
+                                <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model[ind].ID" method="POST">
+                                    <button type="submit" class="center-block btn btn-primary btn-book-details">Add to Cart</button>
+                                </form>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 }
             </div>
