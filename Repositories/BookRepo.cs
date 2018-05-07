@@ -59,7 +59,7 @@ namespace TheBookCave.Repositories
 
             if(filter.Genre != null)
             {
-                books = books.Where(book => (filter.Genre).ToLower() == book.Genre.ToLower());
+                books = books.Where( book => book.Genre.ToLower().Equals(filter.Genre.ToLower()));
             }
 
             if(filter.SearchWord != null)
