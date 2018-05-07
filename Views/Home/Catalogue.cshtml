@@ -11,10 +11,11 @@
                     <h3 class="text-center">@Book.Title</h3>
                     <h4 class="text-center">@Book.Author</h4>
                     @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5;}
-                    @{string stringRating = "~/images/stars/" + intRating + "StarSmall.png";}
+                    @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
                     <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
                     <hr />
                     <p class="text-center">Price: @Book.Price</p>
+                    <p>@Book.NumberOfCopiesSold</p>
                     <p>
                         <a href="#" class="btn btn-primary btn-block" role="button">Add to Cart</a>
                     </p>

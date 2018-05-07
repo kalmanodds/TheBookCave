@@ -60,47 +60,47 @@ namespace TheBookCave.Repositories
 
             if(filter.Genre != null)
             {
-                books.Where(book => book.Genre.Equals(filter.Genre));
+                books = books.Where(book => book.Genre.Equals(filter.Genre));
             }
 
             if(filter.SearchWord != null)
             {
-                books.Where( (book => book.Title.ToLower().Contains(filter.SearchWord.ToLower())));
+                books = books.Where( book => (book.Title.ToLower().Contains(filter.SearchWord.ToLower()) || book.Author.ToLower().Contains(filter.SearchWord.ToLower()) ) );
             }
 
             switch(filter.OrderBy) {
                 case "AlphaUp":
-                    books.OrderBy(book => book.Title);
+                    books = books.OrderBy(book => book.Title);
                     break;
                 case "AlphaDown":
-                    books.OrderByDescending(book => book.Title);
+                    books = books.OrderByDescending(book => book.Title);
                     break;
                 case "PriceUp":
-                    books.OrderBy(book => book.Price);
+                    books = books.OrderBy(book => book.Price);
                     break;
                 case "PriceDown":
-                    books.OrderByDescending(book => book.Price);
+                    books = books.OrderByDescending(book => book.Price);
                     break;
                 case "RatingUp":
-                    books.OrderBy(book => book.Rating);
+                    books = books.OrderBy(book => book.Rating);
                     break;
                 case "RatingDown":
-                    books.OrderByDescending(book => book.Rating);
+                    books = books.OrderByDescending(book => book.Rating);
                     break;
                 case "SellerUp":
-                    books.OrderBy(book => book.NumberOfCopiesSold);
+                    books = books.OrderBy(book => book.NumberOfCopiesSold);
                     break;
                 case "SellerDown":
-                    books.OrderByDescending(book => book.NumberOfCopiesSold);
+                    books = books.OrderByDescending(book => book.NumberOfCopiesSold);
                     break;
                 case "DatePublishedUp":
-                    books.OrderBy(book => book.DatePublished);
+                    books = books.OrderBy(book => book.DatePublished);
                     break;
                 case "DatePublishedDown":
-                    books.OrderByDescending(book => book.DatePublished);
+                    books = books.OrderByDescending(book => book.DatePublished);
                     break;
                 default:
-                    books.OrderBy(book => book.Title);
+                    books = books.OrderBy(book => book.Title);
                     break;
             }
 
@@ -110,7 +110,7 @@ namespace TheBookCave.Repositories
             }
 
             var result = new List<BookViewModel>();
-            result =  books.ToList();
+            result = books.ToList();
             return result;
         }
 
