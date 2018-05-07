@@ -49,6 +49,7 @@ namespace TheBookCave.Repositories
                             Author = b.Author,
                             Description = b.Description,
                             Price = b.Price,
+                            Genre = b.Genre,
                             NumberOfPages = b.NumberOfPages,
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
