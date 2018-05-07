@@ -68,7 +68,7 @@ namespace TheBookCave.Controllers
         {
             var filter = new FilterModel(0, System.Double.MaxValue, null, "SellerDown", null, 0);
             var books = _bookService.GetBooks(filter);
-            return RedirectToAction("Catalogue",);
+            return View("Catalogue", books);
         }
 
         public IActionResult Newest()
