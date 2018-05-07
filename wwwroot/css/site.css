@@ -10,11 +10,6 @@
     padding-right: 15px;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -48,6 +43,7 @@
     max-height: 120px;
 }
 
+/* Resizing images in Home/Catalogue. */
 .image-medium
 {
     height: auto; 
