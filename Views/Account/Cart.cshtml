@@ -10,13 +10,13 @@
         <div class="col-md-8 row">
             <div class="col-md-2">
                 <div class="thumbnail">
-                        @{string path = Book.Image;}
-                        <img class="image-large" src=@Url.Content(path) alt="@Book.Title">
-                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
-                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
-                        <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
-                    </div>
+                    @{string path = Book.Image;}
+                    <img class="image-Small" src=@Url.Content(path) alt="@Book.Title">
+                    @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+                    @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+                    <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
                 </div>
+            </div>
             <div class="col-md-6">
                 <h2>@Book.Title</h2>
             </div>
