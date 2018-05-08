@@ -34,19 +34,41 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Catalogue">All Books</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="TopTen">Top 10</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Catalogue">All Books</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="TopTen">Top 10</a>
+                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Adventure">Adventure</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Biography">Biography</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Children">Children</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Educational">Educational</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Fantasy">Fantasy</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Horror">Horror</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Romance">Romance</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="War">War</a></li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Adventure">Adventure</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Biography">Biography</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Children">Children</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Educational">Educational</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Fantasy">Fantasy</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Horror">Horror</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="Romance">Romance</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="FilteredCatalogue" asp-route-genre="War">War</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -74,7 +96,9 @@
                     <h4 class="text-center">777-9339</h4>
                 </div>
                 <div class="col-md-3">
-                    <a href="#"><h4 class="text-center">Terms of Service</h4></a>
+                    <a href="#">
+                        <h4 class="text-center">Terms of Service</h4>
+                    </a>
                 </div>
                 <div class="col-md-3">
                     <a href="https://www.facebook.com/sigurdurkalman" target="_blank"><h4 class="text-center">The Book Cave<br/>facebook gorup</h4></a>
