@@ -54,7 +54,7 @@ namespace TheBookCave.Controllers
             //The viewbag message will change depending on what orderBy value the user chose
             switch(filter.OrderBy)
             {
-                case null:
+                case "AlphaUp":
                     ViewBag.Title += " ordered alphabetically";
                     break;
                 case "AlphaDown":
