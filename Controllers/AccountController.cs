@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -191,7 +192,7 @@ namespace TheBookCave.Controllers
         //Takes in all the Inputs from the form.
         [Authorize]
         [HttpPost]
-        public IActionResult EditProfile(string id, string firstName, string lastName, string streetName, int houseNumber, string city, int zip, string country)
+        public async Task<IActionResult> EditProfile(string id, string firstName, string lastName, string streetName, int houseNumber, string city, int zip, string country)
         {
             //Creates new AddressModel of the user inputs.
             var address = new AddressModel()
@@ -204,7 +205,7 @@ namespace TheBookCave.Controllers
             };
 
             //Creates the UserInputModel which can be partly or fully filled in.
-            var user = new UserInputModel()
+            var newUser = new UserInputModel()
             {
                 UserID = id,
                 FirstName = firstName,
@@ -213,8 +214,27 @@ namespace TheBookCave.Controllers
                 Image = null,
             };
 
+            var user = await GetCurrentUserAsync();
+
             //Updates the current user file with the new info.
-            _userService.EditUser(user);
+            _userService.EditUser(newUser);
+            if(newUser.FirstName == null)
+            {
+                newUser.FirstName = _userService.GetUser(user.Id).FirstName;
+            }
+            if(newUser.LastName == null)
+            {
+                newUser.LastName = _userService.GetUser(user.Id).LastName;
+            }
+            
+            var allClaims = await _userManager.GetClaimsAsync(user);
+            var userClaims = (from c in allClaims
+                         where c.Type == "Name"
+                         select c).ToList();
+            
+            await _userManager.RemoveClaimsAsync(user, userClaims);
+            await _userManager.AddClaimAsync(user, new Claim("Name", $"{newUser.FirstName} {newUser.LastName}"));
+
             //Returns the user to their user homepage after the changes.
             return RedirectToAction("Index", "Account");
         }
