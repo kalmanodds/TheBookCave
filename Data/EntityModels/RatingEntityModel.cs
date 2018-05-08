@@ -1,4 +1,4 @@
-namespace TheBookCave.Data.EntityModels.RatingEntityModel
+namespace TheBookCave.Data.EntityModels
 {
     public class RatingEntityModel
     {

@@ -5,5 +5,6 @@ namespace TheBookCave.Data.EntityModels
         public int ID { get; set; }
         public int OrderID { get; set; }
         public int BookID { get; set; }
+        public int Amount { get; set; }
     }
 }

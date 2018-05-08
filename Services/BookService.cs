@@ -28,11 +28,6 @@ namespace TheBookCave.Services
             return _bookRepo.GetBooks(filter);
         }
 
-        public List<BookViewModel> GetCartBooks(string userID)
-        {
-            return _bookRepo.GetCartBooks(userID);
-        }
-
         public List<BookViewModel> GetWishlistBooks(string userID)
         {
             return _bookRepo.GetWishlistBooks(userID);

@@ -1,6 +1,6 @@
 using TheBookCave.Models;
 
-namespace TheBookCave.Data.EntityModels.BookEntityModel
+namespace TheBookCave.Data.EntityModels
 {
     public class BookEntityModel
     {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using TheBookCave.Data;
-using TheBookCave.Data.EntityModels.BookEntityModel;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
 
 namespace TheBookCave

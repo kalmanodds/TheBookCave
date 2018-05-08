@@ -114,28 +114,6 @@ namespace TheBookCave.Repositories
             return result;
         }
 
-        public List<BookViewModel> GetCartBooks(string userID)
-        {
-            var books = (from b in _db.Books
-                         join c in _db.UserBookCartConnections on b.ID equals c.BookID
-                         where c.UserID == userID
-                         select new BookViewModel()
-                         {
-                            ID = b.ID,
-                            Title = b.Title,
-                            Author = b.Author,
-                            Description = b.Description,
-                            Price = b.Price,
-                            NumberOfPages = b.NumberOfPages,
-                            NumberOfCopiesSold = b.NumberOfCopiesSold,
-                            DatePublished = b.DatePublished,
-                            Publisher = b.Publisher,
-                            Rating = b.Rating
-                         }
-                        ).ToList();
-            return books;
-        }
-
         public List<BookViewModel> GetWishlistBooks(string userID)
         {
             var books = (from b in _db.Books
@@ -152,7 +130,7 @@ namespace TheBookCave.Repositories
                             NumberOfCopiesSold = b.NumberOfCopiesSold,
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
-                            Rating = b.Rating
+                            Rating = b.Rating,
                          }
                         ).ToList();
             return books;

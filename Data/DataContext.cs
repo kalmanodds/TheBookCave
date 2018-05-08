@@ -1,8 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TheBookCave.Data.EntityModels;
-using TheBookCave.Data.EntityModels.BookEntityModel;
-using TheBookCave.Data.EntityModels.OrderEntityModel;
-using TheBookCave.Data.EntityModels.RatingEntityModel;
 
 namespace TheBookCave.Data
 {

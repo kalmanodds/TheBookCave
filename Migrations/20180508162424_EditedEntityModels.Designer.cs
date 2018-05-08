@@ -11,16 +11,17 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180508162424_EditedEntityModels")]
+    partial class EditedEntityModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.BookEntityModel", b =>
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.BookEntityModel.BookEntityModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -78,7 +79,7 @@ namespace TheBookCave.Migrations
                     b.ToTable("OrderBookConnections");
                 });
 
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderEntityModel", b =>
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderEntityModel.OrderEntityModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -108,7 +109,7 @@ namespace TheBookCave.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.RatingEntityModel", b =>
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.RatingEntityModel.RatingEntityModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -220,14 +221,14 @@ namespace TheBookCave.Migrations
                     b.ToTable("DateModel");
                 });
 
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.BookEntityModel", b =>
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.BookEntityModel.BookEntityModel", b =>
                 {
                     b.HasOne("TheBookCave.Models.DateModel", "DatePublished")
                         .WithMany()
                         .HasForeignKey("DatePublishedID");
                 });
 
-            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderEntityModel", b =>
+            modelBuilder.Entity("TheBookCave.Data.EntityModels.OrderEntityModel.OrderEntityModel", b =>
                 {
                     b.HasOne("TheBookCave.Models.DateModel", "DateOrder")
                         .WithMany()

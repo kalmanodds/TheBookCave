@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace TheBookCave.Controllers
         private UserService _userService;
         private CartService _cartService;
         private WishlistService _wishlistService;
+        private OrderService _orderService;
+        private OrderBookConnectionService _obcService;
 
         //Constructor that initializes private variables.
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
@@ -33,6 +36,8 @@ namespace TheBookCave.Controllers
             _userService = new UserService();
             _cartService = new CartService();
             _wishlistService = new WishlistService();
+            _orderService = new OrderService();
+            _obcService = new OrderBookConnectionService();
         }
 
         //Returns the Form to the user with which they will register with.
@@ -150,7 +155,7 @@ namespace TheBookCave.Controllers
             var id = user?.Id;
 
             //Receives the Books connected to said user.
-            var books = _bookService.GetCartBooks(id);
+            var books = _cartService.GetCartBooks(id);
 
             //Returns the Cart with all the books connected to the User.
             return View(books);
@@ -279,6 +284,42 @@ namespace TheBookCave.Controllers
             _wishlistService.AddWishlistItem(newWishlistItem);
             //Redirects the user to the Catalogue.
             return RedirectToAction("Catalogue", "Home");
+        }
+
+        public async Task<IActionResult> MakeOrder()
+        {
+            var user = await GetCurrentUserAsync();
+            var userID = user.Id;
+            var booksInCart = _cartService.GetCartBooks(userID);
+
+            var newOrder = new OrderInputModel()
+            {
+                UserID = userID,
+                Books = booksInCart,
+            };
+
+            bool userHasCurrentOrder = _orderService.UserHasCurrentOrder(userID);
+
+            if(!userHasCurrentOrder)
+            {
+                _orderService.AddOrder(newOrder);
+                var orderID = _orderService.GetCurrentOrderID(userID);
+                for(int i = 0; i < booksInCart.Count; i++)
+                {
+                    _obcService.AddConnection((int)orderID, booksInCart[i].ID, booksInCart[i].Amount);
+                }
+            }
+            else
+            {
+                var orderID = _orderService.GetCurrentOrderID(userID);
+                _orderService.UpdateOrder(newOrder, (int)orderID);
+                for(int i = 0; i < booksInCart.Count; i++)
+                {
+                    _obcService.UpdateConnection((int)orderID, booksInCart[i].ID, booksInCart[i].Amount);
+                }
+            }
+
+            return RedirectToAction("CheckOut", "Order");
         }
     }
 }

@@ -17,11 +17,6 @@ namespace TheBookCave.Controllers
             return RedirectToAction("Catalogue", "Home");
         }
 
-        public IActionResult Cart()
-        {
-            return View();
-        }
-
         public IActionResult CheckOut()
         {
             return View();
