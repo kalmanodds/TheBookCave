@@ -47,7 +47,7 @@ namespace TheBookCave.Controllers
                 ViewBag.Title = filter.Genre + " books";
             }
             //If the user has filtered the list in any way besides the genre he the viewbag get the value "Filtered book list"
-            else if(filter.MaxPrice != System.Double.MaxValue || filter.MinPrice != 0 || filter.SearchWord != null)
+            if(filter.MaxPrice != System.Double.MaxValue || filter.MinPrice != 0 || filter.SearchWord != null)
             {
                 ViewBag.Title = "Filtered book list";
             }
@@ -83,6 +83,9 @@ namespace TheBookCave.Controllers
                     break;
                 case "DatePublishedDown":
                     ViewBag.Title += " ordered by newest to oldest";
+                    break;
+                default:
+                    ViewBag.Title += " ordered alphabetically";
                     break;
             }
 
