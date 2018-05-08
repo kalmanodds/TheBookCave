@@ -108,7 +108,7 @@ namespace TheBookCave.Controllers
 
         public IActionResult TermsOfService()
         {
-            return View();
+            return View("TermsOfService");
         }
 
         public IActionResult Error()
