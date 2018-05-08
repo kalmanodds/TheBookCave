@@ -64,7 +64,9 @@
                                 <h5 class="overflow-caption text-center">
                                     <a asp-controller="Book" asp-action="Details" asp-route-id="@Model[ind].ID">@Model[ind].Title</a>
                                 </h5>
-                                <h5 class="overflow-caption text-center">@Model[ind].Author</h5>
+                                <h5 class="overflow-caption text-center">
+                                    <a asp-controller="Home" asp-action="FilteredCatalogue" asp-route-searchWord="@Model[ind].Author">@Model[ind].Author</a>
+                                </h5>
                                 @{int intRating  = ((int)(((Model[ind].Rating * 4) + 1) / 2)) * 5; }
                                 @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
                                 <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
