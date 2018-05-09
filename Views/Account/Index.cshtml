@@ -3,14 +3,18 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h1 class="text-center">Account Information</h1>
+    <h1 class="text-center"> <b>Account Information</b> </h1>
 
-    <h2 class="text-center">Basic Information</h2>
+    <h2 class="text-center"> <b>Basic Information</b> </h2>
     <h3 class="text-center">Name: @Model.FirstName @Model.LastName</h3>
     <h3 class="text-center">Email: @Model.Email</h3>
 
-    <h2 class="text-center">Shipping Information</h2>
-    @if (@Model.Address.StreetName != null)
+    <h2 class="text-center"> <b>Shipping Information</b></h2>
+    @if (@Model.Address.StreetName != null &&
+         @Model.Address.HouseNumber != 0 &&
+         @Model.Address.City != null &&
+         @Model.Address.Zip != 0 &&
+         @Model.Address.Country != null)
     {
       <h3 class="text-center">Stree Name: @Model.Address.StreetName</h3>
       <h3 class="text-center">House Number: @Model.Address.HouseNumber</h3>
