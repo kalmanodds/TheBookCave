@@ -25,7 +25,7 @@ namespace TheBookCave.Repositories
                 LastName = model.LastName,
                 Email = model.Email,
                 Address = null,
-                Image = null,
+                Image = "~/images/avatars/robot-03@512px.png",
                 FavoriteBookID = null,
                 IsPremium = false
             };
