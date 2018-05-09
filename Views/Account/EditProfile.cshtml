@@ -7,6 +7,7 @@
     <p>Fill in information boxes that you wish to change and click the 'Submit' button. Empty fields will remain unchanged.</p>
     <br/>
     <form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
+      <button asp-action="ChooseAvatar" asp-controller="Account" class="btn btn-primary center-block">Edit Picture</button>
       <div class="form-group">
         <label for="edit-first-name">First Name</label>
         <input type="text" name="firstName"  class="form-control" id="edit-first-name" placeholder="@Model.FirstName"/>
@@ -44,11 +45,11 @@
         {
           <div class="form-group">
             <label for="edit-street-name">Street Name</label>
-            <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="StreetName"/>
+            <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="Street Name"/>
           </div>
           <div class="form-group">
             <label for="edit-house-number">House Number</label>
-            <input type="number" name="houseNumber"  class="form-control" id="edit-house-number" placeholder="HouseNumber"/>
+            <input type="number" name="houseNumber"  class="form-control" id="edit-house-number" placeholder="House Number"/>
           </div>
           <div class="form-group">
             <label for="edit-city">City</label>
