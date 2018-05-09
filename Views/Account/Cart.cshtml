@@ -3,35 +3,39 @@
 <h1 class="text-center">Your Cart</h1>
 <hr/>
 
-@foreach (var Book in Model)
-{
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 row">
-            <div class="col-md-2">
-                <div class="thumbnail">
-                    @{string path = Book.Image;}
-                    <img class="image-Small" src=@Url.Content(path) alt="@Book.Title">
-                    @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
-                    @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
-                    <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+<div id="cart">
+    @foreach (var Book in Model)
+    {
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 row">
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        @{string path = Book.Image;}
+                        <img class="image-Small" src=@Url.Content(path) alt="@Book.Title">
+                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+                        <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>@Book.Title</h2>
+                </div>
+                <div class="col-md-2">
+                    <h3>@Book.Price$</h3>
+                </div>
+                <div class="col-md-2">
+                    <br>
+                    <form asp-action="" asp-controller="" asp-route-id="" method="">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h2>@Book.Title</h2>
-            </div>
-            <div class="col-md-2">
-                <h3>@Book.Price$</h3>
-            </div>
-            <div class="col-md-2">
-                <br>
-                <form asp-action="" asp-controller="" asp-route-id="" method="">
-                    <button type="submit" class="btn btn-danger">Remove</button>
-                </form>
-            </div>
+            <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2"></div>
-    </div>
-}
+    }
+</div>
 
-<a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary">Proceed To Checkout</a>
+<div id="checkout-button">
+    <a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary">Proceed To Checkout</a>
+</div>
