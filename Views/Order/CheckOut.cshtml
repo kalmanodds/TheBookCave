@@ -1,1 +1,66 @@
 <h1>Check Out</h1>
+
+<form asp-action="OrderCheckOutToVerify" asp-controller="Account" method="POST">
+    <div>
+        <label> Payment option
+            <label>Credit</label>
+            <input type="radio" name="cardType" value="credit"/>
+            <label>Debit</label>
+            <input type="radio" name="cardType" value="debit"/>
+        <br/>
+        <label> Cardholder's Name
+            <input type="text" name="cardholder"/>
+        </label>
+        <br/>
+        <label> Card Number
+            <input type="text" name="cardnumber"/>
+        </label>
+        <br/>
+        <select name="month">
+            <option>1</option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+        <select name="year">
+            <option>1</option>
+            <option>2</option>
+        </select>
+        <label>CVC
+            <input type="text" name="cvc"/>
+        </label>
+    </div>
+    <div>
+        <label>Full Name
+            <input type="text" name="fullName"/>
+        </label>
+        <br/>
+        <label>Street Name
+            <input type="text" name="streetName"/>
+        </label>
+        <label>House Number
+            <input type="number" name="houseNumber">
+        </label>
+        <label>City
+            <input type="text" name="city"/>
+        </label>
+        <label>Zip Code
+            <input type="number" name="zip"/>
+        </label>
+        <label>Country
+            <input type="text" name="country"/>
+        </label>
+    </div>
+    <div>
+        <button asp-controller="Account" asp-action="Cart">Back</button>
+        <input type="submit" value="Confirm"/>
+    </div>
+</form>
