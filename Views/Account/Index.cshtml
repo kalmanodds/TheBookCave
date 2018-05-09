@@ -4,8 +4,25 @@
   <div class="col-md-3"></div>
   <div class="col-md-6">
     <h1 class="text-center">Account Information</h1>
-    <h2 class="text-center">Name: @Model.FirstName @Model.LastName</h2>
+
+    <h2 class="text-center">Basic Information</h2>
+    <h3 class="text-center">Name: @Model.FirstName @Model.LastName</h3>
     <h3 class="text-center">Email: @Model.Email</h3>
+
+    <h2 class="text-center">Shipping Information</h2>
+    @if (@Model.Address.StreetName != null)
+    {
+      <h3 class="text-center">Stree Name: @Model.Address.StreetName</h3>
+      <h3 class="text-center">House Number: @Model.Address.HouseNumber</h3>
+      <h3 class="text-center">City: @Model.Address.City</h3>
+      <h3 class="text-center">ZIP: @Model.Address.Zip</h3>
+      <h3 class="text-center">Country: @Model.Address.Country</h3>
+    }
+    else
+    {
+      <h3 class="text-center">Shipping Address not filled out</h3>
+    }
+
     <br/>
     <div class="row">
       <div class="col-md-4"></div>
