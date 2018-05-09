@@ -329,9 +329,18 @@ namespace TheBookCave.Controllers
             return RedirectToAction("CheckOut", "Order");
         }
 
-        private IActionResult OrderCheckOutToVerify()
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> OrderCheckOutToVerify(CheckoutInputModel model)
         {
-            return View();
+            if(!ModelState.IsValid)
+            {
+                return RedirectToAction("CheckOut", "Order");
+            }
+            var user = await GetCurrentUserAsync();
+            var userID = user.Id;
+            _orderService.AddOrderFinalized(model, userID);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

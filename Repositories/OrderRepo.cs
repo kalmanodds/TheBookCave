@@ -72,5 +72,36 @@ namespace TheBookCave.Repositories
             _db.Orders.Update(order);
             _db.SaveChanges();
         }
+
+        public void AddOrderFinalized(CheckoutInputModel model, string userID)
+        {
+            var userOrder = (from o in _db.Orders
+                             where o.UserID == userID && o.CurrentOrder == true
+                             select o).FirstOrDefault();
+            var shippingAddress = new AddressModel()
+            {
+                StreetName = model.StreetName,
+                HouseNumber = (int)model.HouseNumber,
+                City = model.City,
+                Zip = model.Zip,
+                Country = model.Country,
+            };
+
+            var paymentInfo = new PaymentInfoModel()
+            {
+                CardType = model.CardType,
+                CardHolder = model.CardHolder,
+                CardNumber = model.CardNumber,
+                Month = model.Month,
+                Year = model.Year,
+                CVC = model.CVC,
+            };
+
+            userOrder.ShippingAddress = shippingAddress;
+            userOrder.PaymentInfo = paymentInfo;
+
+            _db.Orders.Update(userOrder);
+            _db.SaveChanges();
+        }
     }
 }

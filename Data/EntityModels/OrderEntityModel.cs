@@ -9,6 +9,7 @@ namespace TheBookCave.Data.EntityModels
         public double TotalPrice { get; set; }
         public AddressModel ShippingAddress { get; set; }
         public DateModel DateOrder { get; set; }
+        public PaymentInfoModel PaymentInfo { get; set; }
         public bool CurrentOrder { get; set; }
         public bool IsReady { get; set; }
         public bool IsShipped { get; set; }
