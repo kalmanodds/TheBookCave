@@ -81,18 +81,3 @@
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #6E93AF;
 }
-
-/* NokkviKilla is trying to make the cart look good */
-#cart 
-{
-    margin: auto;
-    overflow: scroll;
-    
-    width: 80%;
-    height: 600px;
-}
-
-#checkout-button
-{
-    margin: 0 auto;
-}
