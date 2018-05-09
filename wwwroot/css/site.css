@@ -86,11 +86,9 @@
 #cart 
 {
     margin: auto;
-    border-style: solid;
-    border-color: black;
     overflow: scroll;
     width: 90%;
-    height: 750px;
+    height: 600px;
 }
 
 #checkout-button
