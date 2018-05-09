@@ -1,76 +1,76 @@
 @model TheBookCave.Models.ViewModels.UserViewModel
 
 <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <h1>Edit Profile</h1>
-        <p>Fill in information boxes that you wish to change and click the 'Submit' button. Empty fields will remain unchanged.</p>
-        <br/>
-        <form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
-            <div class="form-group">
-                <label for="edit-first-name">First Name</label>
-                <input type="text" name="firstName"  class="form-control" id="edit-first-name"/>
-            </div>
-            <div class="form-group">
-                <label for="edit-last-name">Last Name</label>
-                <input type="text" name="lastName"  class="form-control" id="edit-last-name"/>
-            </div>
-            <fieldset>
-                <legend>Adress</legend>
-                <div class="form-group">
-                    <label for="edit-street-name">Street Name</label>
-                    <input type="text" name="streetName"  class="form-control" id="edit-street-name"/>
-                </div>
-                <div class="form-group">
-                    <label for="edit-house-number">House Number</label>
-                    <input type="number" name="houseNumber"  class="form-control" id="edit-house-number"/>
-                </div>
-                <div class="form-group">
-                    <label for="edit-city">City</label>
-                    <input type="text" name="city"  class="form-control" id="edit-city"/>
-                </div>
-                <div class="form-group">
-                    <label for="edit-zip">Zip</label>
-                    <input type="number" name="zip"  class="form-control" id="edit-zip"/>
-                </div>
-                <div class="form-group">
-                    <label for="edit-city">City</label>
-                    <input type="text" name="city"  class="form-control" id="edit-city"/>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="col-md-3"></div>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1>Edit Profile</h1>
+    <p>Fill in information boxes that you wish to change and click the 'Submit' button. Empty fields will remain unchanged.</p>
+    <br/>
+    <form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
+      <div class="form-group">
+        <label for="edit-first-name">First Name</label>
+        <input type="text" name="firstName"  class="form-control" id="edit-first-name"/>
+      </div>
+      <div class="form-group">
+        <label for="edit-last-name">Last Name</label>
+        <input type="text" name="lastName"  class="form-control" id="edit-last-name"/>
+      </div>
+      <fieldset>
+        <legend>Adress</legend>
+        <div class="form-group">
+          <label for="edit-street-name">Street Name</label>
+          <input type="text" name="streetName"  class="form-control" id="edit-street-name"/>
+        </div>
+        <div class="form-group">
+          <label for="edit-house-number">House Number</label>
+          <input type="number" name="houseNumber"  class="form-control" id="edit-house-number"/>
+        </div>
+        <div class="form-group">
+          <label for="edit-city">City</label>
+          <input type="text" name="city"  class="form-control" id="edit-city"/>
+        </div>
+        <div class="form-group">
+          <label for="edit-zip">Zip</label>
+          <input type="number" name="zip"  class="form-control" id="edit-zip"/>
+        </div>
+        <div class="form-group">
+          <label for="edit-city">City</label>
+          <input type="text" name="city"  class="form-control" id="edit-city"/>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
 </div>
 <!--
 <form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
 
-    <label>First Name:
-        <input type="text" name="firstName"/>
+  <label>First Name:
+    <input type="text" name="firstName"/>
+  </label> <br/>
+  <label>Last Name:
+    <input type="text" name="lastName"/>
+  </label> <br/>
+  <fieldset>
+    <legend>Address</legend>
+    <label>Street Name:
+      <input type="text" name="streetName"/>
     </label> <br/>
-    <label>Last Name:
-        <input type="text" name="lastName"/>
+    <label>House Number:
+      <input type="number" name="houseNumber">
     </label> <br/>
-    <fieldset>
-        <legend>Address</legend>
-        <label>Street Name:
-            <input type="text" name="streetName"/>
-        </label> <br/>
-        <label>House Number:
-            <input type="number" name="houseNumber">
-        </label> <br/>
-        <label>City:
-            <input type="text" name="city">
-        </label> <br/>
-        <label>Zip:
-            <input type="number" name="zip">
-        </label> <br/>
-        <label>Country:
-            <input type="text" name="country">
-        </label>
-    </fieldset>
-    <input type="submit" value="Submit!"/>
+    <label>City:
+      <input type="text" name="city">
+    </label> <br/>
+    <label>Zip:
+      <input type="number" name="zip">
+    </label> <br/>
+    <label>Country:
+      <input type="text" name="country">
+    </label>
+  </fieldset>
+  <input type="submit" value="Submit!"/>
 </form> -->
