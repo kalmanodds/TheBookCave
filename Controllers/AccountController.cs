@@ -286,9 +286,20 @@ namespace TheBookCave.Controllers
             return RedirectToAction("Catalogue", "Home");
         }
 
+        [Authorize]
         public IActionResult ChooseAvatar()
         {
             return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ChooseAvatar(string image)
+        {
+            var user = await GetCurrentUserAsync();
+            var userID = user.Id;
+            _userService.ChangeAvatar(userID, image);
+            return RedirectToAction("EditProfile", "Account");
         }
 
         [HttpPost]

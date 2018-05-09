@@ -28,5 +28,10 @@ namespace TheBookCave.Services
         {
             _userRepo.EditUser(model);
         }
+
+        public void ChangeAvatar(string userID, string image)
+        {
+            _userRepo.ChangeAvatar(userID, image);
+        }
     }
 }

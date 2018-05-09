@@ -104,5 +104,15 @@ namespace TheBookCave.Repositories
             _db.Users.Update(entityModel);
             _db.SaveChanges();
         }
+
+        public void ChangeAvatar(string userID, string image)
+        {
+            var user = (from u in _db.Users
+                        where u.UserID == userID
+                        select u).FirstOrDefault();
+            user.Image = image;
+            _db.Users.Update(user);
+            _db.SaveChanges();
+        }
     }
 }
