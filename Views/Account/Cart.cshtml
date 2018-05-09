@@ -1,9 +1,25 @@
 @model List<TheBookCave.Models.ViewModels.BookViewModel>
 
-<h1 class="text-center">Your Cart</h1>
-<hr/>
+<!-- The following code block returns the total books in the order. -->
+@{int totalBooks = 0;}
+@foreach(var Book in Model)
+{
+    totalBooks += Book.Amount;
+}
 
-<div id="cart">
+<!-- The following code block returns "book" if there is only a single book in the cart, otherwise it returns "books". -->
+@{string bookVsBooks = "book";}
+@if(totalBooks != 1)
+{
+  bookVsBooks += "s";
+}
+
+<h1 class="text-center">Your Carts<small> @totalBooks books</small></h1>
+<p class="text-center">The following is a list of all items in your cart. Click the 'Proceed to Checkout' button on the bottom of the page to confirm your order.</p>
+<p class="text-center">You can still modify the amount of each individual book you wish to purchase, just make sure to click the 'Update' button to get the updated prices.</p>
+<hr/>
+@{double totalPrice = 0;}
+<form action="POST">
     @foreach (var Book in Model)
     {
         <div class="row">
@@ -20,8 +36,8 @@
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-3">
-                        <br>
-                        <input type="number" placeholder="@Book.Amount" class="form-control">
+                    <br>
+                        <input type="number" value="@Book.Amount" class="form-control">
                     </div>
                     <div class="col-md-9">
                         <h3>@Book.Title</h3>
@@ -29,7 +45,9 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <h3>@Book.Price$</h3>
+                    @{double price = (Book.Price * Book.Amount);}
+                    @{totalPrice += price;}
+                    <h3>@price$</h3>
                 </div>
                 <div class="col-md-1">
                     <br>
@@ -46,12 +64,17 @@
             <div class="col-md-2"></div>
         </div>
     }
-</div>
-
-<div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2">
-        <a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary center-block">Proceed To Checkout</a>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h3>Total: @totalPrice</h3>
+                <input type="submit" value="Update" class="btn btn-primary">
+                <a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary">Proceed To Checkout</a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-5"></div>
-</div>
+</form>

@@ -1,6 +1,15 @@
 @model List<TheBookCave.Models.ViewModels.BookViewModel>
 
-<h1>Wishlist</h1>
+<!-- The following code block returns "book" if there is only a single book in the wishlist, otherwise it returns "books". -->
+@{string bookVsBooks = "book";}
+@if(Model.Count != 1)
+{
+  bookVsBooks += "s";
+}
+
+<h1 class="text-center">Wishlist
+  <small>@Model.Count @bookVsBooks</small>
+</h1>
 <hr/>
 
 <div id="cart">
@@ -23,7 +32,7 @@
                     <h4>By @Book.Author</h4>
                 </div>
                 <div class="col-md-2">
-                    <h3>@Book.Price$</h3>
+                    <h3>@Book.Price $</h3>
                 </div>
                 <div class="col-md-1">
                     <br>
