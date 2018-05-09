@@ -64,5 +64,10 @@ namespace TheBookCave.Services
             }
             _orderRepo.UpdateOrder(model, totalPrice, dateOrdered, orderID);
         }
+
+        public void AddOrderFinalized(CheckoutInputModel model, string userID)
+        {
+            _orderRepo.AddOrderFinalized(model, userID);
+        }
     }
 }

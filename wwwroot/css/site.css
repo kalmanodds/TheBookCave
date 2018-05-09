@@ -53,6 +53,14 @@
     max-height: 250px;
 }
 
+.image-avatar
+{
+    height: auto;
+    widows: auto;
+    max-width: 100px;
+    max-height: 100px;
+}
+
 /* Used to fix the overflow of book titles/authors. */
 .overflow-caption
 {
@@ -80,4 +88,9 @@
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #6E93AF;
+}
+
+.avatar-button
+{
+    margin: auto;
 }

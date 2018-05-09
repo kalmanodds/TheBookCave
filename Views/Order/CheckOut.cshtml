@@ -1,1 +1,68 @@
+@model TheBookCave.Models.InputModels.CheckoutInputModel
+
 <h1>Check Out</h1>
+
+<form asp-action="OrderCheckOutToVerify" asp-controller="Account" method="POST">
+    <div>
+        <label> Payment option
+            <label>Credit</label>
+            <input type="radio" asp-for="CardType" value="credit"/>
+            <label>Debit</label>
+            <input type="radio" asp-for="CardType" value="debit"/>
+        <br/>
+        <label> Cardholder's Name
+            <input type="text" asp-for="CardHolder"/>
+        </label>
+        <br/>
+        <label> Card Number
+            <input type="text" asp-for="CardNumber"/>
+        </label>
+        <br/>
+        <select asp-for="Month">
+            <option>1</option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+        <select asp-for="Year">
+            <option>1</option>
+            <option>2</option>
+        </select>
+        <label>CVC
+            <input type="text" asp-for="CVC"/>
+        </label>
+    </div>
+    <div>
+        <label>Full Name
+            <input type="text" asp-for="FullName"/>
+        </label>
+        <br/>
+        <label>Street Name
+            <input type="text" asp-for="StreetName"/>
+        </label>
+        <label>House Number
+            <input type="number" asp-for="HouseNumber">
+        </label>
+        <label>City
+            <input type="text" asp-for="City"/>
+        </label>
+        <label>Zip Code
+            <input type="number" asp-for="Zip"/>
+        </label>
+        <label>Country
+            <input type="text" asp-for="Country"/>
+        </label>
+    </div>
+    <div>
+        <button asp-controller="Account" asp-action="Cart">Back</button>
+        <input type="submit" value="Confirm"/>
+    </div>
+</form>
