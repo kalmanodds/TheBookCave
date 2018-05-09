@@ -25,6 +25,7 @@
         <label for="register-password">Password</label>
         <input asp-for="Password" type="password" class="form-control" id="register-password" placeholder="Choose a password..."/> <br/>
         <span asp-validation-for="Password" class="text-danger"></span>
+        <p>Password must contain an upper case letter, a number, special character and needs to be at least 8 characters long.</p>
       </div>
       <div class="form-group">
         <input type="submit" value="Register" class="btn btn-primary"/>
