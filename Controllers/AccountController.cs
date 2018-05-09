@@ -286,6 +286,11 @@ namespace TheBookCave.Controllers
             return RedirectToAction("Catalogue", "Home");
         }
 
+        public IActionResult ChangeAvatar()
+        {
+            return View();
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> MakeOrder(string id)
