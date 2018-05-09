@@ -17,26 +17,52 @@
       </div>
       <fieldset>
         <legend>Adress</legend>
-        <div class="form-group">
-          <label for="edit-street-name">Street Name</label>
-          <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="@Model.Address.StreetName"/>
-        </div>
-        <div class="form-group">
-          <label for="edit-house-number">House Number</label>
-          <input type="number" name="houseNumber"  class="form-control" id="edit-house-number" placeholder="@Model.Address.HouseNumber"/>
-        </div>
-        <div class="form-group">
-          <label for="edit-city">City</label>
-          <input type="text" name="city"  class="form-control" id="edit-city" placeholder="@Model.Address.City"/>
-        </div>
-        <div class="form-group">
-          <label for="edit-zip">Zip</label>
-          <input type="number" name="zip"  class="form-control" id="edit-zip" placeholder="@Model.Address.Zip"/>
-        </div>
-        <div class="form-group">
-          <label for="edit-country">Country</label>
-          <input type="text" name="country"  class="form-control" id="edit-country" placeholder="@Model.Address.Country"/>
-        </div>
+        @if (Address != null)
+        {
+          <div class="form-group">
+            <label for="edit-street-name">Street Name</label>
+            <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="@Model.Address.StreetName"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-house-number">House Number</label>
+            <input type="number" name="houseNumber"  class="form-control" id="edit-house-number" placeholder="@Model.Address.HouseNumber"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-city">City</label>
+            <input type="text" name="city"  class="form-control" id="edit-city" placeholder="@Model.Address.City"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-zip">Zip</label>
+            <input type="number" name="zip"  class="form-control" id="edit-zip" placeholder="@Model.Address.Zip"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-country">Country</label>
+            <input type="text" name="country"  class="form-control" id="edit-country" placeholder="@Model.Address.Country"/>
+          </div>
+        }
+        else 
+        {
+          <div class="form-group">
+            <label for="edit-street-name">Street Name</label>
+            <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="StreetName"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-house-number">House Number</label>
+            <input type="number" name="houseNumber"  class="form-control" id="edit-house-number" placeholder="HouseNumber"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-city">City</label>
+            <input type="text" name="city"  class="form-control" id="edit-city" placeholder="City"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-zip">Zip</label>
+            <input type="number" name="zip"  class="form-control" id="edit-zip" placeholder="ZIP"/>
+          </div>
+          <div class="form-group">
+            <label for="edit-country">Country</label>
+            <input type="text" name="country"  class="form-control" id="edit-country" placeholder="Country"/>
+          </div>
+        }
         <div class="form-group">
           <input type="submit" value="Submit" class="btn btn-primary">
         </div>
