@@ -333,9 +333,9 @@ namespace TheBookCave.Controllers
         [Authorize]
         public IActionResult OrderCheckOutToVerify(CheckoutInputModel model)
         {
-            if(true)
+            if(!ModelState.IsValid)
             {
-
+                return RedirectToAction("CheckOut", "Order");
             }
             return RedirectToAction("Index", "Home");
         }
