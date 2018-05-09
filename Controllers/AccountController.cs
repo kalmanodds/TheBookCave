@@ -329,7 +329,9 @@ namespace TheBookCave.Controllers
             return RedirectToAction("CheckOut", "Order");
         }
 
-        private IActionResult OrderCheckOutToVerify()
+        [HttpPost]
+        [Authorize]
+        public IActionResult OrderCheckOutToVerify(CheckoutInputModel model)
         {
             return View();
         }
