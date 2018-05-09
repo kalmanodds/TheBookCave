@@ -10,7 +10,8 @@
     <h3 class="text-center">Email: @Model.Email</h3>
 
     <h2 class="text-center"> <b>Shipping Information</b></h2>
-    @if (@Model.Address.StreetName != null &&
+    @if (@Model.Address != null &&
+         @Model.Address.StreetName != null &&
          @Model.Address.HouseNumber != 0 &&
          @Model.Address.City != null &&
          @Model.Address.Zip != 0 &&
