@@ -15,6 +15,7 @@ namespace TheBookCave.Models.InputModels
         public string LastName { get; set; }
 
         [Required(ErrorMessage="Password is required")]
+        [MaxLength(ErrorMessage="The password must be at least 8 characters")]
         public string Password { get; set; }
     }
 }
