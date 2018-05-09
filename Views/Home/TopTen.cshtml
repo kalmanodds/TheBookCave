@@ -4,38 +4,38 @@
 
 @foreach (var Book in Model)
 {
-    <br/>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 row">
-            <h3 class="text-center">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a>
-                <small>@Book.Genre</small>
-            </h3>
-            <hr/>
-            <div class="col-md-2">
-                <div class="thumbnail">
-                    @{string path = Book.Image;}
-                    <img class="image-large" src=@Url.Content(path) alt="...">
-                    @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
-                    @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
-                    <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <p>@Book.Description</p>
-            </div>
-            <div class="col-md-2">
-                <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
-                    <button type="submit" class="btn btn-primary">Add to Wishlist</button>
-                </form>
-                <br/>
-                <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
-                    <button type="submit" class="btn btn-primary">Add to Cart</button>
-                </form>
-            </div>
+  <br/>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 row">
+      <h3 class="text-center">
+        <a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a>
+        <small>@Book.Genre</small>
+      </h3>
+      <hr/>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          @{string path = Book.Image;}
+          <img class="image-large" src=@Url.Content(path) alt="...">
+          @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+          @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+          <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
         </div>
-        <div class="col-md-1"></div>
+      </div>
+      <div class="col-md-8">
+        <p>@Book.Description</p>
+      </div>
+      <div class="col-md-2">
+        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
+          <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+        </form>
+        <br/>
+        <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+      </div>
     </div>
-    <br/>
+    <div class="col-md-1"></div>
+  </div>
+  <br/>
 }
