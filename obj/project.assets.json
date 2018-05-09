@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
+      "projectUniqueName": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "projectName": "TheBookCave",
-      "projectPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
+      "projectPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "packagesPath": "/Users/nokkvikarlsson/.nuget/packages/",
-      "outputPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/obj/",
+      "outputPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
