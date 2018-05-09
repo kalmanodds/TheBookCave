@@ -333,7 +333,11 @@ namespace TheBookCave.Controllers
         [Authorize]
         public IActionResult OrderCheckOutToVerify(CheckoutInputModel model)
         {
-            return View();
+            if(true)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
