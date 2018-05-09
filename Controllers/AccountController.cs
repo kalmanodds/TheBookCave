@@ -286,7 +286,7 @@ namespace TheBookCave.Controllers
             return RedirectToAction("Catalogue", "Home");
         }
 
-        public IActionResult ChangeAvatar()
+        public IActionResult ChooseAvatar()
         {
             return View();
         }
