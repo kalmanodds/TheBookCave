@@ -7,6 +7,7 @@
     <p>Fill in information boxes that you wish to change and click the 'Submit' button. Empty fields will remain unchanged.</p>
     <br/>
     <form asp-action="EditProfile" asp-controller="Account" asp-route-id=@Model.UserID>
+      <button asp-action="ChooseAvatar" asp-controller="Account" class="btn btn-primary center-block">Edit Picture</button>
       <div class="form-group">
         <label for="edit-first-name">First Name</label>
         <input type="text" name="firstName"  class="form-control" id="edit-first-name" placeholder="@Model.FirstName"/>
