@@ -12536,23 +12536,40 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "/Users/nokkvikarlsson/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+=======
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+>>>>>>> 2185c2be4250e62b89226fce2c9044cac469cf36
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "projectName": "TheBookCave",
       "projectPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/TheBookCave.csproj",
       "packagesPath": "/Users/nokkvikarlsson/.nuget/packages/",
       "outputPath": "/Users/nokkvikarlsson/Documents/Önnur önn/Verklegt 2/TheBookCave/obj/",
+=======
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectName": "TheBookCave",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
+>>>>>>> 2185c2be4250e62b89226fce2c9044cac469cf36
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "/Users/nokkvikarlsson/.nuget/NuGet/NuGet.Config"
+=======
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 2185c2be4250e62b89226fce2c9044cac469cf36
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

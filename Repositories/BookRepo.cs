@@ -131,6 +131,7 @@ namespace TheBookCave.Repositories
                             DatePublished = b.DatePublished,
                             Publisher = b.Publisher,
                             Rating = b.Rating,
+                            Image = b.Image,
                          }
                         ).ToList();
             return books;
