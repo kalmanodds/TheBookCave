@@ -8,23 +8,30 @@
     {
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8 row" id="cart-item">
+            <div class="col-md-8 row">
                 <div class="col-md-2">
                     <div class="thumbnail">
                         @{string path = Book.Image;}
-                        <img class="image-Small" src=@Url.Content(path) alt="@Book.Title">
-                        @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+                        <img class="image-small" src=@Url.Content(path) alt="@Book.Title">
+                        @{int intRating    = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
                         @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
                         <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h2>@Book.Title</h2>
+                <div class="col-md-7 row">
+                    <div class="col-md-3">
+                        <br>
+                        <input type="number" placeholder="@Book.Amount" class="form-control">
+                    </div>
+                    <div class="col-md-9">
+                        <h3>@Book.Title</h3>
+                        <h4>By @Book.Author</h4>
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <h3>@Book.Price$</h3>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <br>
                     <form asp-action="" asp-controller="" asp-route-id="" method="">
                         <button type="submit" class="btn btn-danger">Remove</button>
@@ -32,16 +39,28 @@
                 </div>
             </div>
             <div class="col-md-2"></div>
-            
         </div>
-        <hr/>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"><hr></div>
+            <div class="col-md-2"></div>
+        </div>
     }
 </div>
 
 <div class="row">
+<<<<<<< HEAD
     <div class="col-md-9"></div>
     <div class="col-md-2" id="checkout-button">
-        <a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary">Proceed To Checkout</a>
+        <form asp-controller="Account" asp-action="MakeOrder" asp-route-id="rghgjhvjhvdjhjh45347yhu" method="POST">
+            <input type="submit" value="Proceed To Checkout" class="btn btn-primary">
+        </form>
+        <!--<a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary">Proceed To Checkout</a>-->
+=======
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        <a asp-controller="Account" asp-action="MakeOrder" class="btn btn-primary center-block">Proceed To Checkout</a>
+>>>>>>> 6da2ec34581ee23f42920569550cabf0b7755a44
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-5"></div>
 </div>

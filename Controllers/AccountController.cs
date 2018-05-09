@@ -286,8 +286,15 @@ namespace TheBookCave.Controllers
             return RedirectToAction("Catalogue", "Home");
         }
 
-        public async Task<IActionResult> MakeOrder()
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> MakeOrder(string id)
         {
+            if(id != "rghgjhvjhvdjhjh45347yhu")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var user = await GetCurrentUserAsync();
             var userID = user.Id;
             var booksInCart = _cartService.GetCartBooks(userID);
@@ -320,6 +327,11 @@ namespace TheBookCave.Controllers
             }
 
             return RedirectToAction("CheckOut", "Order");
+        }
+
+        private IActionResult OrderCheckOutToVerify()
+        {
+            return View();
         }
     }
 }
