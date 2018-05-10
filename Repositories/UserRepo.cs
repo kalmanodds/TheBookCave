@@ -37,7 +37,7 @@ namespace TheBookCave.Repositories
         public UserViewModel GetUser(string id)
         {
             var user = (from u in _db.Users
-                        where u.UserID.Equals(id)
+                        where u.UserID == id
                         select new UserViewModel(){
                             UserID = u.UserID,
                             FirstName = u.FirstName,

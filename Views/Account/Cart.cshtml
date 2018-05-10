@@ -71,10 +71,17 @@
     <div class="col-md-8">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h3>Total: @totalPrice<!---->$</h3>
-            <form method="POST">
-                <input type="submit" asp-controller="Account" asp-action="MakeOrder" asp-route-id="rghgjhvjhvdjhjh45347yhu" class="btn btn-primary" value="Proceed To Checkout"/>
-            </form>
+            @if(totalBooks != 0)
+            {
+                <h3>Total: @totalPrice<!---->$</h3>
+                <form method="POST">
+                    <input type="submit" asp-controller="Account" asp-action="MakeOrder" asp-route-id="rghgjhvjhvdjhjh45347yhu" class="btn btn-primary" value="Proceed To Checkout"/>
+                </form>
+            }
+            else
+            {
+                <h3>No Books in Cart!</h3>
+            }
         </div>
         <div class="col-md-2"></div>
     </div>
