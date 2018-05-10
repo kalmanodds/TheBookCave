@@ -92,10 +92,18 @@
 
 #log-in-error
 {
-    color: #9E4A46;
+  color: #9E4A46;
 }
 
 .container .testimonial-group
 {
-    width: 1140px;
+  width: 1140px;
+}
+
+.center-logo
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }

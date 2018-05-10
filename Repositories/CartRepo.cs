@@ -85,9 +85,29 @@ namespace TheBookCave.Repositories
 
         public void UpdateConnection(CartInputModel model)
         {
-            var connection = (from c in _db.UserBookCartConnections
-                              where c.BookID == model.BookID && c.UserID == model.UserID
-                              select c).FirstOrDefault();
+            var allConnections = (from c in _db.UserBookCartConnections
+                              where c.UserID == model.UserID
+                              select c);
+
+            int amountInCart = 0;
+            for(int i = 0; i < allConnections.Count(); i++)
+            {
+                int bookAmount = allConnections.ToList().ElementAt(i).Amount;
+                if(allConnections.ToList().ElementAt(i).BookID == model.BookID)
+                {
+                    bookAmount = model.Amount;
+                }
+                amountInCart += bookAmount;
+            }
+
+            if(amountInCart > 64)
+            {
+                //Cannot exceed 64;
+                return;
+            }
+
+            var connection = allConnections.Where(c => c.BookID == model.BookID).FirstOrDefault();
+
             if(model.Amount > 0)
             {
                 connection.Amount = model.Amount;
