@@ -12536,39 +12536,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\sigur\\.nuget\\packages\\": {},
-=======
     "C:\\Users\\AtliGisla\\.nuget\\packages\\": {},
->>>>>>> 1c91e1258c3be3ff2ba2b6b684cb7d64c7438d66
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\sigur\\Documents\\2. onn tolvunarfraedi\\VLN2 (verklegt namskeid 2)\\TheBookCave\\TheBookCave.csproj",
-      "projectName": "TheBookCave",
-      "projectPath": "C:\\Users\\sigur\\Documents\\2. onn tolvunarfraedi\\VLN2 (verklegt namskeid 2)\\TheBookCave\\TheBookCave.csproj",
-      "packagesPath": "C:\\Users\\sigur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sigur\\Documents\\2. onn tolvunarfraedi\\VLN2 (verklegt namskeid 2)\\TheBookCave\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "projectName": "TheBookCave",
       "projectPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "packagesPath": "C:\\Users\\AtliGisla\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\AtliGisla\\Documents\\HR\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
->>>>>>> 1c91e1258c3be3ff2ba2b6b684cb7d64c7438d66
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\sigur\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
         "C:\\Users\\AtliGisla\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 1c91e1258c3be3ff2ba2b6b684cb7d64c7438d66
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
