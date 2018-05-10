@@ -46,15 +46,27 @@ namespace TheBookCave.Repositories
                             Address = u.Address,
                             Image = u.Image,
                             FavoriteBookID = u.FavoriteBookID,
-                            FavoriteBookImage = null,
                             IsPremium = u.IsPremium
                         }).FirstOrDefault();
             if(user.FavoriteBookID != null)
             {
-                var favImage = (from b in _db.Books
+                var favBook = (from b in _db.Books
                                 where b.ID == user.FavoriteBookID
-                                select b.Image).FirstOrDefault();
-                user.FavoriteBookImage = favImage;
+                                select new BookViewModel()
+                                {
+                                    ID = b.ID,
+                                    Title = b.Title,
+                                    Author = b.Author,
+                                    Description = b.Description,
+                                    Price = b.Price,
+                                    NumberOfPages = b.NumberOfPages,
+                                    NumberOfCopiesSold = b.NumberOfCopiesSold,
+                                    DatePublished = b.DatePublished,
+                                    Publisher = b.Publisher,
+                                    Rating = b.Rating,
+                                    Image = b.Image,
+                                }).FirstOrDefault();
+                user.FavoriteBook = favBook;
             }
             return user;
         }
