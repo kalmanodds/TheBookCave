@@ -131,7 +131,7 @@ namespace TheBookCave.Controllers
         public async Task<IActionResult> Index()
         {
             //Gets user and their id.
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var id = user?.Id;
 
             if(id == null)
@@ -151,7 +151,7 @@ namespace TheBookCave.Controllers
         public async Task<IActionResult> Cart()
         {
             //Gets user and their id.
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var id = user?.Id;
 
             //Receives the Books connected to said user.
@@ -166,7 +166,7 @@ namespace TheBookCave.Controllers
         public async Task<IActionResult> Wishlist()
         {
             //Gets the user and their id.
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var id = user?.Id;
 
             //Books that are in said user's wihslist.
@@ -176,15 +176,12 @@ namespace TheBookCave.Controllers
             return View(books);
         }
 
-        //Helper function that returns current user.
-        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-
         //Form in which to edit the user profile.
         [Authorize]
         public async Task<IActionResult> EditProfile()
         {
             //Gets the user and the id.
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var id = user?.Id;
 
             //Returns the UserViewModel for the current user.
@@ -219,7 +216,7 @@ namespace TheBookCave.Controllers
                 Image = null,
             };
 
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
 
             //Updates the current user file with the new info.
             _userService.EditUser(newUser);
@@ -254,11 +251,15 @@ namespace TheBookCave.Controllers
             }
 
             //Gets the user and their id.
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var userID = user?.Id;
 
             //Creates the InputModel for the Cart.
-            var newCartItem = new CartInputModel((int)id, userID);
+            var newCartItem = new CartInputModel()
+            {
+                BookID = (int)id,
+                UserID = userID,
+            };
             //Adds this the cart connection from user to book.
             _cartService.AddCartItem(newCartItem);
             //Returns the user to the Catalogue.
@@ -275,7 +276,7 @@ namespace TheBookCave.Controllers
             }
 
             //Gets the user and their id
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var userID = user?.Id;
 
             //Creates the InputModel for the Wishlist.
@@ -296,7 +297,7 @@ namespace TheBookCave.Controllers
         [HttpPost]
         public async Task<IActionResult> ChooseAvatar(string image)
         {
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
             _userService.ChangeAvatar(userID, image);
             return RedirectToAction("EditProfile", "Account");
@@ -311,7 +312,7 @@ namespace TheBookCave.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
             var booksInCart = _cartService.GetCartBooks(userID);
 
@@ -353,10 +354,56 @@ namespace TheBookCave.Controllers
             {
                 return RedirectToAction("CheckOut", "Order");
             }
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
             _orderService.AddOrderFinalized(model, userID);
+            return RedirectToAction("Review", "Order");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ConfirmedOrder(OrderViewModel model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdateCart(int bookID, int amount)
+        {
+            //var user = await _userManager.GetUserAsync(User);
+            //var userID = user.Id;
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+            var model = new CartInputModel()
+            {
+                UserID = userID,
+                BookID = bookID,
+                Amount = amount,
+            };
+            _cartService.UpdateConnection(model);
+            return RedirectToAction("Cart", "Account");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> RemoveCart(int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+            _cartService.RemoveItem(userID, bookID);
+
+            bool userHasCurrentOrder = _orderService.UserHasCurrentOrder(userID);
+
+            if(userHasCurrentOrder)
+            {
+                var orderID = _orderService.GetCurrentOrderID(userID);
+                _obcService.RemoveItem((int)orderID, bookID);
+            }
+
+            return RedirectToAction("Cart", "Account");
         }
     }
 }

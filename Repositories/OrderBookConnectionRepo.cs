@@ -42,5 +42,20 @@ namespace TheBookCave.Repositories
                 AddConnection(orderID, bookID, amount);
             }
         }
+
+        public void RemoveItem(int orderID, int bookID)
+        {
+            var connection = (from c in _db.OrderBookConnections
+                            where c.BookID == bookID && c.OrderID == orderID
+                            select c).FirstOrDefault();
+
+            if(connection == null)
+            {
+                return;
+            }
+            
+            _db.OrderBookConnections.Remove(connection);
+            _db.SaveChanges();
+        }
     }
 }

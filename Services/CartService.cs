@@ -23,5 +23,15 @@ namespace TheBookCave.Services
         {
             _cartRepo.AddCartItem(model);
         }
+
+        public void UpdateConnection(CartInputModel model)
+        {
+            _cartRepo.UpdateConnection(model);
+        }
+
+        public void RemoveItem(string userID, int bookID)
+        {
+            _cartRepo.RemoveItem(userID, bookID);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 <h1>Check Out</h1>
 
-<form asp-action="OrderCheckOutToVerify" asp-controller="Account" method="POST">
+<form method="POST">
     <div>
         <label> Payment option
             <label>Credit</label>
@@ -62,7 +62,7 @@
         </label>
     </div>
     <div>
-        <button asp-controller="Account" asp-action="Cart">Back</button>
-        <input type="submit" value="Confirm"/>
+        <input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm"/>
     </div>
 </form>
+<button asp-controller="Account" asp-action="OrderCheckOutToVerify">Back</button>

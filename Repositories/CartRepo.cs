@@ -19,9 +19,23 @@ namespace TheBookCave.Repositories
         public void AddCartItem(CartInputModel model)
         {
             //Test if Connection is made.
-            var connection = (from c in _db.UserBookCartConnections
-                              where c.BookID == model.BookID && c.UserID == model.UserID
-                              select c).FirstOrDefault();
+            var allConnections = (from c in _db.UserBookCartConnections
+                                  where c.UserID == model.UserID
+                                  select c);
+
+            int amountInCart = 0;
+            for(int i = 0; i < allConnections.Count(); i++)
+            {
+                amountInCart += allConnections.ToList().ElementAt(i).Amount;
+            }
+
+            if(amountInCart >= 64)
+            {
+                //Cant add if cart is more than 64
+                return;
+            }
+
+            var connection = allConnections.Where(c => c.BookID == model.BookID).FirstOrDefault();
 
             //If connection is established, increase the amount.
             if(connection != null)
@@ -67,6 +81,33 @@ namespace TheBookCave.Repositories
                         ).ToList();
 
             return books;
+        }
+
+        public void UpdateConnection(CartInputModel model)
+        {
+            var connection = (from c in _db.UserBookCartConnections
+                              where c.BookID == model.BookID && c.UserID == model.UserID
+                              select c).FirstOrDefault();
+            if(model.Amount > 0)
+            {
+                connection.Amount = model.Amount;
+                _db.UserBookCartConnections.Update(connection);
+                _db.SaveChanges();
+            }
+            else
+            {
+                //NOT ALLOWED TO PUT BOOKS BELOW ZERO
+            }
+        }
+
+        public void RemoveItem(string userID, int bookID)
+        {
+            var connection = (from c in _db.UserBookCartConnections
+                              where c.UserID == userID && c.BookID == bookID
+                              select c).FirstOrDefault();
+            
+            _db.UserBookCartConnections.Remove(connection);
+            _db.SaveChanges();
         }
     }
 }
