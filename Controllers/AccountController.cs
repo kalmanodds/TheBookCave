@@ -475,6 +475,9 @@ namespace TheBookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
 
+            //Waits for 0.3 seconds so the animation finishes when the user clisk the make favorite button
+            System.Threading.Thread.Sleep(800);
+
             _userService.MakeFavorite(userID, bookID);
 
             return RedirectToAction("Details", "Book", new {id = bookID});
