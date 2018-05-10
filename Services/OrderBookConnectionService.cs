@@ -20,5 +20,10 @@ namespace TheBookCave.Services
         {
             _obcRepo.UpdateConnection(orderID, bookID, amount);
         }
+
+        public void RemoveItem(int orderID, int bookID)
+        {
+            _obcRepo.RemoveItem(orderID, bookID);
+        }
     }
 }

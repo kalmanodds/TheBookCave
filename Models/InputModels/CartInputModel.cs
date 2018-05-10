@@ -4,10 +4,18 @@ namespace TheBookCave.Models.InputModels
     {
         public int BookID { get; set; }
         public string UserID { get; set; }
-        public CartInputModel(int bookID, string userID)
+        public int Amount { get; set; }
+        public CartInputModel()
+        {
+            BookID = 0;
+            UserID = null;
+            Amount = 0;
+        }
+        public CartInputModel(int bookID ,string userID, int amount)
         {
             BookID = bookID;
             UserID = userID;
+            Amount = amount;
         }
     }
 }
