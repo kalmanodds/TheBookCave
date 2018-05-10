@@ -75,7 +75,7 @@
                 <h5 class="text-center">Price: @Model[ind].Price$</h5>
                 <p>
                   <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model[ind].ID" method="POST">
-                    <button type="submit" class="center-block btn btn-primary">Add to Cart</button>
+                    <button type="submit" class="center-block btn btn-primary add-to-cart">Add to Cart</button>
                   </form>
                 </p>
               </div>
