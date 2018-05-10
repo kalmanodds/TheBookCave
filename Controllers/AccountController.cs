@@ -243,6 +243,7 @@ namespace TheBookCave.Controllers
 
         //Function that adds books to Cart.
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> AddToCart(int? id)
         {
             if(id == null)
@@ -268,6 +269,7 @@ namespace TheBookCave.Controllers
 
         //Function that adds books to the Wishlist.
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> AddToWishlist(int? id)
         {
             if(id == null)
