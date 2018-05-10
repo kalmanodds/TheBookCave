@@ -39,7 +39,7 @@
                     <div class="col-md-1">
                         <br>
                         <form asp-action="MoveWishlistToCart" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="submit" class="btn btn-primary add-to-cart">Add to Cart</button>
                         </form>
                         <br>
                         <form asp-action="RemoveWishlist" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
