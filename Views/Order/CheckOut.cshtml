@@ -61,6 +61,13 @@
                         <label>CVC
                             <input type="text" asp-for="CVC" class="form-control"/>
                         </label>
+                        <br/>
+                        <span asp-validation-for="CardHolder" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="CVC" class="text-danger"></span>
+                        <br/>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
@@ -79,9 +86,11 @@
                         <label>Street Name
                             <input type="text" asp-for="StreetName" class="form-control"/>
                         </label>
+                        
                         <label>House Number
                             <input type="number" asp-for="HouseNumber" class="form-control">
                         </label>
+                        
                         <label>Country
                             <input type="text" asp-for="Country" class="form-control"/>
                         </label>
@@ -92,6 +101,19 @@
                         <label>Zip Code
                             <input type="number" asp-for="Zip" class="form-control"/>
                         </label>
+                        <br/>
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="StreetName" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="HouseNumber" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="City" class="text-danger"></span>
+                        <br/>
+                        <span asp-validation-for="Zip" class="text-danger"></span>
+                        <br/>
                     </div>
                     <div class="col-md-1"></div>
                 </div>

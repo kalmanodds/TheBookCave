@@ -21,10 +21,13 @@
 @{double totalPrice = 0;}
 @foreach (var Book in Model)
 {
+    <!-- The following row is split into a 2-8-2 column system for indenting purposes. -->
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 row">
+            <!-- The inside of the main body of the row is split into a 2-7-2-1 column system. -->
             <div class="col-md-2">
+                <!-- The first column in the main body is used to display the book's image. -->
                 <div class="thumbnail">
                     @{string path = Book.Image;}
                     <img class="image-small" src=@Url.Content(path) alt="@Book.Title">
@@ -34,14 +37,17 @@
                 </div>
             </div>
             <div class="col-md-7 row">
+                <!-- The second column in the main body is split into a 3-9 column system. -->
                 <div class="col-md-3">
-                <br>
+                    <!-- This part is used to display the amount of the book the user has in their cart. -->
+                    <br>
                     <form method="POST">
                         <input type="number" name="amount" value="@Book.Amount" class="form-control">
                         <input asp-controller="Account" asp-action="UpdateCart" asp-route-bookID="@Book.ID" value="Update" type="submit" class="form-control btn btn-primary">
                     </form>
                 </div>
                 <div class="col-md-9">
+                    <!-- And this part is used to display the book's title and author. -->
                     <h3>
                         <a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a>
                     </h3>
@@ -49,6 +55,7 @@
                 </div>
             </div>
             <div class="col-md-2">
+                <!-- The third column in the main body is used to display the price of the book multiplied by the amount ordered. -->
                 @{double price = (Book.Price * Book.Amount);}
                 @{totalPrice += price;}
                 @{int endsIn0 = (int)((price * 100) % 10);}
@@ -65,6 +72,7 @@
                 <h3>@price<!---->@lastZero$</h3>
             </div>
             <div class="col-md-1">
+                <!-- The fourth column in the main body is used to display the "Remove" button. -->
                 <br>
                 <form asp-action="RemoveCart" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
                     <input type="submit" class="btn btn-danger remove-from-cart" value="Remove"/>
@@ -73,6 +81,8 @@
         </div>
         <div class="col-md-2"></div>
     </div>
+    <!-- The following row is identical to the base structure of the previous row. The sole purpose of this one is display a horizontal line at the bottom of each book. -->
+    <!-- This could have been accomplished inside the previous row but that would have required the column in line 27 to contain the row as a child element, making the code more tedious -->
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8"><hr></div>
@@ -80,10 +90,8 @@
     </div>
 }
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
             @if(totalBooks != 0)
             {
                 int endsIn0 = (int)((totalPrice * 100) % 10);
@@ -106,9 +114,7 @@
             {
                 <h3>No Books in Cart!</h3>
             }
-        </div>
-        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-5"></div>
 </div>
 
