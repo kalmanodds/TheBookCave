@@ -63,3 +63,30 @@
     </div>
     <div class="col-md-2"></div>
 </div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        @if(Model.Ratings.Count != 0)
+        {
+            <hr>
+            @foreach(var Rating in Model.Ratings)
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        @{string avatar = Rating.Image;}
+                        <img src="Url.Content(avatar)" alt="avatar">
+                    </div>
+                    <div class="col-md-9">
+                        <h3>@Rating.FirstName @Rating.LastName</h3>
+                        @{int userIntRating = Rating.Score;}
+                        @{string userStringRating = "~/images/stars/" + userIntRating + "0StarsSmall.png";}
+                        <img src=@Url.Content(userStringRating) alt="Rating">
+                        <p>@Rating.Comment</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-md-2"></div>
+</div>
