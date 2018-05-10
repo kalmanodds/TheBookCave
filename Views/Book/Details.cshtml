@@ -50,7 +50,7 @@
     </div>
     <div class="col-md-2">
         <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.Book.ID" method="POST">
-            <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+            <button type="submit" class="btn btn-primary add-to-wishlist">Add to Wishlist</button>
         </form>
     </div>
     <div class="col-md-2">
@@ -60,6 +60,33 @@
         <form asp-action="MakeFavorite" asp-controller="Account" asp-route-bookID="@Model.Book.ID" method="POST">
             <button type="submit" class="btn btn-primary">Make Favorite</button>
         </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        @if(Model.Ratings.Count != 0)
+        {
+            <hr>
+            @foreach(var Rating in Model.Ratings)
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        @{string avatar = Rating.Image;}
+                        <img src="Url.Content(avatar)" alt="avatar">
+                    </div>
+                    <div class="col-md-9">
+                        <h3>@Rating.FirstName @Rating.LastName</h3>
+                        @{int userIntRating = Rating.Score;}
+                        @{string userStringRating = "~/images/stars/" + userIntRating + "0StarsSmall.png";}
+                        <img src=@Url.Content(userStringRating) alt="Rating">
+                        <p>@Rating.Comment</p>
+                    </div>
+                </div>
+            }
+        }
     </div>
     <div class="col-md-2"></div>
 </div>
