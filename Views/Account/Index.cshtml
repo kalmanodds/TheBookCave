@@ -21,6 +21,20 @@
     <h2> <b>Basic Information</b> </h2>
     <h3>Name: @Model.FirstName @Model.LastName</h3>
     <h3>Email: @Model.Email</h3>
+    @if(Model.FavoriteBookID != null)
+    {
+      <h3>Favorite Book:</h3>
+      <div class="row">
+        <div class="col-md-3">
+          @{string bookPath = Model.FavoriteBook.Image;}
+          <img class="image-small img-responsive center-block" src=@Url.Content(bookPath) alt="Avatar">
+        </div>
+        <div class="col-md-7">
+          <h3>@Model.FavoriteBook.Title</h3>
+          <h4>by @Model.FavoriteBook.Author</h4>
+        </div>
+      </div>
+    }
 
     <h2> <b>Shipping Information</b></h2>
     @if (@Model.Address != null &&

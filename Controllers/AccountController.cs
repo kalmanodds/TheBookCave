@@ -476,5 +476,10 @@ namespace TheBookCave.Controllers
 
             return RedirectToAction("Details", "Book", new {id = bookID});
         }
+
+        public IActionResult Yeet()
+        {
+            return View();
+        }
     }
 }
