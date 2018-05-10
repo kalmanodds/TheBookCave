@@ -3,13 +3,26 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    <h1 class="text-center"> <b>Account Information</b> </h1>
+    <h1 class="text-center">Account Information</h1>
+    <hr>
+  </div>
+  <div class="col-md-3"></div>
+</div>
 
-    <h2 class="text-center"> <b>Basic Information</b> </h2>
-    <h3 class="text-center">Name: @Model.FirstName @Model.LastName</h3>
-    <h3 class="text-center">Email: @Model.Email</h3>
 
-    <h2 class="text-center"> <b>Shipping Information</b></h2>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-2">
+      @{string path = Model.Image;}
+      <img class="image-small img-responsive center-block" src=@Url.Content(path) alt="Avatar">
+  </div>
+  <div class="col-md-4">
+
+    <h2> <b>Basic Information</b> </h2>
+    <h3>Name: @Model.FirstName @Model.LastName</h3>
+    <h3>Email: @Model.Email</h3>
+
+    <h2> <b>Shipping Information</b></h2>
     @if (@Model.Address != null &&
          @Model.Address.StreetName != null &&
          @Model.Address.HouseNumber != 0 &&
@@ -17,25 +30,26 @@
          @Model.Address.Zip != 0 &&
          @Model.Address.Country != null)
     {
-      <h3 class="text-center">Stree Name: @Model.Address.StreetName</h3>
-      <h3 class="text-center">House Number: @Model.Address.HouseNumber</h3>
-      <h3 class="text-center">City: @Model.Address.City</h3>
-      <h3 class="text-center">ZIP: @Model.Address.Zip</h3>
-      <h3 class="text-center">Country: @Model.Address.Country</h3>
+      <h3>Stree Name: @Model.Address.StreetName</h3>
+      <h3>House Number: @Model.Address.HouseNumber</h3>
+      <h3>City: @Model.Address.City</h3>
+      <h3>ZIP: @Model.Address.Zip</h3>
+      <h3>Country: @Model.Address.Country</h3>
     }
     else
     {
-      <h3 class="text-center">Shipping Address not filled out</h3>
+      <h3>Shipping Address not filled out</h3>
     }
 
     <br/>
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
   </div>
   <div class="col-md-3"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+    <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
+  </div>
+  <div class="col-md-5"></div>
 </div>
