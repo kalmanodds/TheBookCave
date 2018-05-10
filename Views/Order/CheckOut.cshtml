@@ -1,74 +1,114 @@
 @model TheBookCave.Models.InputModels.CheckoutInputModel
 
-<h1>Check Out</h1>
+<h1 class="text-center">Check Out</h1>
+<br/>
 
-<form method="POST">
-    <div>
-        <label> Payment option
-            <label>Credit</label>
-            <input type="radio" asp-for="CardType" value="credit"/>
-            <label>Debit</label>
-            <input type="radio" asp-for="CardType" value="debit"/>
-        <br/>
-        <label> Cardholder's Name
-            <input type="text" asp-for="CardHolder"/>
-        </label>
-        <br/>
-        <label> Card Number
-            <input type="text" asp-for="CardNumber"/>
-        </label>
-        <br/>
-        <select asp-for="Month">
-            <option value="1">01</option>
-            <option value="2">02</option>
-            <option value="3">03</option>
-            <option value="4">04</option>
-            <option value="5">05</option>
-            <option value="6">06</option>
-            <option value="7">07</option>
-            <option value="8">08</option>
-            <option value="9">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-        </select>
-        <select asp-for="Year">
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-        </select>
-        <label>CVC
-            <input type="text" asp-for="CVC"/>
-        </label>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form method="POST">
+            <fieldset>
+                <legend class="text-center">Card Information</legend>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <label> Payment option
+                            <br>
+                            <label>Credit</label>
+                            <input type="radio" asp-for="CardType" value="credit"/>
+                            <label>Debit</label>
+                            <input type="radio" asp-for="CardType" value="debit"/>
+                        </label>
+                        <br>
+                        <label> Cardholder's Name
+                            <input type="text" asp-for="CardHolder" class="form-control"/>
+                        </label>
+                        <label> Card Number
+                            <input type="text" asp-for="CardNumber" class="form-control"/>
+                        </label>
+                        <br/>
+                        <label>Expiration Date</label>
+                        <br>
+                        <label>Month
+                            <select asp-for="Month" class="form-control">
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </label>
+                        <label>Year
+                            <select asp-for="Year" class="form-control">
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                            </select>
+                        </label>
+                        <br>
+                        <label>CVC
+                            <input type="text" asp-for="CVC" class="form-control"/>
+                        </label>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                </fieldset>
+                
+            <br>
+            <fieldset>
+                <legend class="text-center">Shipping Information</legend>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <label>Full Name
+                            <input type="text" asp-for="FullName" class="form-control"/>
+                        </label>
+                        <br/>
+                        <label>Street Name
+                            <input type="text" asp-for="StreetName" class="form-control"/>
+                        </label>
+                        <label>House Number
+                            <input type="number" asp-for="HouseNumber" class="form-control">
+                        </label>
+                        <label>Country
+                            <input type="text" asp-for="Country" class="form-control"/>
+                        </label>
+                        <br>
+                        <label>City
+                            <input type="text" asp-for="City" class="form-control"/>
+                        </label>
+                        <label>Zip Code
+                            <input type="number" asp-for="Zip" class="form-control"/>
+                        </label>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </fieldset>
+            <hr>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <button asp-controller="Account" asp-action="OrderCheckOutToVerify" class="btn btn-light">Back</button>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    <input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm" class="btn btn-primary"/>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </form>
     </div>
-    <div>
-        <label>Full Name
-            <input type="text" asp-for="FullName"/>
-        </label>
-        <br/>
-        <label>Street Name
-            <input type="text" asp-for="StreetName"/>
-        </label>
-        <label>House Number
-            <input type="number" asp-for="HouseNumber">
-        </label>
-        <label>City
-            <input type="text" asp-for="City"/>
-        </label>
-        <label>Zip Code
-            <input type="number" asp-for="Zip"/>
-        </label>
-        <label>Country
-            <input type="text" asp-for="Country"/>
-        </label>
-    </div>
-    <div>
-        <input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm"/>
-    </div>
-</form>
-<button asp-controller="Account" asp-action="OrderCheckOutToVerify">Back</button>
+    <div class="col-md-3"></div>
+</div>
