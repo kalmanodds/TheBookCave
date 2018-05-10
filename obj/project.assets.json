@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "projectName": "TheBookCave",
-      "projectPath": "c:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\TheBookCave.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\Háskólinn í Reykjavík\\Vor 2018\\Verklegt Námskeið 2\\TheBookCave\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
