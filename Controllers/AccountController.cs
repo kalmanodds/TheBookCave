@@ -411,5 +411,35 @@ namespace TheBookCave.Controllers
 
             return RedirectToAction("Cart", "Account");
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> RemoveWishlist(int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+
+            _wishlistService.RemoveItem(userID, bookID);
+
+            return RedirectToAction("Wishlist", "Account");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> MoveWishlistToCart(int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+
+            _wishlistService.RemoveItem(userID, bookID);
+            var cartItem = new CartInputModel()
+            {
+                BookID = bookID,
+                UserID = userID,
+            };
+            _cartService.AddCartItem(cartItem);
+
+            return RedirectToAction("Wishlist", "Account");
+        }
     }
 }

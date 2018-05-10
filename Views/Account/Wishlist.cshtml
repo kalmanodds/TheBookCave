@@ -36,11 +36,11 @@
                 </div>
                 <div class="col-md-1">
                     <br>
-                    <form asp-action="" asp-controller="" asp-route-id="" method="">
+                    <form asp-action="MoveWishlistToCart" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                     </form>
                     <br>
-                    <form asp-action="" asp-controller="" asp-route-id="" method="">
+                    <form asp-action="RemoveWishlist" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
                         <button type="submit" class="btn btn-danger">Remove</button>
                     </form>
                 </div>
