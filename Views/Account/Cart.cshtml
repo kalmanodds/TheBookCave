@@ -51,7 +51,18 @@
             <div class="col-md-2">
                 @{double price = (Book.Price * Book.Amount);}
                 @{totalPrice += price;}
-                <h3>@price$</h3>
+                @{int endsIn0 = (int)((price * 100) % 10);}
+                @{int endsIn00 = (int)((price * 100) % 100);}
+                @{string lastZero = "";}
+                @if(endsIn0 == 0)
+                {
+                    lastZero = "0";
+                }
+                @if(endsIn0 == 0 && endsIn00 == 0)
+                {
+                    lastZero = ".00";
+                }
+                <h3>@price<!---->@lastZero$</h3>
             </div>
             <div class="col-md-1">
                 <br>
@@ -75,7 +86,18 @@
         <div class="col-md-8">
             @if(totalBooks != 0)
             {
-                <h3>Total: @totalPrice<!---->$</h3>
+                int endsIn0 = (int)((totalPrice * 100) % 10);
+                int endsIn00 = (int)((totalPrice * 100) % 100);
+                string lastZero = "";
+                if(endsIn0 == 0)
+                {
+                    lastZero = "0";
+                }
+                if(endsIn0 == 0 && endsIn00 == 0)
+                {
+                    lastZero = ".00";
+                }
+                <h3>Total: @totalPrice<!---->@lastZero$</h3>
                 <form method="POST">
                     <input type="submit" asp-controller="Account" asp-action="MakeOrder" asp-route-id="rghgjhvjhvdjhjh45347yhu" class="btn btn-primary" value="Proceed To Checkout"/>
                 </form>
