@@ -8,3 +8,9 @@ $(".remove-from-cart").click(function(e) {
 $(".remove-from-wishlist").click(function(e) {
     sweetAlert("Book has been removed from your wishlist!", "", "success")
 });
+$(".add-to-wishlist").click(function(e) {
+    sweetAlert("Book has been added to your wishlist!", "", "success")
+});
+$(".add-to-favorite").click(function(e) {
+    sweetAlert("Book has been set as your favorite!", "", "success")
+});

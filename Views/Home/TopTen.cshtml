@@ -1,6 +1,6 @@
 @model List<TheBookCave.Models.ViewModels.BookViewModel>
 
-<h1 class="text-center">The Top Ten</h1>
+<h1 class="text-center"> The Top Ten Rated</h1>
 
 @foreach (var Book in Model)
 {
@@ -27,7 +27,7 @@
       </div>
       <div class="col-md-2">
         <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
-          <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+          <button type="submit" class="btn btn-primary add-to-wishlist">Add to Wishlist</button>
         </form>
         <br/>
         <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Book.ID" method="POST">

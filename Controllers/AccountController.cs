@@ -283,6 +283,9 @@ namespace TheBookCave.Controllers
                 return View("NotFound");
             }
 
+            //Waits half a second so the add to wishlist animation can finish
+            System.Threading.Thread.Sleep(500);
+
             //Gets the user and their id
             var user = await _userManager.GetUserAsync(User);
             var userID = user?.Id;
@@ -472,14 +475,12 @@ namespace TheBookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
 
+            //Waits for 0.3 seconds so the animation finishes when the user clisk the make favorite button
+            System.Threading.Thread.Sleep(800);
+
             _userService.MakeFavorite(userID, bookID);
 
             return RedirectToAction("Details", "Book", new {id = bookID});
-        }
-
-        public IActionResult Yeet()
-        {
-            return View();
         }
     }
 }
