@@ -13,44 +13,51 @@
 <hr/>
 
 <div id="cart">
-    @foreach (var Book in Model)
+    @if(@Model.Count != 0)
     {
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 row">
-                <div class="col-md-2">
-                    <div class="thumbnail">
-                        @{string path = Book.Image;}
-                        <img class="image-small" src=@Url.Content(path) alt="@Book.Title">
-                        @{int intRating    = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
-                        @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
-                        <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+        @foreach (var Book in Model)
+        {
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 row">
+                    <div class="col-md-2">
+                        <div class="thumbnail">
+                            @{string path = Book.Image;}
+                            <img class="image-small" src=@Url.Content(path) alt="@Book.Title">
+                            @{int intRating    = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+                            @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+                            <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+                        </div>
+                    </div>
+                    <div class="col-md-7 row">
+                        <h3>@Book.Title</h3>
+                        <h4>By @Book.Author</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h3>@Book.Price $</h3>
+                    </div>
+                    <div class="col-md-1">
+                        <br>
+                        <form asp-action="MoveWishlistToCart" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                        <br>
+                        <form asp-action="RemoveWishlist" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-md-7 row">
-                    <h3>@Book.Title</h3>
-                    <h4>By @Book.Author</h4>
-                </div>
-                <div class="col-md-2">
-                    <h3>@Book.Price $</h3>
-                </div>
-                <div class="col-md-1">
-                    <br>
-                    <form asp-action="" asp-controller="" asp-route-id="" method="">
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
-                    </form>
-                    <br>
-                    <form asp-action="" asp-controller="" asp-route-id="" method="">
-                        <button type="submit" class="btn btn-danger">Remove</button>
-                    </form>
-                </div>
+                <div class="col-md-2"></div>
             </div>
-            <div class="col-md-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8"><hr></div>
-            <div class="col-md-2"></div>
-        </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8"><hr></div>
+                <div class="col-md-2"></div>
+            </div>
+        }
+    }
+    else
+    {
+        <h3>No Books in Wishlist!</h3>
     }
 </div>

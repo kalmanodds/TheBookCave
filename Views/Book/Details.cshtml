@@ -1,32 +1,32 @@
-@model TheBookCave.Models.ViewModels.BookViewModel
+@model TheBookCave.Models.ViewModels.BookDetailsViewModel
 
 <!-- Row containing the main body of Book/Details. -->
 <div class="book-details-container row">
     <div class="col-md-2"></div>
     <div class="col-md-2">
         <br>
-        @{string path = Model.Image;}
+        @{string path = Model.Book.Image;}
         <img src=@Url.Content(path) alt="..." class="img-responsive center-block image-large">
         <br>
 
         <!-- Makes an integer which is the rounded version of the rating (to 0.5). -->
-        @{int intRating  = ((int)(((Model.Rating * 4) + 1) / 2)) * 5;}
+        @{int intRating  = ((int)(((Model.Book.Rating * 4) + 1) / 2)) * 5;}
         <!-- Puzzles together the Path String to the image with that amount of stars. -->
         @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png";}
         <!-- Displays the image of the stars. -->
         <img src=@Url.Content(stringRating) alt="0 stars" class="img-responsive center-block">
         
-        <h4 class="text-center">@Model.Publisher</h4>
-        <h4 class="text-center">@Model.DatePublished</h4>
-        <h4 class="text-center">@Model.NumberOfPages pages</h4>
-        <h4 class="text-center">Price: @Model.Price $</h4>
+        <h4 class="text-center">@Model.Book.Publisher</h4>
+        <h4 class="text-center">@Model.Book.DatePublished</h4>
+        <h4 class="text-center">@Model.Book.NumberOfPages pages</h4>
+        <h4 class="text-center">Price: @Model.Book.Price $</h4>
     </div>
     <div class="col-md-6">
-        <h2>@Model.Title
-            <small>@Model.Genre</small>
+        <h2>@Model.Book.Title
+            <small>@Model.Book.Genre</small>
         </h2>
-        <h3>@Model.Author</h3>
-        <p>Description: @Model.Description</p>
+        <h3>@Model.Book.Author</h3>
+        <p>Description: @Model.Book.Description</p>
     </div>
     <div class="col-md-2"></div>
 </div>
@@ -44,17 +44,17 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-2">
-        <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+        <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.Book.ID" method="POST">
             <button type="submit" class="btn btn-primary">Add to Cart</button>
         </form>
     </div>
     <div class="col-md-2">
-        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.ID" method="POST">
+        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.Book.ID" method="POST">
             <button type="submit" class="btn btn-primary">Add to Wishlist</button>
         </form>
     </div>
     <div class="col-md-2">
-        <a href="#" class="btn btn-primary">Rate Book</a>
+        <a asp-controller="Book" asp-action="Rating" asp-route-id="@Model.Book.ID" class="btn btn-primary">Rate Book</a>
     </div>
     <div class="col-md-3"></div>
 </div>

@@ -1,7 +1,58 @@
+using System.Collections.Generic;
+using System.Linq;
+using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
+using TheBookCave.Models.InputModels;
+using TheBookCave.Models.ViewModels;
+
 namespace TheBookCave.Repositories
 {
     public class RatingRepo
     {
-        
+        private DataContext _db;
+
+        public RatingRepo()
+        {
+            _db = new DataContext();
+        }
+
+        public void AddRating(RatingInputModel model)
+        {
+            var rating = (from r in _db.Ratings
+                          where r.UserID == model.UserID && r.BookID == model.BookID
+                          select r).FirstOrDefault();
+            
+            if(rating == null)
+            {
+                var newRating = new RatingEntityModel()
+                {
+                    Score = model.Score,
+                    Comment = model.Comment,
+                    UserID = model.UserID,
+                    BookID = model.BookID,
+                };
+
+                _db.Ratings.Add(newRating);
+                _db.SaveChanges();
+            }
+        }
+
+        public List<RatingViewModel> GetRatings(int bookID)
+        {
+            var ratings = (from r in _db.Ratings
+                           join u in _db.Users on r.UserID equals u.UserID
+                           where r.BookID == bookID
+                           select new RatingViewModel()
+                            {
+                                Score = r.Score,
+                                Comment = r.Comment,
+                                FirstName = u.FirstName,
+                                LastName = u.LastName,
+                                Image = u.Image,
+                            }
+                           ).ToList();
+            
+            return ratings;
+        }
     }
 }

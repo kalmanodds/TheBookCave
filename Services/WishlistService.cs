@@ -16,5 +16,10 @@ namespace TheBookCave.Services
         {
             _wishlistRepo.AddWishlistItem(model);
         }
+
+        public void RemoveItem(string userID, int bookID)
+        {
+            _wishlistRepo.RemoveItem(userID, bookID);
+        }
     }
 }
