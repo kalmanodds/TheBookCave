@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TheBookCave.Models;
+using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
@@ -33,9 +34,9 @@ namespace TheBookCave.Services
             return _bookRepo.GetWishlistBooks(userID);
         }
 
-    //Möguleg föll sem við munum útfæra:
-        //AddBook()
-        //UpdateBook()
-        //RemoveBook()
+        public void AddRating(RatingInputModel model)
+        {
+            _bookRepo.AddRating(model);
+        }
     }
 }

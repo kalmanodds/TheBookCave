@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using TheBookCave.Models.InputModels;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services
@@ -11,11 +14,14 @@ namespace TheBookCave.Services
             _ratingRepo = new RatingRepo();
         }
 
-    //Möguleg föll sem við munum útfæra:
-        //getRatings()
-        //getRating()
-        //AddRating()
-        //UpdateRating()
-        //RemoveRating()
+        public void AddRating(RatingInputModel model)
+        {
+            _ratingRepo.AddRating(model);
+        }
+
+        public List<RatingViewModel> GetRatings(int bookID)
+        {
+            return _ratingRepo.GetRatings(bookID);
+        }
     }
 }

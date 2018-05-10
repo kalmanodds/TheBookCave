@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
 using TheBookCave.Models;
+using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories
@@ -135,6 +136,22 @@ namespace TheBookCave.Repositories
                          }
                         ).ToList();
             return books;
+        }
+
+        public void AddRating(RatingInputModel model)
+        {
+            var book = (from b in _db.Books
+                        where b.ID == model.BookID
+                        select b).First();
+
+            if(book != null)
+            {
+                double newRating = (((book.Rating * book.NumberOfRatings) + model.Score) / (book.NumberOfRatings + 1));
+                book.Rating = newRating;
+                book.NumberOfRatings++;
+                _db.Books.Update(book);
+                _db.SaveChanges();
+            }
         }
     }
 }

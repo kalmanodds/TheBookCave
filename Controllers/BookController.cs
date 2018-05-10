@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models.ViewModels;
 using TheBookCave.Services;
@@ -41,12 +42,20 @@ namespace TheBookCave.Controllers
                 return View("NotFound");
             }
 
+            var ratings = _ratingService.GetRatings((int)id);
+
+            var bookAndRatings = new BookDetailsViewModel()
+            {
+                Book = book,
+                Ratings = ratings,
+            };
+
             //Returns the Details View for the book.
-            return View(book);
+            return View(bookAndRatings);
         }
         
-        //TODO
         //The Rating Page for the Book.
+        [Authorize]
         public IActionResult Rating(int id)
         {
             //This function takes in a bookID parameter which is the ID of the book that should have ratings.
@@ -55,10 +64,10 @@ namespace TheBookCave.Controllers
                 //If a book is not specified, redirect to the catalogue.
                 RedirectToAction("Home/Catalogue");
             }
-            
+
             var book = _bookService.GetBook(id);
-            
-            return View();
+
+            return View(book);
         }
 
         //TODO

@@ -26,6 +26,7 @@ namespace TheBookCave.Controllers
         private WishlistService _wishlistService;
         private OrderService _orderService;
         private OrderBookConnectionService _obcService;
+        private RatingService _ratingService;
 
         //Constructor that initializes private variables.
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
@@ -38,6 +39,7 @@ namespace TheBookCave.Controllers
             _wishlistService = new WishlistService();
             _orderService = new OrderService();
             _obcService = new OrderBookConnectionService();
+            _ratingService = new RatingService();
         }
 
         //Returns the Form to the user with which they will register with.
@@ -440,6 +442,27 @@ namespace TheBookCave.Controllers
             _cartService.AddCartItem(cartItem);
 
             return RedirectToAction("Wishlist", "Account");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddRating(int score, string comment, int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+            
+            var newReview = new RatingInputModel()
+            {
+                Score = score,
+                Comment = comment,
+                BookID = bookID,
+                UserID = userID,
+            };
+
+            _ratingService.AddRating(newReview);
+            _bookService.AddRating(newReview);
+
+            return RedirectToAction("Details", "Book", new {id = bookID});
         }
     }
 }

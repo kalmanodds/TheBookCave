@@ -1,0 +1,18 @@
+@model TheBookCave.Models.ViewModels.BookViewModel
+
+<h1>Rate This Book!</h1>
+
+<h2>@Model.Title</h2>
+
+<form method="POST">
+    1<input type="radio" name="score" value="1" checked="checked">
+    2<input type="radio" name="score" value="2">
+    3<input type="radio" name="score" value="3">
+    4<input type="radio" name="score" value="4">
+    5<input type="radio" name="score" value="5">
+    <br/>
+    comment<textarea name="comment" cols="30" rows="10">
+
+    </textarea>
+    <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit">Submit Comment</button>
+</form>
