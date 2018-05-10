@@ -37,7 +37,6 @@ namespace TheBookCave.Repositories
         public UserViewModel GetUser(string id)
         {
             var user = (from u in _db.Users
-                        join b in _db.Books on u.FavoriteBookID equals b.ID
                         where u.UserID == id
                         select new UserViewModel(){
                             UserID = u.UserID,
@@ -46,9 +45,17 @@ namespace TheBookCave.Repositories
                             Email = u.Email,
                             Address = u.Address,
                             Image = u.Image,
-                            FavoriteBookImage = b.Image,
+                            FavoriteBookID = u.FavoriteBookID,
+                            FavoriteBookImage = null,
                             IsPremium = u.IsPremium
                         }).FirstOrDefault();
+            if(user.FavoriteBookID != null)
+            {
+                var favImage = (from b in _db.Books
+                                where b.ID == user.FavoriteBookID
+                                select b.Image).FirstOrDefault();
+                user.FavoriteBookImage = favImage;
+            }
             return user;
         }
 
