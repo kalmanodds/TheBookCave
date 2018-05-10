@@ -42,7 +42,7 @@
 
 <!-- The bottom row containing button. -->
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-2"></div>
     <div class="col-md-2">
         <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model.Book.ID" method="POST">
             <button type="submit" class="btn btn-primary">Add to Cart</button>
@@ -56,5 +56,10 @@
     <div class="col-md-2">
         <a asp-controller="Book" asp-action="Rating" asp-route-id="@Model.Book.ID" class="btn btn-primary">Rate Book</a>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-2">
+        <form asp-action="MakeFavorite" asp-controller="Account" asp-route-bookID="@Model.Book.ID" method="POST">
+            <button type="submit" class="btn btn-primary">Make Favorite</button>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
 </div>

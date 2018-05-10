@@ -33,5 +33,10 @@ namespace TheBookCave.Services
         {
             _userRepo.ChangeAvatar(userID, image);
         }
+
+        public void MakeFavorite(string userID, int bookID)
+        {
+            _userRepo.MakeFavorite(userID, bookID);
+        }
     }
 }

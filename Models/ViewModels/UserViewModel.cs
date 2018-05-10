@@ -8,7 +8,7 @@ namespace TheBookCave.Models.ViewModels
         public string Email { get; set; }
         public AddressModel Address { get; set; }
         public string Image { get; set; }
-        public int? FavoriteBookID { get; set; }
+        public string FavoriteBookImage { get; set; }
         public bool IsPremium { get; set; }
     }
 }

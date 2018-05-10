@@ -464,5 +464,17 @@ namespace TheBookCave.Controllers
 
             return RedirectToAction("Details", "Book", new {id = bookID});
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> MakeFavorite(int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+
+            _userService.MakeFavorite(userID, bookID);
+
+            return RedirectToAction("Details", "Book", new {id = bookID});
+        }
     }
 }
