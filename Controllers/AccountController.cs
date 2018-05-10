@@ -96,6 +96,7 @@ namespace TheBookCave.Controllers
             {
                 return View();
             }
+            ViewData["ErrorMessage"] = "";
 
             //Fetches user from signInManager.
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
@@ -105,7 +106,10 @@ namespace TheBookCave.Controllers
                 //If the user successfully logged in, the user is redirected to Home/Index.
                 return RedirectToAction("Index", "Home");
             }
-
+            else
+            {
+                ViewData["ErrorMessage"] = "Make sure you enter the right email and password";
+            }
             //If user did not successfully log in, they are presented with the form again.
             return View();
         }
