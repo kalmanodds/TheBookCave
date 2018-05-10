@@ -26,6 +26,12 @@
     padding-top: 18px;
 }
 
+/* Resizing the scrollable book containers in Home/index. */
+.testimonial-group
+{
+  width: 100%;
+}
+
 /* Resizing images in Home/Index. */
 .image-small
 {
@@ -90,20 +96,9 @@
 	background-color: #6E93AF;
 }
 
+/* Font color for error messages. */
 #log-in-error
 {
   color: #9E4A46;
 }
 
-.container .testimonial-group
-{
-  width: 1140px;
-}
-
-.center-logo
-{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
