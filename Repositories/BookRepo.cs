@@ -25,7 +25,16 @@ namespace TheBookCave.Repositories
                         select new BookViewModel{
                             ID = b.ID,
                             Title = b.Title,
-                            
+                            Author = b.Author,
+                                Description = b.Description,
+                                Price = b.Price,
+                                Genre = b.Genre,
+                                NumberOfPages = b.NumberOfPages,
+                                NumberOfCopiesSold = b.NumberOfCopiesSold,
+                                DatePublished = b.DatePublished,
+                                Publisher = b.Publisher,
+                                Rating = b.Rating,
+                                Image = b.Image
                         }).FirstOrDefault();
 
             return book;
