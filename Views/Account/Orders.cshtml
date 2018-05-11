@@ -17,7 +17,6 @@
   </tr>
 @foreach(var Order in Model)
 {
-<<<<<<< HEAD
     <tr>
         <td>@Order.OrderID</td>
         <td>@Order.TotalPrice</td>
@@ -36,26 +35,7 @@
             </form>
         </td>
     </tr>
-=======
-  <tr>
-    <td>@Order.OrderID</td>
-    <td>@Order.TotalPrice</td>
-    <td>@Order.IsWrapped</td>
-    <td>
-    @foreach(var Book in Order.Books)
-      {
-        @Book.Title 
-        @:x
-        @Book.Amount <br/>
-      }
-    </td>
-    <td>
-      <form asp-controller="Order" asp-action="ShipOrder" asp-route-orderID="@Order.OrderID" method="POST">
-        <input value="Ship Order" type="submit" class="btn btn-primary">
-      </form>
-    </td>
-  </tr>
->>>>>>> 0bd544df365fdcb62a40652900541f3dfacaae3f
+
 }  
 </table>
 
