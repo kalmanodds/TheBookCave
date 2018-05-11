@@ -101,6 +101,7 @@ namespace TheBookCave.Repositories
 
             userOrder.ShippingAddress = shippingAddress;
             userOrder.PaymentInfo = paymentInfo;
+            userOrder.IsWrapped = model.IsWrapped;
 
             _db.Orders.Update(userOrder);
             _db.SaveChanges();
@@ -117,6 +118,7 @@ namespace TheBookCave.Repositories
                              ShippingAddress = o.ShippingAddress,
                              DateOrder = o.DateOrder,
                              PaymentInfo = o.PaymentInfo,
+                             IsWrapped = o.IsWrapped,
                          }).FirstOrDefault();
             if(order != null)
             {

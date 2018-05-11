@@ -29,6 +29,7 @@ namespace TheBookCave.Models.InputModels
         [Required(ErrorMessage = "Country is required")]
         public string Country { get; set; }
 
+        public bool IsWrapped { get; set; }
         public string UserID { get; set; }
     }
 }

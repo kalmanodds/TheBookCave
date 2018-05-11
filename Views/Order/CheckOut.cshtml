@@ -101,6 +101,9 @@
                         <label>Zip Code
                             <input type="number" asp-for="Zip" class="form-control"/>
                         </label>
+                        <label class="center-block">Giftwrap as Gift?
+                            <input type="checkbox" asp-for="IsWrapped" class="center-block">
+                        </label>
                         <br/>
                         <span asp-validation-for="FullName" class="text-danger"></span>
                         <br/>
@@ -120,17 +123,11 @@
             </fieldset>
             <hr>
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <!--<button asp-controller="Account" asp-action="OrderCheckOutToVerify" class="btn btn-light">Back</button>-->
-                </div>
+                <div class="col-md-3"></div>
                 <div class="col-md-5">
                     <input type="submit" value="Confirm" class="btn btn-primary center-block"/>
                 </div>
-                <div class="col-md-2">
-                    <!--<input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm" class="btn btn-primary"/>-->
-                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-4"></div>
             </div>
         </form>
         <div class="row">

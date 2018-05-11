@@ -14,5 +14,6 @@ namespace TheBookCave.Models.ViewModels
         public bool IsReady { get; set; }
         public bool IsShipped { get; set; }
         public bool IsReceived { get; set; }
+        public bool IsWrapped { get; set; }
     }
 }
