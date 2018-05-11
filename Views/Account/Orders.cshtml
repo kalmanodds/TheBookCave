@@ -11,19 +11,31 @@
     <tr>
         <th scope="col">ID</td>
         <th scope="col">Price</td>
+        <th scope="col">Wrapped?</th>
         <th scope="col">Books</td>
+        <th scope="col">Finish Order!</th>
     </tr>
 @foreach(var Order in Model)
 {
     <tr>
         <td>@Order.OrderID</td>
         <td>@Order.TotalPrice</td>
+        <td>@Order.IsWrapped</td>
         <td>
         @foreach(var Book in Order.Books)
             {
-                @Book.Title <br/>
+                @Book.Title 
+                @:x
+                @Book.Amount <br/>
             }
+        </td>
+        <td>
+            <form asp-controller="Order" asp-action="ShipOrder" asp-route-orderID="@Order.OrderID" method="POST">
+                <input value="Ship Order" type="submit" class="btn btn-primary">
+            </form>
         </td>
     </tr>
 }  
 </table>
+
+<a asp-controller="Account" asp-action="Index" class="btn btn-primary">Back</a>

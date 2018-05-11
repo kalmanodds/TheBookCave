@@ -91,5 +91,10 @@ namespace TheBookCave.Services
         {
             return _orderRepo.GetOrders();
         }
+
+        public void ShipOrder(int orderID)
+        {
+            _orderRepo.ShipOrder(orderID);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
@@ -38,6 +39,18 @@ namespace TheBookCave.Controllers
             var listOrderBooks = _obcService.GetBooks(order.OrderID);
             order.Books = listOrderBooks;
             return View(order);
+        }
+
+        [HttpPost]
+        [Authorize(Roles="staff")]
+        public IActionResult ShipOrder(int? orderID)
+        {
+            if(orderID != null)
+            {
+                _orderService.ShipOrder((int)orderID);
+            }
+
+            return RedirectToAction("Orders", "Account");
         }
     }
 }

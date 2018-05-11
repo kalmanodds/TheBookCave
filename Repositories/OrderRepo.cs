@@ -215,5 +215,18 @@ namespace TheBookCave.Repositories
             }
             return orders;
         }
+
+        public void ShipOrder(int orderID)
+        {
+            var order = (from o in _db.Orders
+                         where o.ID == orderID
+                         select o).FirstOrDefault();
+
+            order.IsReady = false;
+            order.IsShipped = true;
+
+            _db.Orders.Update(order);
+            _db.SaveChanges();
+        }
     }
 }
