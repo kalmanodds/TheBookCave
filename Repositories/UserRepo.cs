@@ -9,13 +9,16 @@ namespace TheBookCave.Repositories
 {
     public class UserRepo
     {
+        //Private member variable to manipulate database.
         private DataContext _db;
 
+        //Constructor that initializes database.
         public UserRepo()
         {
             _db = new DataContext();
         }
 
+        //Adds new user.
         public void AddUser(RegisterInputModel model, string id)
         {
             var newUser = new UserEntityModel()
@@ -35,6 +38,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Gets User view model from id.
         public UserViewModel GetUser(string id)
         {
             var user = (from u in _db.Users
@@ -72,6 +76,7 @@ namespace TheBookCave.Repositories
             return user;
         }
 
+        //Edit user with new model.
         public void EditUser(UserInputModel model)
         {
             var entityModel = (from u in _db.Users
@@ -126,6 +131,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Changes avatar, which is stored in the Image variable.
         public void ChangeAvatar(string userID, string image)
         {
             var user = (from u in _db.Users
@@ -136,6 +142,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Sets Favorite book for user.
         public void MakeFavorite(string userID, int bookID)
         {
             var user = (from u in _db.Users

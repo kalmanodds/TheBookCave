@@ -9,13 +9,16 @@ namespace TheBookCave.Repositories
 {
     public class RatingRepo
     {
+        //Private member variable to manipulate database.
         private DataContext _db;
 
+        //Constructor to initialize Database.
         public RatingRepo()
         {
             _db = new DataContext();
         }
 
+        //Adds new ratings.
         public void AddRating(RatingInputModel model)
         {
             var rating = (from r in _db.Ratings
@@ -38,6 +41,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Gets all ratings for a book.
         public List<RatingViewModel> GetRatings(int bookID)
         {
             var ratings = (from r in _db.Ratings
@@ -58,6 +62,7 @@ namespace TheBookCave.Repositories
             return ratings;
         }
 
+        //Adds vote to a rating.
         public void AddVote(string userID, int ratingID)
         {
             var connection = (from c in _db.UserRatingVoteConnections
@@ -85,6 +90,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Removes rating.
         public void RemoveRating(int ratingID)
         {
             var rating = (from r in _db.Ratings

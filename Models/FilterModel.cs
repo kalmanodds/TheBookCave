@@ -2,6 +2,7 @@ namespace TheBookCave.Models
 {
     public class FilterModel
     {
+        //A class that encompasses the different searching features.
         public double MinPrice { get; set; }
         public double MaxPrice { get; set; }
         public string SearchWord { get; set; }

@@ -7,13 +7,16 @@ namespace TheBookCave.Repositories
 {
     public class WishlistRepo
     {
+        //Private member variable to manipulate database.
         private DataContext _db;
 
+        //Constructor that initializes database.
         public WishlistRepo()
         {
             _db = new DataContext();
         }
 
+        //Adds item to wishlist
         public void AddWishlistItem(WishlistInputModel model)
         {
             var connection = (from w in _db.UserBookWishlistConnections
@@ -27,6 +30,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Removes the wishlist item.
         public void RemoveItem(string userID, int bookID)
         {
             var connection = (from c in _db.UserBookWishlistConnections

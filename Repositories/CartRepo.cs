@@ -9,13 +9,16 @@ namespace TheBookCave.Repositories
 {
     public class CartRepo
     {
+        //Private variable to manipulate database.
         private DataContext _db;
 
+        //Constructor that initialiezes database.
         public CartRepo()
         {
             _db = new DataContext();
         }
 
+        //Adds Book to Cart.
         public void AddCartItem(CartInputModel model)
         {
             //Test if Connection is made.
@@ -58,6 +61,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Returns all book in the Cart.
         public List<BookViewModel> GetCartBooks(string userID)
         {
             var books = (from b in _db.Books
@@ -83,6 +87,7 @@ namespace TheBookCave.Repositories
             return books;
         }
 
+        //Updates Amount of Book in cart.
         public void UpdateConnection(CartInputModel model)
         {
             var allConnections = (from c in _db.UserBookCartConnections
@@ -102,7 +107,7 @@ namespace TheBookCave.Repositories
 
             if(amountInCart > 64)
             {
-                //Cannot exceed 64;
+                //Cart amount cannot exceed 64;
                 return;
             }
 
@@ -120,6 +125,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Removes Cart Item.
         public void RemoveItem(string userID, int bookID)
         {
             var connection = (from c in _db.UserBookCartConnections
@@ -130,6 +136,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //When order is finalized, The cart is emptied to make space for the next order.
         public void DeleteCartFinalizeOrder(int orderID)
         {
             var cartBooks = (from ubc in _db.UserBookCartConnections

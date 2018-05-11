@@ -10,13 +10,16 @@ namespace TheBookCave.Repositories
 {
     public class OrderRepo
     {
+        //Private member variable to manipulate database
         private DataContext _db;
 
+        //Constructor that initialzes Database
         public OrderRepo()
         {
             _db = new DataContext();
         }
 
+        //Creates new order.
         public void AddOrder(OrderInputModel model, double totalPrice, DateModel dateOrdered)
         {
             var newOrder = new OrderEntityModel()
@@ -30,6 +33,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Returns true if user has an order.
         public bool UserHasCurrentOrder(string userID)
         {
             var order = (from o in _db.Orders
@@ -45,6 +49,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Gets current order for user.
         public int? GetCurrentOrderID(string userID)
         {
             var order = (from o in _db.Orders
@@ -60,6 +65,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Updates order.
         public void UpdateOrder(OrderInputModel model, double totalPrice, DateModel dateOrdered, int orderID)
         {
             var order = (from o in _db.Orders
@@ -75,6 +81,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Adds shippin info in the additional check out phase.
         public void AddOrderFinalized(CheckoutInputModel model, string userID)
         {
             var userOrder = (from o in _db.Orders
@@ -107,6 +114,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Gets Current Order for the user.
         public OrderViewModel GetCurrentOrder(string userID)
         {
             var order = (from o in _db.Orders
@@ -127,6 +135,7 @@ namespace TheBookCave.Repositories
             return null;
         }
 
+        //Confirms order and makes it no longer current order.
         public void ConfirmOrder(int orderID, bool wrapped)
         {
             var order = (from o in _db.Orders
@@ -146,6 +155,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Gets order history for the user.
         public List<OrderHistoryViewModel> GetOrderHistory(string userID)
         {
             var orders = (from o in _db.Orders
@@ -176,6 +186,7 @@ namespace TheBookCave.Repositories
             return orders;
         }
 
+        //Gets all ready orders. No longer current and yet to be shipped.
         public List<OrderViewModel> GetOrders()
         {
             var orders = (from o in _db.Orders
@@ -216,6 +227,7 @@ namespace TheBookCave.Repositories
             return orders;
         }
 
+        //Sets order to shipped.
         public void ShipOrder(int orderID)
         {
             var order = (from o in _db.Orders

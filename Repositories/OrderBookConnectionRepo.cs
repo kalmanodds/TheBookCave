@@ -8,13 +8,16 @@ namespace TheBookCave.Repositories
 {
     public class OrderBookConnectionRepo
     {
+        //Private member variable to manipulate database.
         private DataContext _db;
 
+        //Constructor that initialzes Database.
         public OrderBookConnectionRepo()
         {
             _db = new DataContext();
         }
 
+        //Creates the connection between book and order.
         public void AddConnection(int orderID, int bookID, int amount)
         {
             var newConnection = new OrderBookConnectionEntityModel()
@@ -27,6 +30,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Updates connection in order.
         public void UpdateConnection(int orderID, int bookID, int amount)
         {
             var connection = (from c in _db.OrderBookConnections
@@ -45,6 +49,7 @@ namespace TheBookCave.Repositories
             }
         }
 
+        //Removes connection in order if item is removed from cart.
         public void RemoveItem(int orderID, int bookID)
         {
             var connection = (from c in _db.OrderBookConnections
@@ -60,6 +65,7 @@ namespace TheBookCave.Repositories
             _db.SaveChanges();
         }
 
+        //Gets all books in order.
         public List<BookViewModel> GetBooks(int orderID)
         {
             var books = (from b in _db.Books
