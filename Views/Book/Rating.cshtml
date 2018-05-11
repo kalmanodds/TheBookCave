@@ -30,10 +30,10 @@
                     <br/>
                     <br>
                     <label>Comment (optional)
-                        <textarea name="comment" cols="30" rows="10" class="form-control col-md-12" style="resize: none"></textarea>
+                        <textarea name="comment" cols="30" rows="10" class="form-control col-md-12"></textarea>
                     </label>
                     <br>
-                    
+
                     <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
