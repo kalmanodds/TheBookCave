@@ -58,7 +58,7 @@
     </div>
     <div class="col-md-2">
         <form asp-action="MakeFavorite" asp-controller="Account" asp-route-bookID="@Model.Book.ID" method="POST">
-            <button type="submit" class="btn btn-primary">Make Favorite</button>
+            <button type="submit" class="btn btn-primary add-to-favorite">Make Favorite</button>
         </form>
     </div>
     <div class="col-md-2"></div>
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         @{string avatar = Rating.Image;}
-                        <img src="Url.Content(avatar)" alt="avatar">
+                        <img src="@Url.Content(avatar)" alt="Avatar" class="image-small">
                     </div>
                     <div class="col-md-9">
                         <h3>@Rating.FirstName @Rating.LastName</h3>

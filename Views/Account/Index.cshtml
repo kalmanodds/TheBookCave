@@ -23,7 +23,7 @@
     <h3>Email: @Model.Email</h3>
     @if(Model.FavoriteBookID != null)
     {
-      <h3>Favorite Book:</h3>
+      <h2><b>Favorite Book</b></h2>
       <div class="row">
         <div class="col-md-3">
           @{string bookPath = Model.FavoriteBook.Image;}
@@ -52,7 +52,7 @@
     }
     else
     {
-      <h3>Shipping Address not filled out</h3>
+      <h3>Shipping address not not completely filled out</h3>
     }
 
     <br/>
