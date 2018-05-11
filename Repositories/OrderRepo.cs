@@ -127,7 +127,7 @@ namespace TheBookCave.Repositories
             return null;
         }
 
-        public void ConfirmOrder(int orderID)
+        public void ConfirmOrder(int orderID, bool wrapped)
         {
             var order = (from o in _db.Orders
                          where o.ID == orderID
@@ -136,6 +136,11 @@ namespace TheBookCave.Repositories
             {
                 order.IsCurrentOrder = false;
                 order.IsReady = true;
+                order.IsWrapped = wrapped;
+                if(wrapped)
+                {
+                    order.TotalPrice += 2;
+                }
                 _db.Orders.Update(order);
                 _db.SaveChanges();
             }

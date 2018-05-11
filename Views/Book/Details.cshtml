@@ -90,6 +90,10 @@
             @{string userStringRating = "~/images/stars/" + userIntRating + "0StarsSmall.png";}
             <img src=@Url.Content(userStringRating) alt="Rating">
             <p>@Rating.Comment</p>
+            <h5>@Rating.Votes</h5>
+            <form asp-controller="Account" asp-action="VoteComment" asp-route-bookID="@Model.Book.ID" asp-route-ratingID="@Rating.RatingID" method="POST">
+              <input type="submit" value="Like">
+            </form>
           </div>
         </div>
       }

@@ -62,7 +62,7 @@ namespace TheBookCave.Controllers
             if(id == 0)
             {
                 //If a book is not specified, redirect to the catalogue.
-                RedirectToAction("Home/Catalogue");
+                return RedirectToAction("Catalogue", "Home");
             }
 
             var book = _bookService.GetBook(id);

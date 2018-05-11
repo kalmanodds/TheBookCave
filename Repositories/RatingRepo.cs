@@ -30,6 +30,7 @@ namespace TheBookCave.Repositories
                     Comment = model.Comment,
                     UserID = model.UserID,
                     BookID = model.BookID,
+                    Votes = 1,
                 };
 
                 _db.Ratings.Add(newRating);
@@ -44,15 +45,44 @@ namespace TheBookCave.Repositories
                            where r.BookID == bookID
                            select new RatingViewModel()
                             {
+                                RatingID = r.ID,
                                 Score = r.Score,
                                 Comment = r.Comment,
                                 FirstName = u.FirstName,
                                 LastName = u.LastName,
                                 Image = u.Image,
+                                Votes = r.Votes,
                             }
                            ).ToList();
-            
+
             return ratings;
+        }
+
+        public void AddVote(string userID, int ratingID)
+        {
+            var connection = (from c in _db.UserRatingVoteConnections
+                              where c.UserID == userID && c.RatingID == ratingID
+                              select c).FirstOrDefault();
+
+            if(connection == null)
+            {
+                var newConnection = new UserRatingVoteConnectionEntityModel()
+                {
+                    UserID = userID,
+                    RatingID = ratingID,
+                };
+
+                _db.UserRatingVoteConnections.Add(newConnection);
+                _db.SaveChanges();
+
+                var rating = (from r in _db.Ratings
+                              where r.ID == ratingID
+                              select r).FirstOrDefault();
+                rating.Votes++;
+                
+                _db.Ratings.Update(rating);
+                _db.SaveChanges();
+            }
         }
     }
 }

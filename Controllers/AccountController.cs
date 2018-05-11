@@ -375,9 +375,9 @@ namespace TheBookCave.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult ConfirmedOrder(int orderID)
+        public IActionResult ConfirmedOrder(int orderID, bool wrapped)
         {
-            _orderService.ConfirmOrder(orderID);
+            _orderService.ConfirmOrder(orderID, wrapped);
             _cartService.DeleteCartFinalizeOrder(orderID);
 
             return RedirectToAction("Index", "Home");
@@ -501,6 +501,18 @@ namespace TheBookCave.Controllers
             var userID = user.Id;
             var orders = _orderService.GetOrderHistory(userID);
             return View(orders);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> VoteComment(int ratingID, int bookID)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+
+            _ratingService.AddVote(userID, ratingID);
+
+            return RedirectToAction("Details", "Book", new {id = bookID});
         }
     }
 }
