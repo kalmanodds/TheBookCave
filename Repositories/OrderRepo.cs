@@ -176,5 +176,44 @@ namespace TheBookCave.Repositories
             return orders;
         }
 
+        public List<OrderViewModel> GetOrders()
+        {
+            var orders = (from o in _db.Orders
+                          where o.IsReady == true
+                          select new OrderViewModel()
+                          {
+                              OrderID = o.ID,
+                              TotalPrice = o.TotalPrice,
+                              ShippingAddress = o.ShippingAddress,
+                              DateOrder = o.DateOrder,
+                              IsWrapped = o.IsWrapped,
+                          }).ToList();
+            for(int i = 0; i < orders.Count(); i++)
+            {
+                var books = (from b in _db.Books
+                             join c in _db.OrderBookConnections on b.ID equals c.BookID
+                             where c.OrderID == orders[i].OrderID
+                             select new BookViewModel()
+                             {
+                                ID = b.ID,
+                                Title = b.Title,
+                                Author = b.Author,
+                                ISBN10 = b.ISBN10,
+                                ISBN13 = b.ISBN13,
+                                Description = b.Description,
+                                Price = b.Price,
+                                Genre = b.Genre,
+                                NumberOfPages = b.NumberOfPages,
+                                NumberOfCopiesSold = b.NumberOfCopiesSold,
+                                DatePublished = b.DatePublished,
+                                Publisher = b.Publisher,
+                                Rating = b.Rating,
+                                Image = b.Image,
+                                Amount = c.Amount,
+                             }).ToList();
+                orders[i].Books = books;
+            }
+            return orders;
+        }
     }
 }

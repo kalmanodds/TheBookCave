@@ -86,5 +86,10 @@ namespace TheBookCave.Services
         {
             return _orderRepo.GetOrderHistory(userID);
         }
+
+        public List<OrderViewModel> GetOrders()
+        {
+            return _orderRepo.GetOrders();
+        }
     }
 }
