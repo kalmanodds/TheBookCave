@@ -284,7 +284,7 @@ namespace TheBookCave.Controllers
             }
 
             //Waits half a second so the add to wishlist animation can finish
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
 
             //Gets the user and their id
             var user = await _userManager.GetUserAsync(User);
