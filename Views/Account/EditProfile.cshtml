@@ -1,8 +1,10 @@
 @model TheBookCave.Models.ViewModels.UserViewModel
 
+<!-- The following row is split into a 2-3-5-2 column system, where the two middle columns collectively display the body. -->
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-3">
+    <!-- The main purpose of this column is to display the user's avatar and a button to change it. -->
     <br>
     <div class="jumbotron">
       @{string path = Model.Image;}
@@ -11,6 +13,7 @@
     </div>
   </div>
   <div class="col-md-5">
+    <!-- This column displays a form where the user can input information they wish to change. -->
     <h1>Edit Profile</h1>
     <p>Fill in information boxes that you wish to change and click the 'Submit' button. Empty fields will remain unchanged.</p>
     <br/>
@@ -25,7 +28,8 @@
       </div>
       <fieldset>
         <legend>Adress</legend>
-        @if (@Model.Address != null)
+        <!-- If the user has already added shipping information to their account, the 'Address' part of the form will have their information already filled in. -->
+        @if(@Model.Address != null)
         {
           <div class="form-group">
             <label for="edit-street-name">Street Name</label>
@@ -48,6 +52,7 @@
             <input type="text" name="country"  class="form-control" id="edit-country" value="@Model.Address.Country"/>
           </div>
         }
+        <!-- If the user has not added shipping information to their account, the 'Address' part of the form will have have appropriate placeholder text in fields. -->
         else 
         {
           <div class="form-group">
