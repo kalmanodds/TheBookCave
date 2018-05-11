@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
+using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
@@ -152,6 +153,37 @@ namespace TheBookCave.Repositories
                 _db.Books.Update(book);
                 _db.SaveChanges();
             }
+        }
+
+        public void AddBook(BookInputModel model)
+        {
+            var book = new BookEntityModel()
+            {
+                Title = model.Title,
+                Author = model.Author,
+                ISBN10 = model.ISBN10,
+                ISBN13 = model.ISBN13,
+                Description = model.Description,
+                Price = model.Price,
+                Genre = model.Genre,
+                NumberOfPages = model.NumberOfPages,
+                NumberOfCopiesSold = 0,
+                Publisher = model.Publisher,
+                Rating = 0,
+                NumberOfRatings = 0,
+                InStock = model.InStock,
+                Image = model.Image,
+            };
+
+            var datePublished = new DateModel()
+            {
+                Day = model.DayPublished,
+                Month = model.MonthPublished,
+                Year = model.YearPublished,
+            };
+            book.DatePublished = datePublished;
+            _db.Books.Add(book);
+            _db.SaveChanges();
         }
     }
 }
