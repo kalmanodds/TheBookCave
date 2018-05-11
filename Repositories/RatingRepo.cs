@@ -54,7 +54,7 @@ namespace TheBookCave.Repositories
                                 Votes = r.Votes,
                             }
                            ).ToList();
-            
+
             return ratings;
         }
 

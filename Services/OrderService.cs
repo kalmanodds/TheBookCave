@@ -77,9 +77,9 @@ namespace TheBookCave.Services
             return _orderRepo.GetCurrentOrder(userID);
         }
 
-        public void ConfirmOrder(int orderID)
+        public void ConfirmOrder(int orderID, bool wrapped)
         {
-            _orderRepo.ConfirmOrder(orderID);
+            _orderRepo.ConfirmOrder(orderID, wrapped);
         }
 
         public List<OrderViewModel> GetOrderHistory(string userID)

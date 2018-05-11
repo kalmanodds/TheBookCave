@@ -1,29 +1,29 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 /* Wrapping element. */
 /* Set some basic padding to keep content from hitting the edges. */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Horizontal scrollable catalogue. */
 .testimonial-group > .row {
-    background-color: #F5F5F5;
-    overflow-x: auto;
-    white-space: nowrap;
+  background-color: #F5F5F5;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 .testimonial-group > .row > .col-xs-4 {
-    display: inline-block;
-    float: none;
-    height: 350px;
-    width: 200px;
-    font-size: 48px;
-    padding-bottom: 20px; 
-    padding-top: 18px;
+  display: inline-block;
+  float: none;
+  height: 350px;
+  width: 200px;
+  font-size: 48px;
+  padding-bottom: 20px; 
+  padding-top: 18px;
 }
 
 /* Resizing the scrollable book containers in Home/index. */
@@ -35,65 +35,65 @@
 /* Resizing images in Home/Index. */
 .image-small
 {
-    height: auto; 
-    width: auto; 
-    max-width: 120px; 
-    max-height: 120px;
+  height: auto; 
+  width: auto; 
+  max-width: 120px; 
+  max-height: 120px;
 }
 
 /* Resizing images in Home/Catalogue. */
 .image-medium
 {
-    height: auto;
-    width: auto; 
-    max-width: 180px; 
-    max-height: 180px;
+  height: auto;
+  width: auto; 
+  max-width: 180px; 
+  max-height: 180px;
 }
 
 /* Resizing images in Book/Details. */
 .image-large
 {
-    height: auto; 
-    width: auto; 
-    max-width: 250px; 
-    max-height: 250px;
+  height: auto; 
+  width: auto; 
+  max-width: 250px; 
+  max-height: 250px;
 }
 
 .image-avatar
 {
-    height: auto;
-    widows: auto;
-    max-width: 100px;
-    max-height: 100px;
+  height: auto;
+  widows: auto;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 /* Used to fix the overflow of book titles/authors. */
 .overflow-caption
 {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Custom scroll bar. */
 .custom-scroll-bar::-webkit-scrollbar-track
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
 }
 
 .custom-scroll-bar::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: #F5F5F5;
+  width: 12px;
+  background-color: #F5F5F5;
 }
 
 .custom-scroll-bar::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #6E93AF;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #6E93AF;
 }
 
 /* Font color for error messages. */
@@ -104,5 +104,5 @@
 
 textarea
 {
-    resize: none;
+  resize: none;
 }
