@@ -82,7 +82,7 @@ namespace TheBookCave.Services
             _orderRepo.ConfirmOrder(orderID, wrapped);
         }
 
-        public List<OrderViewModel> GetOrderHistory(string userID)
+        public List<OrderHistoryViewModel> GetOrderHistory(string userID)
         {
             return _orderRepo.GetOrderHistory(userID);
         }
