@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         @{string avatar = Rating.Image;}
-                        <img src="Url.Content(avatar)" alt="avatar">
+                        <img src="@Url.Content(avatar)" alt="Avatar" class="image-small">
                     </div>
                     <div class="col-md-9">
                         <h3>@Rating.FirstName @Rating.LastName</h3>
