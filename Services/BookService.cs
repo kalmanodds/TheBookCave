@@ -38,5 +38,10 @@ namespace TheBookCave.Services
         {
             _bookRepo.AddRating(model);
         }
+
+        public void AddBook(BookInputModel model)
+        {
+            _bookRepo.AddBook(model);
+        }
     }
 }

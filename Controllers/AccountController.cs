@@ -18,6 +18,7 @@ namespace TheBookCave.Controllers
         //Private Member Variables that are used in ASP.NET Identity.
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         //Service Classes that Account Controller influences.
         private BookService _bookService;
@@ -29,10 +30,11 @@ namespace TheBookCave.Controllers
         private RatingService _ratingService;
 
         //Constructor that initializes private variables.
-        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
             _bookService = new BookService();
             _userService = new UserService();
             _cartService = new CartService();
@@ -59,6 +61,13 @@ namespace TheBookCave.Controllers
                 return View();
             }
 
+            IdentityResult roleResult;
+            var roleExist = await _roleManager.RoleExistsAsync("staff");
+            if(!roleExist)
+            {
+                roleResult = await _roleManager.CreateAsync(new IdentityRole("staff"));
+            }
+
             //Creates new user with the InputModel.
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -69,6 +78,7 @@ namespace TheBookCave.Controllers
                 //Add the concatenated first and last name as fullName in claims.
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
+                //await _userManager.AddToRoleAsync(user, "staff");
 
                 //Adds User to the DataContext database which can be accessed through UserService.
                 var id = user.Id;
@@ -513,6 +523,26 @@ namespace TheBookCave.Controllers
             _ratingService.AddVote(userID, ratingID);
 
             return RedirectToAction("Details", "Book", new {id = bookID});
+        }
+
+        [Authorize(Roles="staff")]
+        public IActionResult AddBook()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles="staff")]
+        public IActionResult AddBook(BookInputModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return RedirectToAction("AddBook", "Account");
+            }
+
+            _bookService.AddBook(model);
+
+            return RedirectToAction("Index", "Account");
         }
     }
 }
