@@ -43,23 +43,21 @@
                     </tr>
                 }
                 <tr>
-                    @if(Model.IsWrapped)
-                    {
-                        <td colspan="2">
+                    <td colspan="2">
+                        @if(Model.IsWrapped)
+                        {
+                            @{totalPrice += 2;}
                             <b>Total (+2$ wrapping fee)</b>
-                        </td>
-                    }
-                    else
-                    {
-                        <td colspan="2">
-                            <b>Total</b>
-                        </td>
-                    }
+                        }
+                        else
+                        {
+                            <b>Total</b
+                        }
+                    </td>
                     <td>
                         <b>@totalAmount</b>
                     </td>
                     <td>
-                        @{totalPrice += 2;}
                         <b>@totalPrice</b>
                     </td>
                 </tr>
