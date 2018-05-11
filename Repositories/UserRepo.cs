@@ -27,7 +27,8 @@ namespace TheBookCave.Repositories
                 Address = null,
                 Image = "~/images/avatars/robot-03@512px.png",
                 FavoriteBookID = null,
-                IsPremium = false
+                IsPremium = false,
+                IsEmployee = false,
             };
 
             _db.Add(newUser);

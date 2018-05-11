@@ -13,5 +13,6 @@ namespace TheBookCave.Data.EntityModels
         public string Image { get; set; }
         public int? FavoriteBookID { get; set; }
         public bool IsPremium { get; set; }
+        public bool IsEmployee { get; set; }
     }
 }
