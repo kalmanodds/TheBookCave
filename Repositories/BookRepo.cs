@@ -196,5 +196,33 @@ namespace TheBookCave.Repositories
             _db.Books.Add(book);
             _db.SaveChanges();
         }
+
+        public BookViewModel GetBookOfDay()
+        {
+            int rand = new Random(new DateTime().Day).Next();
+            var allBooks = (from b in _db.Books
+                            select new BookViewModel()
+                            {
+                            ID = b.ID,
+                            Title = b.Title,
+                            Author = b.Author,
+                            ISBN10 = b.ISBN10,
+                            ISBN13 = b.ISBN13,
+                            Description = b.Description,
+                            Price = b.Price,
+                            Genre = b.Genre,
+                            NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
+                            DatePublished = b.DatePublished,
+                            Publisher = b.Publisher,
+                            Rating = b.Rating,
+                            Image = b.Image
+                            }).ToList();
+
+            int index = rand % allBooks.Count();
+            var book = allBooks[index];
+
+            return book;
+        }
     }
 }

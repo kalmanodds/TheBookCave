@@ -43,5 +43,10 @@ namespace TheBookCave.Services
         {
             _bookRepo.AddBook(model);
         }
+
+        public BookViewModel GetBookOfDay()
+        {
+            return _bookRepo.GetBookOfDay();
+        }
     }
 }
