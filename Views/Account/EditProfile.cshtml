@@ -52,9 +52,9 @@
             <input type="text" name="country"  class="form-control" id="edit-country" value="@Model.Address.Country"/>
           </div>
         }
-        <!-- If the user has not added shipping information to their account, the 'Address' part of the form will have have appropriate placeholder text in fields. -->
         else 
         {
+          <!-- If the user has not added shipping information to their account, the 'Address' part of the form will have have appropriate placeholder text in fields. -->
           <div class="form-group">
             <label for="edit-street-name">Street Name</label>
             <input type="text" name="streetName"  class="form-control" id="edit-street-name" placeholder="Street Name"/>
