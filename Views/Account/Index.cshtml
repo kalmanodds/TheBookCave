@@ -77,6 +77,11 @@
     </div>
     <div class="col-md-4">
       <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
+      <br>
+      @if(User.IsInRole("staff"))
+      {
+        <a asp-controller="Account" asp-action="Orders" class="center-block btn btn-primary">User Orders</a>
+      }
     </div>
     <div class="col-md-4">
       <a asp-controller="Account" asp-action="OrderHistory" class="center-block btn btn-primary">Order History</a>

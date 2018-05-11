@@ -1,0 +1,29 @@
+@model List<TheBookCave.Models.ViewModels.OrderViewModel>
+
+<h1 class="text-center">Orders</h1>
+
+@if(Model == null || Model.Count() == 0)
+{
+    <h2>No Orders Currently</h2>
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th scope="col">ID</td>
+        <th scope="col">Price</td>
+        <th scope="col">Books</td>
+    </tr>
+@foreach(var Order in Model)
+{
+    <tr>
+        <td>@Order.OrderID</td>
+        <td>@Order.TotalPrice</td>
+        <td>
+        @foreach(var Book in Order.Books)
+            {
+                @Book.Title <br/>
+            }
+        </td>
+    </tr>
+}  
+</table>
