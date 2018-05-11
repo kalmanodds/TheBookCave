@@ -260,9 +260,9 @@ namespace TheBookCave.Controllers
         //Function that adds books to Cart.
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddToCart(int? id)
+        public async Task<IActionResult> AddToCart(int? bookID, string controlla, string acta)
         {
-            if(id == null)
+            if(bookID == null)
             {
                 return View("NotFound");
             }
@@ -274,21 +274,25 @@ namespace TheBookCave.Controllers
             //Creates the InputModel for the Cart.
             var newCartItem = new CartInputModel()
             {
-                BookID = (int)id,
+                BookID = (int)bookID,
                 UserID = userID,
             };
             //Adds this the cart connection from user to book.
             _cartService.AddCartItem(newCartItem);
             //Returns the user to the Catalogue.
-            return RedirectToAction("Catalogue", "Home");
+            if(acta == "Details")
+            {
+                return RedirectToAction(acta, controlla, new {id = bookID});
+            }
+            return RedirectToAction(acta, controlla);
         }
 
         //Function that adds books to the Wishlist.
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddToWishlist(int? id)
+        public async Task<IActionResult> AddToWishlist(int? bookID, string controlla, string acta)
         {
-            if(id == null)
+            if(bookID == null)
             {
                 return View("NotFound");
             }
@@ -301,11 +305,15 @@ namespace TheBookCave.Controllers
             var userID = user?.Id;
 
             //Creates the InputModel for the Wishlist.
-            var newWishlistItem = new WishlistInputModel((int)id, userID);
+            var newWishlistItem = new WishlistInputModel((int)bookID, userID);
             //Adds the wishlist connection from user to book.
             _wishlistService.AddWishlistItem(newWishlistItem);
             //Redirects the user to the Catalogue.
-            return RedirectToAction("Catalogue", "Home");
+            if(acta == "Details")
+            {
+                return RedirectToAction(acta, controlla, new {id = bookID});
+            }
+            return RedirectToAction(acta, controlla);
         }
 
         [Authorize]

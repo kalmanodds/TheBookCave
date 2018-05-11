@@ -26,11 +26,11 @@
         <p>@Book.Description</p>
       </div>
       <div class="col-md-2">
-        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
+        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-controlla="Home" asp-route-acta="TopTen" asp-route-bookID="@Book.ID" method="POST">
           <button type="submit" class="btn btn-primary add-to-wishlist">Add to Wishlist</button>
         </form>
         <br/>
-        <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Book.ID" method="POST">
+        <form asp-action="AddToCart" asp-controller="Account" asp-route-controlla="Home" asp-route-acta="TopTen" asp-route-bookID="@Book.ID" method="POST">
           <button type="submit" class="btn btn-primary">Add to Cart</button>
         </form>
       </div>
