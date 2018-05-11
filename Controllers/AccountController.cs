@@ -552,5 +552,13 @@ namespace TheBookCave.Controllers
 
             return RedirectToAction("Index", "Account");
         }
+
+        [HttpPost]
+        [Authorize(Roles="staff")]
+        public IActionResult RemoveRating(int bookID, int ratingID)
+        {
+            _ratingService.RemoveRating(ratingID);
+            return RedirectToAction("Details", "Book", new {id = bookID});
+        }
     }
 }

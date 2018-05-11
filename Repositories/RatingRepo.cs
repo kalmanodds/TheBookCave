@@ -84,5 +84,21 @@ namespace TheBookCave.Repositories
                 _db.SaveChanges();
             }
         }
+
+        public void RemoveRating(int ratingID)
+        {
+            var rating = (from r in _db.Ratings
+                          where r.ID == ratingID
+                          select r).FirstOrDefault();
+
+            _db.Remove(rating);
+            _db.SaveChanges();
+
+            var connections = (from r in _db.UserRatingVoteConnections
+                              where r.RatingID == ratingID
+                              select r).ToList();
+            _db.RemoveRange(connections);
+            _db.SaveChanges();
+        }
     }
 }

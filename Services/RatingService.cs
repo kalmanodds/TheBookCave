@@ -28,5 +28,10 @@ namespace TheBookCave.Services
         {
             _ratingRepo.AddVote(userID, ratingID);
         }
+
+        public void RemoveRating(int ratingID)
+        {
+            _ratingRepo.RemoveRating(ratingID);
+        }
     }
 }
