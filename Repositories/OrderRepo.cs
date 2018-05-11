@@ -3,6 +3,7 @@ using TheBookCave.Data;
 using TheBookCave.Data.EntityModels;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories
 {
@@ -102,6 +103,39 @@ namespace TheBookCave.Repositories
 
             _db.Orders.Update(userOrder);
             _db.SaveChanges();
+        }
+
+        public OrderViewModel GetCurrentOrder(string userID)
+        {
+            var order = (from o in _db.Orders
+                         where o.UserID == userID && o.CurrentOrder == true
+                         select new OrderViewModel()
+                         {
+                             OrderID = o.ID,
+                             TotalPrice = o.TotalPrice,
+                             ShippingAddress = o.ShippingAddress,
+                             DateOrder = o.DateOrder,
+                             PaymentInfo = o.PaymentInfo,
+                         }).FirstOrDefault();
+            if(order != null)
+            {
+                return order;
+            }
+            return null;
+        }
+
+        public void ConfirmOrder(int orderID)
+        {
+            var order = (from o in _db.Orders
+                         where o.ID == orderID
+                         select o).FirstOrDefault();
+            if(order != null)
+            {
+                order.CurrentOrder = false;
+                order.IsReady = true;
+                _db.Orders.Update(order);
+                _db.SaveChanges();
+            }
         }
     }
 }

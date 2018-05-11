@@ -367,15 +367,18 @@ namespace TheBookCave.Controllers
             }
             var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
-            _orderService.AddOrderFinalized(model, userID);
-            return RedirectToAction("Review", "Order");
+            
+            model.UserID = userID;
+
+            return RedirectToAction("Review", "Order", model);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> ConfirmedOrder(OrderViewModel model)
+        public IActionResult ConfirmedOrder(int orderID)
         {
-            var user = await _userManager.GetUserAsync(User);
+            _orderService.ConfirmOrder(orderID);
+            _cartService.DeleteCartFinalizeOrder(orderID);
 
             return RedirectToAction("Index", "Home");
         }

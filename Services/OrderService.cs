@@ -1,6 +1,7 @@
 using System;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services
@@ -68,6 +69,16 @@ namespace TheBookCave.Services
         public void AddOrderFinalized(CheckoutInputModel model, string userID)
         {
             _orderRepo.AddOrderFinalized(model, userID);
+        }
+
+        public OrderViewModel GetCurrentOrder(string userID)
+        {
+            return _orderRepo.GetCurrentOrder(userID);
+        }
+
+        public void ConfirmOrder(int orderID)
+        {
+            _orderRepo.ConfirmOrder(orderID);
         }
     }
 }

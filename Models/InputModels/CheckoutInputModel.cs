@@ -28,5 +28,7 @@ namespace TheBookCave.Models.InputModels
         public int Zip { get; set; }
         [Required(ErrorMessage = "Country is required")]
         public string Country { get; set; }
+
+        public string UserID { get; set; }
     }
 }

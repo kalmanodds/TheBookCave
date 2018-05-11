@@ -129,5 +129,16 @@ namespace TheBookCave.Repositories
             _db.UserBookCartConnections.Remove(connection);
             _db.SaveChanges();
         }
+
+        public void DeleteCartFinalizeOrder(int orderID)
+        {
+            var cartBooks = (from ubc in _db.UserBookCartConnections
+                             join obc in _db.OrderBookConnections on ubc.BookID equals obc.BookID
+                             where obc.OrderID == orderID
+                             select ubc).ToList();
+            
+            _db.RemoveRange(cartBooks);
+            _db.SaveChanges();
+        }
     }
 }

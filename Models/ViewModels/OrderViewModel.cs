@@ -5,6 +5,7 @@ namespace TheBookCave.Models.ViewModels
 {
     public class OrderViewModel
     {
+        public int OrderID { get; set; }
         public List<BookViewModel> Books { get; set; }
         public double TotalPrice { get; set; }
         public AddressModel ShippingAddress { get; set; }

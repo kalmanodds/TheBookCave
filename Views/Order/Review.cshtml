@@ -2,8 +2,15 @@
 
 <h1>Review</h1>
 
-<!--Insert VIewmodel-->
+<!--Insert Viewmodel-->
+@foreach(var Book in @Model.Books)
+{
+    <h2>@Book.Title</h2>
+}
 
-<form asp-controller="Account" asp-action="ConfirmedOrder" method="POST">
+<h2>@Model.TotalPrice</h2>
+
+
+<form asp-controller="Account" asp-action="ConfirmedOrder" asp-route-orderID="@Model.OrderID" method="POST">
     <input type="submit" value="Confirm"/>
 </form>

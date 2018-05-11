@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <form method="POST">
+        <form asp-action="OrderCheckOutToVerify" asp-controller="Account" method="POST">
             <fieldset>
                 <legend class="text-center">Card Information</legend>
                 <div class="row">
@@ -15,7 +15,7 @@
                         <label> Payment option
                             <br>
                             <label>Credit</label>
-                            <input type="radio" asp-for="CardType" value="credit"/>
+                            <input type="radio" asp-for="CardType" value="credit" checked="checked"/>
                             <label>Debit</label>
                             <input type="radio" asp-for="CardType" value="debit"/>
                         </label>
@@ -122,15 +122,26 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                    <button asp-controller="Account" asp-action="OrderCheckOutToVerify" class="btn btn-light">Back</button>
+                    <!--<button asp-controller="Account" asp-action="OrderCheckOutToVerify" class="btn btn-light">Back</button>-->
                 </div>
-                <div class="col-md-5"></div>
+                <div class="col-md-5">
+                    <input type="submit" value="Confirm" class="btn btn-primary center-block"/>
+                </div>
                 <div class="col-md-2">
-                    <input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm" class="btn btn-primary"/>
+                    <!--<input asp-action="OrderCheckOutToVerify" asp-controller="Account" type="submit" value="Confirm" class="btn btn-primary"/>-->
                 </div>
                 <div class="col-md-2"></div>
             </div>
         </form>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+                <form>
+                    <input type="submit" asp-controller="Account" asp-action="Cart" class="btn btn-light center-block" value="Back"/>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
     <div class="col-md-3"></div>
 </div>

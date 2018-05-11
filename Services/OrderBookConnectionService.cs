@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TheBookCave.Models.ViewModels;
 using TheBookCave.Repositories;
 
 namespace TheBookCave.Services
@@ -24,6 +26,11 @@ namespace TheBookCave.Services
         public void RemoveItem(int orderID, int bookID)
         {
             _obcRepo.RemoveItem(orderID, bookID);
+        }
+
+        public List<BookViewModel> GetBooks(int orderID)
+        {
+            return _obcRepo.GetBooks(orderID);
         }
     }
 }

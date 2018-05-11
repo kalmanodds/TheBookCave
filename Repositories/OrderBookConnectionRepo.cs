@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
 using TheBookCave.Data.EntityModels;
+using TheBookCave.Models.ViewModels;
 
 namespace TheBookCave.Repositories
 {
@@ -56,6 +58,34 @@ namespace TheBookCave.Repositories
             
             _db.OrderBookConnections.Remove(connection);
             _db.SaveChanges();
+        }
+
+        public List<BookViewModel> GetBooks(int orderID)
+        {
+            var books = (from b in _db.Books
+                         join c in _db.OrderBookConnections on b.ID equals c.BookID
+                         where c.OrderID == orderID
+                         select new BookViewModel()
+                         {
+                             ID = b.ID,
+                             Title = b.Title,
+                             Author = b.Author,
+                             Description = b.Description,
+                             Price = b.Price,
+                             Genre = b.Genre,
+                             NumberOfPages = b.NumberOfPages,
+                             NumberOfCopiesSold = b.NumberOfCopiesSold,
+                             DatePublished = b.DatePublished,
+                             Publisher = b.Publisher,
+                             Image = b.Image,
+                             Amount = c.Amount,
+                         }).ToList();
+
+            if(books != null)
+            {
+                return books;
+            }
+            return null;
         }
     }
 }

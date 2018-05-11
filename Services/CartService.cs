@@ -33,5 +33,10 @@ namespace TheBookCave.Services
         {
             _cartRepo.RemoveItem(userID, bookID);
         }
+
+        public void DeleteCartFinalizeOrder(int orderID)
+        {
+            _cartRepo.DeleteCartFinalizeOrder(orderID);
+        }
     }
 }
