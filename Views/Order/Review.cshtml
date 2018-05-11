@@ -5,66 +5,66 @@
 <!--Insert Viewmodel-->
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Book</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{int totalAmount = 0;}
-                @{double totalPrice = 0;}
-                @foreach(var Book in @Model.Books)
-                {
-                    <tr>
-                        <td>@Book.Title</td>
-                        <td>@Book.Price<!---->$</td>
-                        <td>@Book.Amount</td>
-                        @{totalAmount += Book.Amount;}
-                        @{double price = (Book.Price * Book.Amount);}
-                        @{totalPrice += price;}
-                        @{int endsIn0 = (int)((price * 100) % 10);}
-                        @{int endsIn00 = (int)((price * 100) % 100);}
-                        @{string lastZero = "";}
-                        @if(endsIn0 == 0)
-                        {
-                        lastZero = "0";
-                        }
-                        @if(endsIn0 == 0 && endsIn00 == 0)
-                        {
-                        lastZero = ".00";
-                        }
-                        <td>@price<!---->@lastZero$</td>
-                    </tr>
-                }
-                <tr>
-                    <td colspan="2">
-                        @if(Model.IsWrapped)
-                        {
-                                totalPrice += 2;
-                                <b>Total (+2$ wrapping fee)</b>
-                        }
-                        else
-                        {
-                                <b>Total</b>
-                        }
-                    </td>
-                    <td>
-                        <b>@totalAmount</b>
-                    </td>
-                    <td>
-                        <b>@totalPrice</b>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-md-2"></div>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Book</th>
+          <th scope="col">Price</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{int totalAmount = 0;}
+        @{double totalPrice = 0;}
+        @foreach(var Book in @Model.Books)
+        {
+          <tr>
+            <td>@Book.Title</td>
+            <td>@Book.Price<!---->$</td>
+            <td>@Book.Amount</td>
+            @{totalAmount += Book.Amount;}
+            @{double price = (Book.Price * Book.Amount);}
+            @{totalPrice += price;}
+            @{int endsIn0 = (int)((price * 100) % 10);}
+            @{int endsIn00 = (int)((price * 100) % 100);}
+            @{string lastZero = "";}
+            @if(endsIn0 == 0)
+            {
+            lastZero = "0";
+            }
+            @if(endsIn0 == 0 && endsIn00 == 0)
+            {
+            lastZero = ".00";
+            }
+            <td>@price<!---->@lastZero$</td>
+          </tr>
+        }
+        <tr>
+          <td colspan="2">
+            @if(Model.IsWrapped)
+            {
+                totalPrice += 2;
+                <b>Total (+2$ wrapping fee)</b>
+            }
+            else
+            {
+                <b>Total</b>
+            }
+          </td>
+          <td>
+            <b>@totalAmount</b>
+          </td>
+          <td>
+            <b>@totalPrice</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-2"></div>
 </div>
 
 <form asp-controller="Account" asp-action="ConfirmedOrder" asp-route-wrapped="@Model.IsWrapped" asp-route-orderID="@Model.OrderID" method="POST">
@@ -72,5 +72,5 @@
 </form>
 <br/>
 <form>
-    <input type="submit" asp-controller="Order" asp-action="CheckOut" class="btn btn-light center-block" value="Back"/>
+  <input type="submit" asp-controller="Order" asp-action="CheckOut" class="btn btn-light center-block" value="Back"/>
 </form>

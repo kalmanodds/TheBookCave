@@ -16,6 +16,7 @@
   overflow-x: auto;
   white-space: nowrap;
 }
+
 .testimonial-group > .row > .col-xs-4 {
   display: inline-block;
   float: none;
@@ -27,14 +28,12 @@
 }
 
 /* Resizing the scrollable book containers in Home/index. */
-.testimonial-group
-{
+.testimonial-group {
   width: 100%;
 }
 
 /* Resizing images in Home/Index. */
-.image-small
-{
+.image-small {
   height: auto; 
   width: auto; 
   max-width: 120px; 
@@ -42,8 +41,7 @@
 }
 
 /* Resizing images in Home/Catalogue. */
-.image-medium
-{
+.image-medium {
   height: auto;
   width: auto; 
   max-width: 180px; 
@@ -51,16 +49,14 @@
 }
 
 /* Resizing images in Book/Details. */
-.image-large
-{
+.image-large {
   height: auto; 
   width: auto; 
   max-width: 250px; 
   max-height: 250px;
 }
 
-.image-avatar
-{
+.image-avatar {
   height: auto;
   widows: auto;
   max-width: 100px;
@@ -68,41 +64,35 @@
 }
 
 /* Used to fix the overflow of book titles/authors. */
-.overflow-caption
-{
+.overflow-caption {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 /* Custom scroll bar. */
-.custom-scroll-bar::-webkit-scrollbar-track
-{
+.custom-scroll-bar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 10px;
   background-color: #F5F5F5;
 }
 
-.custom-scroll-bar::-webkit-scrollbar
-{
+.custom-scroll-bar::-webkit-scrollbar {
   width: 12px;
   background-color: #F5F5F5;
 }
 
-.custom-scroll-bar::-webkit-scrollbar-thumb
-{
+.custom-scroll-bar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #6E93AF;
 }
 
 /* Font color for error messages. */
-#log-in-error
-{
+#log-in-error {
   color: #9E4A46;
 }
 
-textarea
-{
+textarea {
   resize: none;
 }
