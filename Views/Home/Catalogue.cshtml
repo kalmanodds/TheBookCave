@@ -74,7 +74,7 @@
                 <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
                 <h5 class="text-center">Price: @Model[ind].Price$</h5>
                 <p>
-                  <form asp-action="AddToCart" asp-controller="Account" asp-route-id="@Model[ind].ID" method="POST">
+                  <form asp-action="AddToCart" asp-controller="Account" asp-route-controlla="Home" asp-route-acta="Catalogue" asp-route-bookID="@Model[ind].ID" method="POST">
                     <button type="submit" class="center-block btn btn-primary add-to-cart">Add to Cart</button>
                   </form>
                 </p>
