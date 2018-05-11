@@ -68,7 +68,7 @@
 </div>
 
 <form asp-controller="Account" asp-action="ConfirmedOrder" asp-route-wrapped="@Model.IsWrapped" asp-route-orderID="@Model.OrderID" method="POST">
-    <input type="submit" value="Confirm" class="btn btn-primary center-block"/>
+    <input type="submit" value="Confirm and Pay" class="btn btn-primary center-block confirm-order"/>
 </form>
 <br/>
 <form>

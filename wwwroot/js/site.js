@@ -14,3 +14,9 @@ $(".add-to-wishlist").click(function(e) {
 $(".add-to-favorite").click(function(e) {
     sweetAlert("Book has been set as your favorite!", "", "success")
 });
+$(".confirm-order").click(function(e) {
+    sweetAlert("You order is complete!", "", "success")
+});
+$(".ship-order").click(function(e) {
+    sweetAlert("Order has been shipped!", "", "success")
+});
