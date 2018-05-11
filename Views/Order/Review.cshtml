@@ -2,8 +2,7 @@
 
 <h1 class="text-center">Order review</h1>
 
-<!--Insert Viewmodel-->
-
+<!-- The following row is split into a 2-8-2 column system for indenting purposes, where the main body contains a table. -->
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
@@ -25,6 +24,7 @@
             <td>@Book.Title</td>
             <td>@Book.Price<!---->$</td>
             <td>@Book.Amount</td>
+            <!-- The following block of code is used to configure 2 decimal places, regardless of the price. -->
             @{totalAmount += Book.Amount;}
             @{double price = (Book.Price * Book.Amount);}
             @{totalPrice += price;}

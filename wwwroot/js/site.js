@@ -1,5 +1,4 @@
-﻿// Write your JavaScript code.
-$(".add-to-cart").click(function(e) {
+﻿$(".add-to-cart").click(function(e) {
     sweetAlert("Book has been added to your cart!", "", "success")
 });
 $(".remove-from-cart").click(function(e) {
