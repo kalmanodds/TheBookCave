@@ -2,42 +2,45 @@
 
 <h1 class="text-center">Rate This Book!</h1>
 
+<!-- The following row is split into a 2-8-2 column system for indenting purposes. -->
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <div class="row">
-            <div class="col-md-3">
-                @{string path = Model.Image;}
-                <img src="Url.Content(path)" alt="@Model.Title">
-            </div>
-            <div class="col-md-9">
-                <h2>@Model.Title</h2>
-                <h3>By @Model.Author</h3>
-            </div>
-        </div>
-        <hr>
-
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <label>Stars</label>
-                <form method="POST">
-                    1 <input type="radio" name="score" value="1" checked="checked">
-                    2 <input type="radio" name="score" value="2">
-                    3 <input type="radio" name="score" value="3">
-                    4 <input type="radio" name="score" value="4">
-                    5 <input type="radio" name="score" value="5">
-                    <br/>
-                    <br>
-                    <label>Comment (optional)
-                        <textarea name="comment" cols="30" rows="10" class="form-control col-md-12" style="resize: none"></textarea>
-                    </label>
-                    <br>
-                    
-                    <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit" class="btn btn-primary">Submit Comment</button>
-                </form>
-            </div>
-        </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <!-- The first row in the main body is used to display minor details about the book. -->
+    <div class="row">
+      <div class="col-md-3">
+        @{string path = Model.Image;}
+        <img src="Url.Content(path)" alt="@Model.Title">
+      </div>
+      <div class="col-md-9">
+        <h2>@Model.Title</h2>
+        <h3>By @Model.Author</h3>
+      </div>
     </div>
-    <div class="col-md-2"></div>
+    <hr>
+
+    <div class="row">
+    <!-- The second row in the main body is used to display a form where the user rates the book 1-5 stars and can optionally leave a comment. --> 
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <label>Stars</label>
+        <form method="POST">
+          1 <input type="radio" name="score" value="1" checked="checked">
+          2 <input type="radio" name="score" value="2">
+          3 <input type="radio" name="score" value="3">
+          4 <input type="radio" name="score" value="4">
+          5 <input type="radio" name="score" value="5">
+          <br/>
+          <br>
+          <label>Comment (optional)
+            <textarea name="comment" cols="30" rows="10" class="form-control col-md-12" style="resize: none"></textarea>
+          </label>
+          <br>
+          
+          <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>
