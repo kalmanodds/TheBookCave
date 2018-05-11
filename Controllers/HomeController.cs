@@ -101,7 +101,7 @@ namespace TheBookCave.Controllers
 
         public IActionResult TopTen()
         {
-            ViewData["Message"] = "The Top Ten";
+            ViewData["Message"] = "The Top 10";
 
             var filter = new FilterModel(0, System.Double.MaxValue, null, "RatingDown", null, 10);
             var books = _bookService.GetBooks(filter);

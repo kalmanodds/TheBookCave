@@ -47,6 +47,9 @@
     </form>
   </div>
 
+
+@if(@Model != null)
+{
   <!-- The catalogue itself. -->
   <div class="col-md-9">
     <br/>
@@ -85,4 +88,9 @@
       </div>
     }
   </div>
+}
+else
+{
+  <h2>No Books Found!</h2>
+}
 </div>

@@ -27,6 +27,8 @@ namespace TheBookCave.Repositories
                             ID = b.ID,
                             Title = b.Title,
                             Author = b.Author,
+                            ISBN10 = b.ISBN10,
+                            ISBN13 = b.ISBN13,
                             Description = b.Description,
                             Price = b.Price,
                             Genre = b.Genre,
@@ -49,6 +51,8 @@ namespace TheBookCave.Repositories
                             ID = b.ID,
                             Title = b.Title,
                             Author = b.Author,
+                            ISBN10 = b.ISBN10,
+                            ISBN13 = b.ISBN13,
                             Description = b.Description,
                             Price = b.Price,
                             Genre = b.Genre,
@@ -67,7 +71,10 @@ namespace TheBookCave.Repositories
 
             if(filter.SearchWord != null)
             {
-                books = books.Where( book => (book.Title.ToLower().Contains(filter.SearchWord.ToLower()) || book.Author.ToLower().Contains(filter.SearchWord.ToLower()) ) );
+                books = books.Where( book => (book.Title.ToLower().Contains(filter.SearchWord.ToLower()) 
+                                           || book.Author.ToLower().Contains(filter.SearchWord.ToLower())
+                                           || book.ISBN10.ToLower().Contains(filter.SearchWord.ToLower())
+                                           || book.ISBN13.ToLower().Contains(filter.SearchWord.ToLower()) ) );
             }
 
             switch(filter.OrderBy) {
@@ -112,6 +119,10 @@ namespace TheBookCave.Repositories
             }
 
             var result = new List<BookViewModel>();
+            if(books == null || books.Count() == 0)
+            {
+                return null;
+            }
             result = books.ToList();
             return result;
         }
