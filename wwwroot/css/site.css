@@ -102,3 +102,7 @@
   color: #9E4A46;
 }
 
+textarea
+{
+    resize: none;
+}

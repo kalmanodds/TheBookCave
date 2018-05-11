@@ -457,6 +457,11 @@ namespace TheBookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userID = user.Id;
             
+            if(comment.Length > 500)
+            {
+                return RedirectToAction("Rating", "Book", new {id = bookID});
+            }
+
             var newReview = new RatingInputModel()
             {
                 Score = score,

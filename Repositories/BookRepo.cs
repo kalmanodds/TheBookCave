@@ -21,20 +21,20 @@ namespace TheBookCave.Repositories
         public BookViewModel GetBook(int? id)
         {
             var book = (from b in _db.Books
-                        where id == b.ID
+                        where (int)id == b.ID
                         select new BookViewModel{
                             ID = b.ID,
                             Title = b.Title,
                             Author = b.Author,
-                                Description = b.Description,
-                                Price = b.Price,
-                                Genre = b.Genre,
-                                NumberOfPages = b.NumberOfPages,
-                                NumberOfCopiesSold = b.NumberOfCopiesSold,
-                                DatePublished = b.DatePublished,
-                                Publisher = b.Publisher,
-                                Rating = b.Rating,
-                                Image = b.Image
+                            Description = b.Description,
+                            Price = b.Price,
+                            Genre = b.Genre,
+                            NumberOfPages = b.NumberOfPages,
+                            NumberOfCopiesSold = b.NumberOfCopiesSold,
+                            DatePublished = b.DatePublished,
+                            Publisher = b.Publisher,
+                            Rating = b.Rating,
+                            Image = b.Image
                         }).FirstOrDefault();
 
             return book;
