@@ -1,5 +1,7 @@
 @model TheBookCave.Models.ViewModels.UserViewModel
 
+<!-- The following row is split into a 3-6-3 column system. -->
+<!-- The main purpose of this row is to display a heading in the same size as the total size of the main body of the next row. -->
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
@@ -9,18 +11,20 @@
   <div class="col-md-3"></div>
 </div>
 
-
+<!-- The following body is split into a 3-2-4-3 column system where the two middle columns collectively display the main body. -->
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-2">
-      @{string path = Model.Image;}
-      <img class="image-small img-responsive center-block" src=@Url.Content(path) alt="Avatar">
+    <!-- The main purpose of this column is to display the user's avatar. -->
+    @{string path = Model.Image;}
+    <img class="image-small img-responsive center-block" src=@Url.Content(path) alt="Avatar">
   </div>
   <div class="col-md-4">
-
+    <!-- The main purpose of this column is to display infomation about the user. -->
     <h2> <b>Basic Information</b> </h2>
     <h3>Name: @Model.FirstName @Model.LastName</h3>
     <h3>Email: @Model.Email</h3>
+    <!-- The user's favorite book is only displayd if they have one, otherwise this section is empty. -->
     @if(Model.FavoriteBookID != null)
     {
       <h2><b>Favorite Book</b></h2>
@@ -37,6 +41,7 @@
     }
 
     <h2> <b>Shipping Information</b></h2>
+    <!-- The user shipping details are displayed if they have already added them via Account/EditProfile, otherwise "Shipping address not not completely filled out" is displayed. --> 
     @if (@Model.Address != null &&
          @Model.Address.StreetName != null &&
          @Model.Address.HouseNumber != 0 &&
@@ -60,6 +65,7 @@
   <div class="col-md-3"></div>
 </div>
 
+<!-- The main purpose of the following row is to display the 'Edit Profile' button in the middle of the page. -->
 <div class="row">
   <div class="col-md-5"></div>
   <div class="col-md-2">
