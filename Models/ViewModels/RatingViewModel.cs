@@ -9,6 +9,5 @@ namespace TheBookCave.Models.ViewModels
         public string LastName { get; set; }
         public string Image { get; set; }
         public int Votes { get; set; }
-        public bool IsVoted { get; set; }
     }
 }
