@@ -69,22 +69,5 @@ namespace TheBookCave.Controllers
 
             return View(book);
         }
-
-        //TODO
-        //Editor for Books.
-        //Should only be accessable by Employees.
-        public IActionResult Edit(int bookID)
-        {
-            //This function takes in a bookID parameter which is the ID of the book that should be edited.
-            if(bookID == 0)
-            {
-                //If a book is not specified, redirect to the catalogue.
-                RedirectToAction("Home/Catalogue");
-            }
-            
-            var book = _bookService.GetBook(bookID);
-            
-            return View();
-        }
     }
 }
