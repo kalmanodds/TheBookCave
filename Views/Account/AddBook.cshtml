@@ -1,23 +1,83 @@
 @model TheBookCave.Models.InputModels.BookInputModel
 
-<form asp-controller="Account" asp-action="AddBook" method="POST">
-    Title<input type="text" asp-for="Title">
-    Author <input type="text" asp-for="Author">
-    ISBN10 <input type="text" asp-for="ISBN10">
-    ISBN13 <input type="text" asp-for="ISBN13">
-    Description <textarea asp-for="Description" cols="30" rows="10"></textarea>
-    Price <input type="number" step="0.01" asp-for="Price">
-    Genre <input type="text" asp-for="Genre">
-    Number of Pages <input type="number" asp-for="NumberOfPages">
-    Day of Publication:
-    Day <input type="number" asp-for="DayPublished">
-    Month <input type="number" asp-for="MonthPublished">
-    Year <input type="number" asp-for="YearPublished">
-    Publisher <input type="text" asp-for="Publisher">
-    Number In Stock: <input type="number" asp-for="InStock">
-    Image root: <input type="text" asp-for="Image">
-    <input type="submit" value="ADD BOOK">
-</form>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h1 class="text-center">Add a Book!</h1>
+        <hr>
+        <form asp-controller="Account" asp-action="AddBook" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        Title<input type="text" asp-for="Title" class="form-control">
+                    </label>
+                    <label>
+                        ISBN10 <input type="text" asp-for="ISBN10" class="form-control">
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        Author <input type="text" asp-for="Author" class="form-control">
+                    </label>    
+                    <label>
+                        ISBN13 <input type="text" asp-for="ISBN13" class="form-control">
+                    </label>
+                </div>
+            </div>
+            <label>
+                Description <textarea asp-for="Description" cols="59" rows="8" class="form-control"></textarea>
+            </label>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        Price <input type="number" step="0.01" asp-for="Price" class="form-control">
+                    </label>
+                    <label>
+                        Number of Pages <input type="number" asp-for="NumberOfPages" class="form-control">
+                    </label>
+                    <label>
+                        Image root: <input type="text" asp-for="Image" class="form-control">
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        Genre <input type="text" asp-for="Genre" class="form-control">
+                    </label>
+                    <label>
+                        Number In Stock: <input type="number" asp-for="InStock" class="form-control">
+                    </label>
+                    <label>
+                        Publisher <input type="text" asp-for="Publisher" class="form-control">
+                    </label>
+                </div>
+            </div>
+            <br>
+            <fieldset>
+                <legend>Day of Publication</legend>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>
+                            Day <input type="number" asp-for="DayPublished" class="form-control">
+                        </label>
+                        <label>        
+                            Year <input type="number" asp-for="YearPublished" class="form-control">
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label>
+                            Month <input type="number" asp-for="MonthPublished" class="form-control">
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <input type="submit" value="Add Book" class="btn btn-primary center-block">
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
 
 <span asp-validation-for="Title" class="text-danger"></span>
 <span asp-validation-for="Author" class="text-danger"></span>
