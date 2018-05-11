@@ -375,9 +375,9 @@ namespace TheBookCave.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult ConfirmedOrder(int orderID)
+        public IActionResult ConfirmedOrder(int orderID, bool wrapped)
         {
-            _orderService.ConfirmOrder(orderID);
+            _orderService.ConfirmOrder(orderID, wrapped);
             _cartService.DeleteCartFinalizeOrder(orderID);
 
             return RedirectToAction("Index", "Home");
