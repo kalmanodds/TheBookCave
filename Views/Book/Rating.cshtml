@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-3">
                 @{string path = Model.Image;}
-                <img src="Url.Content(path)" alt="@Model.Title">
+                <img src="@Url.Content(path)" alt="@Model.Title">
             </div>
             <div class="col-md-9">
                 <h2>@Model.Title</h2>
@@ -34,7 +34,7 @@
                     </label>
                     <br>
                     
-                    <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit" class="btn btn-primary">Submit Comment</button>
+                    <button asp-controller="Account" asp-action="AddRating" asp-route-bookID="@Model.ID" type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
