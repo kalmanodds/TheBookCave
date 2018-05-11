@@ -7,5 +7,6 @@ namespace TheBookCave.Data.EntityModels
         public string Comment { get; set; }
         public string UserID { get; set; }
         public int BookID { get; set; }
+        public int Votes { get; set; }
     }
 }

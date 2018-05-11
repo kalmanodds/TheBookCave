@@ -13,6 +13,7 @@ namespace TheBookCave.Data
         public DbSet<OrderBookConnectionEntityModel> OrderBookConnections { get; set; }
         public DbSet<UserBookCartConnectionEntityModel> UserBookCartConnections { get; set; }
         public DbSet<UserBookWishlistConnectionEntityModel> UserBookWishlistConnections { get; set; }
+        public DbSet<UserRatingVoteConnectionEntityModel> UserRatingVoteConnections { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

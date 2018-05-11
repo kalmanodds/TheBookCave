@@ -11,9 +11,10 @@ using TheBookCave.Data;
 namespace TheBookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180511135627_Votes")]
+    partial class Votes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,7 +202,7 @@ namespace TheBookCave.Migrations
 
                     b.Property<int>("RatingID");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.HasKey("ID");
 

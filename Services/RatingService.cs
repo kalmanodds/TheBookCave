@@ -23,5 +23,10 @@ namespace TheBookCave.Services
         {
             return _ratingRepo.GetRatings(bookID);
         }
+
+        public void AddVote(string userID, int ratingID)
+        {
+            _ratingRepo.AddVote(userID, ratingID);
+        }
     }
 }
