@@ -70,3 +70,7 @@
 <form asp-controller="Account" asp-action="ConfirmedOrder" asp-route-wrapped="@Model.IsWrapped" asp-route-orderID="@Model.OrderID" method="POST">
     <input type="submit" value="Confirm" class="btn btn-primary center-block"/>
 </form>
+<br/>
+<form>
+    <input type="submit" asp-controller="Order" asp-action="CheckOut" class="btn btn-light center-block" value="Back"/>
+</form>

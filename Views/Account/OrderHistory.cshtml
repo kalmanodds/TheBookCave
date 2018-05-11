@@ -5,37 +5,47 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th class="col">Order ID</th>
-                    <th class="col">Date Ordered</th>
-                    <th class="col">Quantity</th>
-                    <th class="col">Wrapped</th>
-                    <th class="col">Total Price</th>
-                </tr>
-            </thead>
-            <tbody>                 
-                @foreach(var Order in Model)
-                {
+        @if(Model.Count() != 0)
+        {
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
                     <tr>
-                        <td>@Order.OrderID</td>
-                        <td>@Order.DateOrder</td>
-                        <td>@Order.Quantity</td>
-                        @if(Order.IsWrapped)
-                        {
-                            <td>yes</td>
-                        }
-                        else
-                        {
-                            <td>no</td>
-                        }
-                        <td>@Order.TotalPrice</td>
+                        <th class="col">Order ID</th>
+                        <th class="col">Date Ordered</th>
+                        <th class="col">Quantity</th>
+                        <th class="col">Wrapped</th>
+                        <th class="col">Total Price</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach(var Order in Model)
+                    {
+                        <tr>
+                            <td>@Order.OrderID</td>
+                            <td>@Order.DateOrder</td>
+                            <td>@Order.Quantity</td>
+                            @if(Order.IsWrapped)
+                            {
+                                <td>yes</td>
+                            }
+                            else
+                            {
+                                <td>no</td>
+                            }
+                            <td>@Order.TotalPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3 class="text-center">No Orders Yet!</h3>
+        }
     </div>
     <div class="col-md-3"></div>
 </div>
 
+<form>
+    <input type="submit" asp-controller="Account" asp-action="Index" class="btn btn-light center-block" value="Back"/>
+</form>
