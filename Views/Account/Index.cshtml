@@ -67,16 +67,20 @@
 
 <!-- The main purpose of the following row is to display the 'Edit Profile' button in the middle of the page. -->
 <div class="row">
-  <div class="col-md-5"></div>
-  <div class="col-md-2">
-    <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
-    <br/>
-    <a asp-controller="Account" asp-action="OrderHistory" class="center-block btn btn-primary">Order History</a>
-    <br/>
-    @if(User.IsInRole("staff"))
-    {
-    <a asp-controller="Account" asp-action="AddBook" class="center-block btn btn-primary">Add Book</a>
-    }
+  <div class="col-md-3"></div>
+  <div class="col-md-6 row">
+    <div class="col-md-4">
+      @if(User.IsInRole("staff"))
+      {
+        <a asp-controller="Account" asp-action="AddBook" class="center-block btn btn-primary">Add Book</a>
+      }
+    </div>
+    <div class="col-md-4">
+      <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
+    </div>
+    <div class="col-md-4">
+      <a asp-controller="Account" asp-action="OrderHistory" class="center-block btn btn-primary">Order History</a>
+    </div>
   </div>
-  <div class="col-md-5"></div>
+  <div class="col-md-3"></div>
 </div>
