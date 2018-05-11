@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TheBookCave.Models;
 using TheBookCave.Models.InputModels;
 using TheBookCave.Models.ViewModels;
@@ -79,6 +80,11 @@ namespace TheBookCave.Services
         public void ConfirmOrder(int orderID)
         {
             _orderRepo.ConfirmOrder(orderID);
+        }
+
+        public List<OrderViewModel> GetOrderHistory(string userID)
+        {
+            return _orderRepo.GetOrderHistory(userID);
         }
     }
 }

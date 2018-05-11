@@ -1,0 +1,6 @@
+@model List<TheBookCave.Models.ViewModels.OrderViewModel>
+
+@foreach(var Order in Model)
+{
+    <h3>@Order.TotalPrice</h3>
+}

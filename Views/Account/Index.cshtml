@@ -49,7 +49,7 @@
          @Model.Address.Zip != 0 &&
          @Model.Address.Country != null)
     {
-      <h3>Stree Name: @Model.Address.StreetName</h3>
+      <h3>Street Name: @Model.Address.StreetName</h3>
       <h3>House Number: @Model.Address.HouseNumber</h3>
       <h3>City: @Model.Address.City</h3>
       <h3>ZIP: @Model.Address.Zip</h3>
@@ -70,6 +70,8 @@
   <div class="col-md-5"></div>
   <div class="col-md-2">
     <a asp-controller="Account" asp-action="EditProfile" class="center-block btn btn-primary">Edit Profile</a>
+    <br/>
+    <a asp-controller="Account" asp-action="OrderHistory" class="center-block btn btn-primary">Order History</a>
   </div>
   <div class="col-md-5"></div>
 </div>
