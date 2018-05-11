@@ -78,7 +78,7 @@ namespace TheBookCave.Controllers
                 //Add the concatenated first and last name as fullName in claims.
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
-                await _userManager.AddToRoleAsync(user, "staff");
+                //await _userManager.AddToRoleAsync(user, "staff");
 
                 //Adds User to the DataContext database which can be accessed through UserService.
                 var id = user.Id;
