@@ -485,5 +485,14 @@ namespace TheBookCave.Controllers
 
             return RedirectToAction("Details", "Book", new {id = bookID});
         }
+
+        [Authorize]
+        public async Task<IActionResult> OrderHistory()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userID = user.Id;
+            var orders = _orderService.GetOrderHistory(userID);
+            return View(orders);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using TheBookCave.Data;
 using TheBookCave.Data.EntityModels;
@@ -137,5 +138,47 @@ namespace TheBookCave.Repositories
                 _db.SaveChanges();
             }
         }
+
+        public List<OrderViewModel> GetOrderHistory(string userID)
+        {
+            var orders = (from o in _db.Orders
+                          where o.UserID == userID && o.CurrentOrder == false
+                          select new OrderViewModel()
+                          {
+                              OrderID = o.ID,
+                              TotalPrice = o.TotalPrice,
+                              ShippingAddress = o.ShippingAddress,
+                              DateOrder = o.DateOrder,
+                              PaymentInfo = o.PaymentInfo,
+                              IsReady = o.IsReady,
+                              IsShipped = o.IsShipped,
+                              IsReceived = o.IsReceived,
+                          }).ToList();
+
+            for(int i = 0; i < orders.Count(); i++)
+            {
+                var books = (from o in _db.Orders
+                             join c in _db.OrderBookConnections on o.ID equals c.OrderID
+                             join b in _db.Books on c.BookID equals b.ID
+                             where orders[i].OrderID == c.OrderID
+                             select new BookViewModel(){
+                                ID = b.ID,
+                                Title = b.Title,
+                                Author = b.Author,
+                                Description = b.Description,
+                                Price = b.Price,
+                                Genre = b.Genre,
+                                NumberOfPages = b.NumberOfPages,
+                                NumberOfCopiesSold = b.NumberOfCopiesSold,
+                                DatePublished = b.DatePublished,
+                                Publisher = b.Publisher,
+                                Rating = b.Rating,
+                                Image = b.Image
+                             }).ToList();
+                orders[i].Books = books;
+            }
+            return orders;
+        }
+
     }
 }
