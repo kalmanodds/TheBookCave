@@ -18,15 +18,10 @@
             <tbody>                 
                 @foreach(var Order in Model)
                 {
-                    int amount = 0;
-                    @foreach(var Book in Order.Books)
-                    {
-                        {amount += Book.Amount;}
-                    }
                     <tr>
                         <td>@Order.OrderID</td>
                         <td>@Order.DateOrder</td>
-                        <td>@amount</td>
+                        <td>@Order.Quantity</td>
                         @if(Order.IsWrapped)
                         {
                             <td>yes</td>
