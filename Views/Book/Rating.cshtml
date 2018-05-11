@@ -2,15 +2,15 @@
 
 <h1 class="text-center">Rate This Book!</h1>
 
-<!-- The following row is split into a 2-8-2 column system for indenting purposes. -->
+<!-- The following row is split into a 3-6-3 column system for indenting purposes. -->
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
     <!-- The first row in the main body is used to display minor details about the book. -->
     <div class="row">
       <div class="col-md-3">
         @{string path = Model.Image;}
-        <img src="@Url.Content(path)" alt="@Model.Title">
+        <img src="@Url.Content(path)" alt="@Model.Title" class="image-medium">
       </div>
       <div class="col-md-9">
         <h2>@Model.Title</h2>
@@ -42,5 +42,5 @@
       </div>
     </div>
   </div>
-  <div class="col-md-2"></div>
+  <div class="col-md-3"></div>
 </div>
