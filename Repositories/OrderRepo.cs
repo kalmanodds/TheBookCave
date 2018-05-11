@@ -24,7 +24,7 @@ namespace TheBookCave.Repositories
                 UserID = model.UserID,
                 TotalPrice = totalPrice,
                 DateOrder = dateOrdered,
-                CurrentOrder = true,
+                IsCurrentOrder = true,
             };
             _db.Add(newOrder);
             _db.SaveChanges();
@@ -33,7 +33,7 @@ namespace TheBookCave.Repositories
         public bool UserHasCurrentOrder(string userID)
         {
             var order = (from o in _db.Orders
-                       where o.UserID == userID && o.CurrentOrder == true
+                       where o.UserID == userID && o.IsCurrentOrder == true
                        select o).FirstOrDefault();
             if(order != null)
             {
@@ -48,7 +48,7 @@ namespace TheBookCave.Repositories
         public int? GetCurrentOrderID(string userID)
         {
             var order = (from o in _db.Orders
-                         where o.UserID == userID && o.CurrentOrder == true
+                         where o.UserID == userID && o.IsCurrentOrder == true
                          select o).SingleOrDefault();
             if(order != null)
             {
@@ -69,7 +69,7 @@ namespace TheBookCave.Repositories
             order.UserID = model.UserID;
             order.TotalPrice = totalPrice;
             order.DateOrder = dateOrdered;
-            order.CurrentOrder = true;
+            order.IsCurrentOrder = true;
 
             _db.Orders.Update(order);
             _db.SaveChanges();
@@ -78,7 +78,7 @@ namespace TheBookCave.Repositories
         public void AddOrderFinalized(CheckoutInputModel model, string userID)
         {
             var userOrder = (from o in _db.Orders
-                             where o.UserID == userID && o.CurrentOrder == true
+                             where o.UserID == userID && o.IsCurrentOrder == true
                              select o).FirstOrDefault();
             var shippingAddress = new AddressModel()
             {
@@ -109,7 +109,7 @@ namespace TheBookCave.Repositories
         public OrderViewModel GetCurrentOrder(string userID)
         {
             var order = (from o in _db.Orders
-                         where o.UserID == userID && o.CurrentOrder == true
+                         where o.UserID == userID && o.IsCurrentOrder == true
                          select new OrderViewModel()
                          {
                              OrderID = o.ID,
@@ -132,7 +132,7 @@ namespace TheBookCave.Repositories
                          select o).FirstOrDefault();
             if(order != null)
             {
-                order.CurrentOrder = false;
+                order.IsCurrentOrder = false;
                 order.IsReady = true;
                 _db.Orders.Update(order);
                 _db.SaveChanges();
@@ -142,7 +142,7 @@ namespace TheBookCave.Repositories
         public List<OrderViewModel> GetOrderHistory(string userID)
         {
             var orders = (from o in _db.Orders
-                          where o.UserID == userID && o.CurrentOrder == false
+                          where o.UserID == userID && o.IsCurrentOrder == false
                           select new OrderViewModel()
                           {
                               OrderID = o.ID,
