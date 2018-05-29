@@ -1,0 +1,42 @@
+@model List<TheBookCave.Models.ViewModels.BookViewModel>
+
+<h1 class="text-center"> The Top 10 Rated</h1>
+
+@foreach (var Book in Model)
+{
+  <br/>
+  <!-- The following row is split into a 1-10-1 column system for indenting purposes. -->
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 row">
+      <h3 class="text-center">
+        <a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a>
+        <small>@Book.Genre</small>
+      </h3>
+      <hr/>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          @{string path = Book.Image;}
+          <img class="image-large" src=@Url.Content(path) alt="...">
+          @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+          @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+          <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p>@Book.Description</p>
+      </div>
+      <div class="col-md-2">
+        <form asp-action="AddToWishlist" asp-controller="Account" asp-route-controlla="Home" asp-route-acta="TopTen" asp-route-bookID="@Book.ID" method="POST">
+          <button type="submit" class="btn btn-primary add-to-wishlist">Add to Wishlist</button>
+        </form>
+        <br/>
+        <form asp-action="AddToCart" asp-controller="Account" asp-route-controlla="Home" asp-route-acta="TopTen" asp-route-bookID="@Book.ID" method="POST">
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <br/>
+}

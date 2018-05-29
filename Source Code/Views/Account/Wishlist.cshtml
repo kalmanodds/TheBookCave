@@ -1,0 +1,70 @@
+@model List<TheBookCave.Models.ViewModels.BookViewModel>
+
+<!-- The following code block returns "book" if there is only a single book in the wishlist, otherwise it returns "books". -->
+@{string bookVsBooks = "book";}
+@if(Model.Count != 1)
+{
+  bookVsBooks += "s";
+}
+
+<h1 class="text-center">Wishlist
+  <small>@Model.Count @bookVsBooks</small>
+</h1>
+<hr/>
+
+<!-- If there are any books in the wishlist, they are all displayed in a list, otherwise "No books in Wishlist!" is displayed. -->
+@if(@Model.Count != 0)
+{
+  @foreach (var Book in Model)
+  {
+    <!-- The following row is split into a 2-8-2 column system for indenting purposes. -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 row">
+        <!-- The main body of the row is split in 2-7-2-1 column system. -->
+        <div class="col-md-2">
+          <!-- The first column in the main body is used to display a picture of the book and it's rating. -->
+          <div class="thumbnail">
+            @{string path = Book.Image;}
+            <img class="image-small" src=@Url.Content(path) alt="@Book.Title">
+            @{int intRating  = ((int)(((Book.Rating * 4) + 1) / 2)) * 5; }
+            @{string stringRating = "~/images/stars/" + intRating + "StarsSmall.png"; }
+            <img src=@Url.Content(stringRating) alt="Rating" class="img-responsive center-block">
+          </div>
+        </div>
+        <div class="col-md-7 row">
+          <!-- The second column in the main body is used to display the book's title and author. -->
+          <h3><a asp-controller="Book" asp-action="Details" asp-route-id="@Book.ID">@Book.Title</a></h3>
+          <h4>By @Book.Author</h4>
+        </div>
+        <div class="col-md-2">
+          <!-- The third column in the main body is used to display the book's price. -->
+          <h3>@Book.Price $</h3>
+        </div>
+        <div class="col-md-1">
+          <!-- The fourth and final column in the main body is used to display the 'Add to Cart' and 'Remove' buttons. -->
+          <br>
+          <form asp-action="MoveWishlistToCart" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
+            <button type="submit" class="btn btn-primary add-to-cart">Add to Cart</button>
+          </form>
+          <br>
+          <form asp-action="RemoveWishlist" asp-controller="Account" asp-route-bookID="@Book.ID" method="POST">
+            <button type="submit" class="btn btn-danger remove-from-wishlist">Remove</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+
+    <!-- The sole purpose of the following row is to add a horizontal line at the bottom. -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8"><hr></div>
+      <div class="col-md-2"></div>
+    </div>
+  }
+}
+else
+{
+  <h4 class="text-center">No Books in Wishlist!</h4>
+}

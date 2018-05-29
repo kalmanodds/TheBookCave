@@ -1,0 +1,103 @@
+@model TheBookCave.Models.InputModels.BookInputModel
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <h1 class="text-center">Add a Book!</h1>
+    <hr>
+    <form asp-controller="Account" asp-action="AddBook" method="POST">
+      <div class="row">
+        <div class="col-md-6">
+          <label>
+            Title<input type="text" asp-for="Title" class="form-control">
+          </label>
+          <label>
+            ISBN10 <input type="text" asp-for="ISBN10" class="form-control">
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label>
+            Author <input type="text" asp-for="Author" class="form-control">
+          </label>  
+          <label>
+            ISBN13 <input type="text" asp-for="ISBN13" class="form-control">
+          </label>
+        </div>
+      </div>
+      <label>
+        Description <textarea asp-for="Description" cols="59" rows="8" class="form-control"></textarea>
+      </label>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <label>
+            Price <input type="number" step="0.01" asp-for="Price" class="form-control">
+          </label>
+          <label>
+            Number of Pages <input type="number" asp-for="NumberOfPages" class="form-control">
+          </label>
+          <label>
+            Image root: <input type="text" asp-for="Image" class="form-control">
+          </label>
+        </div>
+        <div class="col-md-6">
+          <label for="genre-dropdown">Genre</label>
+          <select class="form-control" name="genre" id="genre-dropdown">
+            <option value="Adventure">Adventure</option>
+            <option value="Biography">Biography</option>
+            <option value="Children">Children</option>
+            <option value="Educational">Educational</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Horror">Horror</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Romance">Romance</option>
+            <option value="War">War</option>
+          </select>
+          <label>
+            Number In Stock: <input type="number" asp-for="InStock" class="form-control">
+          </label>
+          <label>
+            Publisher <input type="text" asp-for="Publisher" class="form-control">
+          </label>
+        </div>
+      </div>
+      <span asp-validation-for="Title" class="text-danger"></span> <br>
+      <span asp-validation-for="Author" class="text-danger"></span> <br>
+      <span asp-validation-for="ISBN10" class="text-danger"></span> <br>
+      <span asp-validation-for="ISBN13" class="text-danger"></span> <br>
+      <span asp-validation-for="Description" class="text-danger"></span> <br>
+      <span asp-validation-for="Price" class="text-danger"></span> <br>
+      <span asp-validation-for="NumberOfPages" class="text-danger"></span> <br>
+      <span asp-validation-for="InStock" class="text-danger"></span> <br>
+      <span asp-validation-for="Image" class="text-danger"></span> <br>
+      <span asp-validation-for="Publisher" class="text-danger"></span>
+      <br>
+      <fieldset>
+        <legend>Day of Publication</legend>
+        <div class="row">
+          <div class="col-md-6">
+            <label>
+              Day <input type="number" asp-for="DayPublished" class="form-control">
+            </label>
+            <label>    
+              Year <input type="number" asp-for="YearPublished" class="form-control">
+            </label>
+          </div>
+          <div class="col-md-6">
+            <label>
+              Month <input type="number" asp-for="MonthPublished" class="form-control">
+            </label>
+          </div>
+        </div>
+      </fieldset>
+      <span asp-validation-for="DayPublished" class="text-danger"></span> <br>
+      <span asp-validation-for="MonthPublished" class="text-danger"></span> <br>
+      <span asp-validation-for="YearPublished" class="text-danger"></span>
+      <br>
+      <input type="submit" value="Add Book" class="btn btn-primary center-block">
+    </form>
+
+  </div>
+  <div class="col-md-3"></div>
+</div>
