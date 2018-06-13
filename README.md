@@ -4,7 +4,9 @@ TheBookCave er ASP.NET web app sem notar SQL gagnagrunn til þess að halda utan
 
 ## Installing
 
-Ekki er hægt að keyra forritið á tölvu sem er ekki með ASP.NET niðurhalað. Ef ASP.NET er hins vegar uppsett er einfaldlega hægt að keyra **dotnet run** skipunina og síðan ætti að virka fullkomlega á localhost:5000, óháð stýrikerfi.
+Ekki er hægt að keyra forritið á tölvu sem er ekki með ASP.NET niðurhalað. Ef ASP.NET er hins vegar uppsett er einfaldlega hægt að keyra **dotnet run** skipunina. 
+
+**ATH:** Frá og með endalokum vorannar 2018 er gagnagrunnur TheBookCave ekki lengur hýstur. Ennþá er hægt að skoða kóða og útlit síðunnar en engar bækur munu finnast á síðunni
 
 ## Authors
 
